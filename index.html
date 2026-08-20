@@ -1,0 +1,541 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<!-- Suppress native anchor-jump so smooth scroll can animate in -->
+<script>if (window.location.hash) { window.scrollTo(0, 0); }</script>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Blueprint Training Centre</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "error-container": "#ffdad6",
+                "on-surface-variant": "#44474e",
+                "tertiary-fixed": "#c9e7f7",
+                "surface-container-high": "#e7e8e9",
+                "primary-container": "#002147",
+                "on-primary-fixed-variant": "#2d476f",
+                "surface-container-low": "#f3f4f5",
+                "on-primary": "#ffffff",
+                "surface": "#f8f9fa",
+                "on-tertiary-container": "#708d9b",
+                "surface-tint": "#465f88",
+                "primary-fixed": "#d6e3ff",
+                "on-tertiary-fixed-variant": "#2e4b57",
+                "on-primary-fixed": "#001b3d",
+                "on-tertiary": "#ffffff",
+                "on-tertiary-fixed": "#001f2a",
+                "secondary-container": "#feb316",
+                "inverse-surface": "#2e3132",
+                "on-secondary-fixed": "#281900",
+                "outline-variant": "#c4c6cf",
+                "outline": "#74777f",
+                "tertiary": "#000d13",
+                "on-background": "#191c1d",
+                "tertiary-container": "#032531",
+                "secondary-fixed": "#ffdead",
+                "inverse-primary": "#aec7f6",
+                "surface-container": "#edeeef",
+                "secondary-fixed-dim": "#ffba3b",
+                "background": "#f8f9fa",
+                "on-primary-container": "#708ab5",
+                "tertiary-fixed-dim": "#adcbda",
+                "on-error": "#ffffff",
+                "on-secondary": "#ffffff",
+                "surface-variant": "#e1e3e4",
+                "surface-bright": "#f8f9fa",
+                "secondary": "#7f5700",
+                "on-surface": "#191c1d",
+                "inverse-on-surface": "#f0f1f2",
+                "error": "#ba1a1a",
+                "on-secondary-fixed-variant": "#604100",
+                "primary-fixed-dim": "#aec7f6",
+                "primary": "#000a1e",
+                "surface-container-lowest": "#ffffff",
+                "surface-dim": "#d9dadb",
+                "surface-container-highest": "#e1e3e4",
+                "on-error-container": "#93000a",
+                "on-secondary-container": "#6a4800"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {
+                "stack-sm": "12px",
+                "margin-desktop": "40px",
+                "stack-md": "24px",
+                "gutter": "24px",
+                "stack-lg": "48px",
+                "base": "8px",
+                "container-max": "1280px",
+                "margin-mobile": "16px",
+                "section-py": "120px"
+        },
+        "fontFamily": {
+                "body-lg": [
+                        "Hanken Grotesk", "sans-serif"
+                ],
+                "display-lg": [
+                        "Hanken Grotesk", "sans-serif"
+                ],
+                "headline-lg-mobile": [
+                        "Hanken Grotesk", "sans-serif"
+                ],
+                "label-sm": [
+                        "Hanken Grotesk", "sans-serif"
+                ],
+                "headline-md": [
+                        "Hanken Grotesk", "sans-serif"
+                ],
+                "body-md": [
+                        "Hanken Grotesk", "sans-serif"
+                ],
+                "label-md": [
+                        "Hanken Grotesk", "sans-serif"
+                ],
+                "headline-lg": [
+                        "Hanken Grotesk", "sans-serif"
+                ]
+        },
+        "fontSize": {
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-lg": [
+                        "56px",
+                        {
+                                "lineHeight": "64px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "fontWeight": "500",
+                                "letterSpacing": "0.05em"
+                        }
+                ],
+                "headline-md": [
+                        "28px",
+                        {
+                                "lineHeight": "36px",
+                                "fontWeight": "600",
+                                "letterSpacing": "-0.01em"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "26px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600",
+                                "textTransform": "uppercase"
+                        }
+                ],
+                "headline-lg": [
+                        "40px",
+                        {
+                                "lineHeight": "48px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "600"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<link rel="stylesheet" href="style.css"></head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md antialiased overflow-x-hidden">
+<!-- Navigation -->
+<header class="bg-surface-container-lowest/95 backdrop-blur-xl fixed top-0 w-full z-50 shadow-[0_4px_30px_rgba(0,33,71,0.03)] border-b border-surface-variant/50 transition-all duration-300 site-navbar">
+    <!-- Top bar -->
+    <div class="flex justify-between items-center max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop h-24">
+        <!-- Logo -->
+        <a class="flex items-center gap-2 transition-transform duration-300 hover:scale-[1.02]" href="#">
+            <img alt="Blueprint Training Centre Logo" class="h-14 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFjVfWOm390rc3Yd0DZZQtVoQONZ46rlUYNUGSYOCcb64VcQiA0nUY0O1J8z1d6IYq9Ha_gOJ6sWN23mScUFV56AGfMdYXajmUh__99Vub2_QxJN7NBxnZPA9ivzLGa1hOjj8Rme4WywEzChq28ePoJoV-bq5fY2DB5EYAVHAUUtd1mI_2isHJ8oKw-TeaFm19M-eKpSxBRexNPoIf0ospOoysj9zYni2uO0pDw-KJZ0PZ5c9o4UAeAHKTpfmVAO2WZQ">
+        </a>
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center gap-8">
+            <a class="nav-link relative font-label-md text-label-md text-primary-container active" href="#home">Home</a>
+            <a class="nav-link relative font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors duration-300" href="#about">About</a>
+            <a class="nav-link relative font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors duration-300" href="#vision">Vision &amp; Mission</a>
+            <a class="nav-link relative font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors duration-300" href="#contact">Contact</a>
+        </nav>
+        <!-- CTA -->
+        <div class="hidden md:block">
+            <a class="inline-flex items-center justify-center px-8 py-3.5 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-md hover:bg-secondary-fixed btn-transition" href="enrollment.html">
+                Enroll Now
+            </a>
+        </div>
+        <!-- Mobile Menu Toggle -->
+        <button class="md:hidden flex items-center justify-center w-10 h-10 text-primary-container hover:bg-surface-container rounded-lg transition-colors" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+            <!-- Two icons stacked; CSS transitions between them -->
+            <span class="mobile-btn-icon" id="mobile-icon-menu">
+                <span class="material-symbols-outlined text-[26px]">menu</span>
+            </span>
+            <span class="mobile-btn-icon mobile-btn-icon--close" id="mobile-icon-close">
+                <span class="material-symbols-outlined text-[26px]">close</span>
+            </span>
+        </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div class="md:hidden mobile-dropdown" id="mobile-menu">
+        <div class="px-margin-mobile py-4 space-y-1">
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg font-label-md text-label-md text-primary hover:bg-surface-container transition-colors duration-200" href="#home">
+                <span class="material-symbols-outlined text-[20px] text-secondary-container">home</span>Home
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#about">
+                <span class="material-symbols-outlined text-[20px]">info</span>About
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#vision">
+                <span class="material-symbols-outlined text-[20px]">visibility</span>Vision &amp; Mission
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#contact">
+                <span class="material-symbols-outlined text-[20px]">mail</span>Contact
+            </a>
+            <div class="pt-3 pb-1 border-t border-surface-variant/60 mt-2">
+                <a class="flex items-center justify-center w-full px-6 py-3 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-lg hover:bg-secondary-fixed transition-colors btn-transition" href="enrollment.html">
+                    Enroll Now
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative w-full h-[85vh] min-h-[700px] overflow-hidden bg-primary-container flex items-center" id="home">
+<!-- Carousel Container -->
+<div class="absolute inset-0 w-full h-full z-10" id="hero-carousel">
+<div class="carousel-track flex w-full h-full" id="carousel-track" style="transform: translateX(0%);">
+<!-- Slide 1 -->
+<div class="w-full h-full flex-shrink-0 relative">
+<img class="w-full h-full object-cover mix-blend-overlay opacity-60" data-alt="A sweeping wide-angle architectural shot of a modern, glass-facade corporate building or university campus. The scene is brightly lit with a clear blue sky, reflecting a professional, corporate aesthetic suitable for a high-end training institution. The color palette emphasizes clean whites, deep navy reflections, and subtle warm sunlight, conveying stability, structural integrity, and educational excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSyizwXiQMil1utUmccAIRg2bwW0jGOhl2IUiY8PgB0OSdYR-17_Qbjt8_A1eTBtEmGIW0vq3kVjOz_RRTOiqmC0sBz3pfTJn28RfLrKYDUFcb6yT72wa0nJR7N70vL683egW5LThN8QuhBhSN2CZs4Z2-5_Ln-Lt8k0pBNJMtxWxN-mJHnpn1dbf_3T_7jd_X6qaTCkRiGejsNJaCuFBeRrc33soT3-m3lru2T7VKRrZFEnDV0Q2j">
+<div class="absolute inset-0 bg-gradient-to-r from-primary-container/90 via-primary-container/60 to-transparent"></div>
+<div class="absolute inset-0 flex items-center max-w-[1280px] w-full mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="max-w-3xl">
+<h1 class="font-display-lg text-display-lg text-on-primary mb-6 drop-shadow-sm leading-tight">
+                                    Building Careers with Precision &amp; Excellence.
+                                </h1>
+<p class="font-body-lg text-body-lg text-primary-fixed mb-10 max-w-2xl text-opacity-90 leading-relaxed">
+                                    Empowering professionals through world-class training programs designed for the modern workplace. Start your journey with Blueprint today.
+                                </p>
+<div class="flex gap-5">
+<a class="inline-flex items-center justify-center px-8 py-4 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-md hover:bg-secondary-fixed btn-transition" href="#enroll">
+                                        Get Started
+                                    </a>
+<a class="inline-flex items-center justify-center px-8 py-4 border border-on-primary/30 text-on-primary font-label-md text-label-md rounded-md hover:bg-on-primary/10 hover:border-on-primary btn-transition backdrop-blur-sm" href="#about">
+                                        Learn More
+                                    </a>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 2 -->
+<div class="w-full h-full flex-shrink-0 relative">
+<img class="w-full h-full object-cover mix-blend-overlay opacity-60" data-alt="A group of professionally dressed individuals engaged in a collaborative seminar within a sleek, state-of-the-art auditorium. The environment is a modern, well-lit educational space with clean lines and a corporate atmosphere. The lighting is bright and even, highlighting the deep navy and crisp white tones of the room's decor, symbolizing professional development and structured learning." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhz2VKntPcUUYZTIw4e1kp5rk3fhXbwjbb8_-UEEftUhHxSia1ONv7IFWq4ZdzxEavztCX1AXpkWUkd4oUp3y-mBvNSDgyMmpdOxBiup9PpMLvVCWkUDK9TAxPvUgYLw5tBoUZQfZUgwJCeudQD2r7Cvqa5ap06nwCSyditkI3LfBKVWHUk2xz0h3UkVs6imqTTe2oM1I1avEDNvHUI9lJ8FJy0KM53fUXRim5ddGXbsV19qQkpb_w">
+<div class="absolute inset-0 bg-gradient-to-r from-primary-container/90 via-primary-container/60 to-transparent"></div>
+<div class="absolute inset-0 flex items-center max-w-[1280px] w-full mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="max-w-3xl">
+<h1 class="font-display-lg text-display-lg text-on-primary mb-6 drop-shadow-sm leading-tight">
+                                    Professional Development that Drives Results.
+                                </h1>
+<p class="font-body-lg text-body-lg text-primary-fixed mb-10 max-w-2xl text-opacity-90 leading-relaxed">
+                                    Join thousands of professionals who have advanced their careers through our certified programs and expert-led workshops.
+                                </p>
+<a class="inline-flex items-center justify-center px-8 py-4 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-md hover:bg-secondary-fixed btn-transition" href="#enroll">
+                                    Explore Programs
+                                </a>
+</div>
+</div>
+</div>
+</div>
+<!-- Carousel Controls -->
+<div class="absolute bottom-12 left-0 right-0 flex justify-center gap-3 z-20">
+<button aria-label="Go to slide 1" class="w-12 h-1.5 rounded-full transition-all duration-300 bg-secondary-container shadow-[0_0_10px_rgba(254,179,22,0.4)]" data-slide="0"></button>
+<button aria-label="Go to slide 2" class="w-12 h-1.5 rounded-full transition-all duration-300 bg-on-primary/30 hover:bg-on-primary/60" data-slide="1"></button>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-section-py bg-surface-container-lowest" id="about">
+<div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-center">
+<div class="relative group">
+<div class="absolute -inset-4 bg-surface-container-low rounded-2xl transform rotate-2 transition-transform duration-500 group-hover:rotate-1 z-0"></div>
+<img class="relative z-10 w-full h-[600px] object-cover rounded-xl shadow-[0_30px_60px_rgba(0,33,71,0.12)] transition-transform duration-700 group-hover:scale-[1.01]" data-alt="A brightly lit, modern office interior focusing on a clean, architectural drafting table or a sleek meeting area. The space is characterized by minimalist design, utilizing a palette of crisp white walls, subtle light gray structural elements, and professional navy blue accents. The mood is focused, organized, and structurally sound, reflecting the 'blueprint' concept." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJCboI6ia3qlU93RMPucl6L9T6fnI2oscU8axQUiMjS0sTD-BsJv25O3S8aYSindJRP7_mlj--KyRJ5K_YjIQ0P3eqOmE9BL21jXBqX7LzjyDomaDXcZ9U0q48o2PYtXQr2Vjiwbk3n-wWaxfxY7bIS4CZqaujPLK4WI3N1kJA0dZuIqssr3c1w-M9-d30amBpPQZE5e9X3tkZHVVUrOo7e7a1Neo2iaFv_luobccAYK8Oa1CyPyU5">
+</div>
+<div class="pr-lg-8">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-10 h-[2px] bg-secondary-container"></div>
+<span class="font-label-md text-label-md text-primary-container tracking-widest uppercase">About Us</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-8 leading-tight">
+                            A Foundation Built on Excellence &amp; Professional Growth
+                        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                            Blueprint Training Centre is a premier professional development institution based in Dubai, UAE. We are committed to equipping individuals and organizations with the knowledge, skills, and certifications needed to thrive in today's competitive landscape.
+                        </p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-12 leading-relaxed">
+                            A Foundation Built on Excellence &amp; Professional Growth Aenean egestas magna at porttitor vehicula nullam augue ipsum, pellentesque ut blandit sed, sagittis convallis lorem.
+                        </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex items-start gap-4 p-6 bg-surface-container-lowest border border-surface-variant/50 rounded-xl hover:shadow-[0_10px_30px_rgba(0,33,71,0.05)] transition-shadow duration-300">
+<div class="p-3 bg-primary-container/5 rounded-lg text-secondary-container">
+<span class="material-symbols-outlined icon-fill text-[28px]">architecture</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-[20px] font-semibold text-on-surface mb-2">Structural Excellence</h4>
+<p class="font-label-sm text-[14px] text-on-surface-variant/80">Curriculum built on international standards and best practices.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-6 bg-surface-container-lowest border border-surface-variant/50 rounded-xl hover:shadow-[0_10px_30px_rgba(0,33,71,0.05)] transition-shadow duration-300">
+<div class="p-3 bg-primary-container/5 rounded-lg text-secondary-container">
+<span class="material-symbols-outlined icon-fill text-[28px]">school</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-[20px] font-semibold text-on-surface mb-2">Expert Training</h4>
+<p class="font-label-sm text-[14px] text-on-surface-variant/80">Led by certified industry professionals with decades of experience.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Vision & Mission -->
+<section class="py-section-py bg-surface-container-low relative overflow-hidden" id="vision">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0iIzAwMjE0NyIgZmlsbC1vcGFjaXR5PSIwLjA1Ii8+PC9zdmc+')] opacity-50"></div>
+<div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+<div class="text-center mb-[80px]">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">Vision &amp; Mission</h2>
+<div class="w-16 h-[2px] bg-secondary-container mx-auto"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<!-- Vision Card -->
+<div class="bg-surface-container-lowest p-12 rounded-2xl premium-shadow group hover:-translate-y-2 transition-all duration-500 border border-transparent hover:border-surface-variant/30">
+<div class="w-20 h-20 bg-primary-container rounded-xl flex items-center justify-center mb-8 shadow-[0_10px_20px_rgba(0,33,71,0.1)]">
+<span class="material-symbols-outlined text-[36px] text-secondary-container icon-fill">visibility</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary-container mb-6">Our Vision</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            A Foundation Built on Excellence &amp; Professional Growth Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.
+                        </p>
+</div>
+<!-- Mission Card -->
+<div class="bg-surface-container-lowest p-12 rounded-2xl premium-shadow group hover:-translate-y-2 transition-all duration-500 border border-transparent hover:border-surface-variant/30">
+<div class="w-20 h-20 bg-primary-container rounded-xl flex items-center justify-center mb-8 shadow-[0_10px_20px_rgba(0,33,71,0.1)]">
+<span class="material-symbols-outlined text-[36px] text-secondary-container icon-fill">target</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary-container mb-6">Our Mission</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            To deliver transformative, accredited training programs that equip professionals with practical skills, international certifications, and the confidence to excel in their fields - fostering a culture of continuous growth and lifelong learning.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us -->
+<section class="py-section-py bg-surface-container-lowest">
+<div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-[80px]">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">Why Choose Blueprint</h2>
+<div class="w-16 h-[2px] bg-secondary-container mx-auto mb-8"></div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+                        We combine academic rigor with practical application, giving you the skills and credentials that matter most to employers and industry leaders.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Feature 1 -->
+<div class="flex flex-col items-center text-center p-6 group">
+<div class="w-20 h-20 rounded-full bg-surface-container-lowest flex items-center justify-center mb-8 premium-shadow transition-transform duration-500 group-hover:scale-110">
+<span class="material-symbols-outlined text-[32px] text-primary-container">verified</span>
+</div>
+<h4 class="font-headline-sm text-[22px] font-semibold text-on-surface mb-4">Certified Programs</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            Building Careers with Precision &amp; Excellence. Adipiscing elit proin gravida dolor sit.
+                        </p>
+</div>
+<!-- Feature 2 -->
+<div class="flex flex-col items-center text-center p-6 group">
+<div class="w-20 h-20 rounded-full bg-surface-container-lowest flex items-center justify-center mb-8 premium-shadow transition-transform duration-500 group-hover:scale-110">
+<span class="material-symbols-outlined text-[32px] text-primary-container">group</span>
+</div>
+<h4 class="font-headline-sm text-[22px] font-semibold text-on-surface mb-4">Expert Instructors</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            Learn from seasoned professionals and certified trainers who bring real-world expertise directly into the classroom.
+                        </p>
+</div>
+<!-- Feature 3 -->
+<div class="flex flex-col items-center text-center p-6 group">
+<div class="w-20 h-20 rounded-full bg-surface-container-lowest flex items-center justify-center mb-8 premium-shadow transition-transform duration-500 group-hover:scale-110">
+<span class="material-symbols-outlined text-[32px] text-primary-container">business</span>
+</div>
+<h4 class="font-headline-sm text-[22px] font-semibold text-on-surface mb-4">Modern Facilities</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            State-of-the-art training rooms, collaborative spaces, and technology-equipped environments designed for optimal learning.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Gallery -->
+<section class="py-section-py bg-surface-container-low">
+<div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col md:flex-row md:justify-between md:items-end mb-[60px] gap-6">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Our Facilities</h2>
+<p class="font-body-md text-body-md text-on-surface-variant text-lg">World-class spaces designed for professional excellence.</p>
+</div>
+<a class="inline-flex items-center gap-2 font-label-md text-label-md text-primary-container hover:text-secondary-container transition-colors group" href="facilities.html">
+                        View All <span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="overflow-hidden rounded-xl premium-shadow group">
+<img class="w-full h-64 lg:h-80 object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A pristine, highly organized corporate training room featuring rows of sleek desks and ergonomic chairs. The space is illuminated by bright, cool-toned white lighting that enhances focus and clarity. The color palette revolves around institutional whites, light grays, and structural navy blue accents on the walls, conveying a sense of rigorous professional education." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDW-ngsNbKoqSgKKhBk8pS42VLbpQReTcBKMp1WjW3WamFRgJ7B0NZNGCFboQc0sQWl5PQek0xwSjZIQfrY5lK0qs3BeXVdwkDnoRnK_7n7hTDvjdGvf6jhFljq9QIs_mCibyaBMG11nCoD6I6OXGpEDaueSWlAKHMmuedbUWj_WT9_19sMBTmDBGCTiwRZ7gqWf6llB_pDE9dtF3LD7GS32F5e2kD7zivvzupFPq8QU8Ugu6W4ygv">
+</div>
+<div class="overflow-hidden rounded-xl premium-shadow group">
+<img class="w-full h-64 lg:h-80 object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A modern architectural lounge area within a professional institute, featuring minimalist geometric furniture. Sunlight streams through large glass windows, casting clean lines across the smooth white floors. The atmosphere is calm and corporate, utilizing deep navy structural columns and subtle golden-yellow accent lighting to reflect the brand's identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA4Y6eBCfOjG7aizSwvYcFAM31dyYw-iFnhmlRydbhGsGDb59ocK_kVT7qe1RhVvute7aVR4TMK_zcWOKRf6bqwMJWiCbAyLODxa8CFYRWlFr_1wYrZUpB5IBh40OvbzHaL6uJtynJ_OAuCDADE_Z34jxYITusNqYT4365ZvnnLXn2qmLvdrQ2kdkIvxP6R-xf-nTe3Dd790DS4EzC-EgM03PbQ1K3hYSl6N8sTllXrTgxmBq12E-a">
+</div>
+<div class="overflow-hidden rounded-xl premium-shadow group">
+<img class="w-full h-64 lg:h-80 object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A close-up shot of a high-tech seminar podium in a brightly lit auditorium. The podium is made of polished wood and brushed steel, set against a backdrop of a clean white presentation screen. The lighting is focused and professional, ensuring a high-end corporate aesthetic suitable for executive training sessions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq45XDxrkfm8mVA3hcycKiHWvRX3U2SBRWW_pM0r2codF03-_PIEFIR7zaFtojHqC8OZvvJ9HE44RIrtVlwI7IMZbytAS_69T7C_ZrEc6b4TCZHjmCSVdNyyzzts8vsone-T7kv0bTK8ScCDnmpRrSHd-iCWS44raDjAW_teKkRNQBoDIPnwD2JCUoIenshjx7TpgzYNvpIcQFF2qES59h4Zvunml0_rVKTl3gEDt231s7_tF_6jUP">
+</div>
+<div class="overflow-hidden rounded-xl premium-shadow group">
+<img class="w-full h-64 lg:h-80 object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An expansive, open-plan collaborative workspace designed for group training. The room features large whiteboards, modular white tables, and navy blue seating. The aesthetic is clean, modern, and highly structured, emphasizing educational excellence and architectural precision with even, shadow-free lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeiOJE1Q9Qn9nbLYWOsXIVAjlEuSnShLqzvaqZi-RmPnPMKVzGMmLuHUN_Nu69vFCrTIquOmvmIUjqvnyUBdkN6xlwGGEN1_5F0Llzhx-iPUh8pHtLL5a40iMtiJHJns7pyzO503JAearAcDVUbdGIcz9QnJf39eDZDqcC3qoXYjHj7BjLJeLyysLJn1vhZdH_q2ROv8sCKVWEsg8PdmxxutJPJgzy_hWz6uY1g_HkDr0GU23ISTlb">
+</div>
+</div>
+</div>
+</section>
+<!-- Location / Map -->
+<section class="py-section-py bg-surface-container-lowest" id="contact">
+<div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+<!-- Contact Info -->
+<div class="lg:col-span-5 flex flex-col justify-center">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-8">Visit Us</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-12 text-lg leading-relaxed">
+                            A Foundation Built on Excellence &amp; Professional Growth Sed do eiusmod tempor incididunt ut labore et dolore.
+                        </p>
+<div class="space-y-8">
+<div class="flex items-start gap-6 group">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-primary-container group-hover:bg-primary-container group-hover:text-surface-container-lowest transition-colors duration-300 shrink-0">
+<span class="material-symbols-outlined text-[24px]">location_on</span>
+</div>
+<div>
+<h4 class="font-label-md text-[16px] font-semibold text-on-surface mb-2">Address</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Blueprint Training Center<br>Dubai, UAE</p>
+</div>
+</div>
+<div class="flex items-start gap-6 group">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-primary-container group-hover:bg-primary-container group-hover:text-surface-container-lowest transition-colors duration-300 shrink-0">
+<span class="material-symbols-outlined text-[24px]">phone</span>
+</div>
+<div>
+<h4 class="font-label-md text-[16px] font-semibold text-on-surface mb-2">Phone / WhatsApp</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">+971 4 566 1639</p>
+</div>
+</div>
+<div class="flex items-start gap-6 group">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-primary-container group-hover:bg-primary-container group-hover:text-surface-container-lowest transition-colors duration-300 shrink-0">
+<span class="material-symbols-outlined text-[24px]">schedule</span>
+</div>
+<div>
+<h4 class="font-label-md text-[16px] font-semibold text-on-surface mb-2">Hours</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Mon - Fri: 9:00 AM - 6:00 PM</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Map Embed -->
+<div class="lg:col-span-7 h-[500px] md:h-[600px] rounded-2xl overflow-hidden premium-shadow border border-surface-variant/20">
+<iframe allowfullscreen="" height="100%" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.625603847847!2d55.318565!3d25.2652785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x661573eeabb6ac67%3A0x59f39f6f86e74b91!2sBlueprint%20Training%20Center!5e0!3m2!1sen!2sae!4v1700000000000!5m2!1sen!2sae" style="border:0; filter: grayscale(20%) contrast(1.1);" title="Blueprint Training Center Location" width="100%">
+</iframe>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary-container text-on-primary pt-[100px] pb-12">
+<div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-16">
+<!-- Brand Col -->
+<div class="col-span-1 md:col-span-1">
+<img alt="Blueprint Training Centre Logo" class="h-14 w-auto object-contain mb-8 brightness-0 invert opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA49PcPX5rNg5yB50mtQr308dAfVTh9Yd_IQ6bR4TQ6HSlqtOlNkzDojybN0NyqvNGfh1I-hdWgRot-FCj-T0TO2qEm6jaT4-k6NotSLMDlTIz8y4sq2H7Wt3-Ufe46kKZu-bqSaZDZ0CWt3kZfSWmsEI03gvYR4vrp3JXCtgmP8BVTRyK7MYN_q8XyVmIVu-z8mItqDvCy1Acoq2nqSa57_uJzYcatUC-IPnzx1ogYSwnolgdfQXZ5guLKWC3qmhl_Ug">
+<p class="font-body-md text-[14px] text-primary-fixed-dim/70 mb-8 leading-relaxed">
+                        Professional Excellence in Training &amp; Development.
+                    </p>
+<div class="flex gap-4"><a aria-label="WhatsApp" class="w-10 h-10 rounded-full bg-white/10 text-on-primary flex items-center justify-center hover:bg-secondary-container hover:text-secondary-fixed-dim transition-all duration-300" href="https://wa.me/97145661639" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[20px] icon-fill">chat</span></a><a aria-label="Facebook" class="w-10 h-10 rounded-full bg-white/10 text-on-primary flex items-center justify-center hover:bg-secondary-container hover:text-secondary-fixed-dim transition-all duration-300" href="https://www.facebook.com/profile.php?id=61593331912284&amp;mibextid=wwXIfr&amp;rdid=EHSktwfvUSdOjq5c&amp;share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18HiqNhavC%2F%3Fmibextid%3DwwXIfr" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[20px] icon-fill">public</span></a></div>
+</div>
+<!-- Quick Links -->
+<div>
+<h4 class="font-headline-sm text-[18px] font-semibold text-on-primary mb-6">Quick Links</h4>
+<ul class="space-y-4">
+<li class=""><a class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors" href="#home">Home</a></li>
+<li class=""><a class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors" href="#about">About</a></li>
+<li class=""><a class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors" href="#vision">Vision &amp; Mission</a></li>
+<li class=""><a class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors" href="#contact">Contact</a></li>
+</ul>
+</div>
+<!-- Programs -->
+<div>
+<h4 class="font-headline-sm text-[18px] font-semibold text-on-primary mb-6">Programs</h4>
+<ul class="space-y-4">
+<li class=""><a class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors" href="#">Management Excellence</a></li>
+<li class=""><a class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors" href="#">Technical Skills</a></li>
+<li class=""><a class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors" href="#">Leadership Development</a></li>
+</ul>
+</div>
+<!-- Contact -->
+<div>
+<h4 class="font-headline-sm text-[18px] font-semibold text-on-primary mb-6">Contact Us</h4>
+<ul class="space-y-4">
+<li class="font-body-md text-[15px] text-primary-fixed-dim/70">WhatsApp: +971 4 566 1639</li>
+<li class="font-body-md text-[15px] text-primary-fixed-dim/70">info@blueprint.ae</li>
+<li class="font-body-md text-[15px] text-primary-fixed-dim/70 mt-6"><a class="hover:text-secondary-container transition-colors underline underline-offset-4 decoration-primary-fixed-dim/30 hover:decoration-secondary-container" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+<!-- Copyright -->
+<div class="border-t border-white/10 pt-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-body-md text-[13px] text-primary-fixed-dim/50">
+                    © 2024 Blueprint Training Centre. All rights reserved.
+                </p>
+</div>
+</div>
+</footer>
+<script src="script.js"></script>
+
+
+</body></html>
