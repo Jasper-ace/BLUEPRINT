@@ -7,16 +7,16 @@
 // Works universally on every page (index.html, facilities.html, etc.) by
 // targeting the .site-navbar class.
 (function () {
-    var navbar      = document.querySelector('.site-navbar');
+    var navbar = document.querySelector('.site-navbar');
     if (!navbar) return;
 
     var lastScrollY = window.scrollY;
-    var ticking     = false;
+    var ticking = false;
 
     // Minimum scroll distance before we react — prevents jitter on tiny nudges
     var THRESHOLD = 5;
     // Don't hide the navbar until the user has scrolled past this point
-    var TOP_ZONE  = 80;
+    var TOP_ZONE = 80;
 
     function updateNavbar() {
         var currentScrollY = window.scrollY;
@@ -205,10 +205,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ── Mobile Side Drawer (index.html) ───────────────────────────────────────
-    var mobileMenuBtn   = document.getElementById('mobile-menu-btn');
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
     var mobileMenuClose = document.getElementById('mobile-menu-close');
-    var mobileMenuEl    = document.getElementById('mobile-menu');
-    var mobileBackdrop  = document.getElementById('mobile-backdrop');
+    var mobileMenuEl = document.getElementById('mobile-menu');
+    var mobileBackdrop = document.getElementById('mobile-backdrop');
 
     function openMobileMenu() {
         if (!mobileMenuEl) return;
@@ -247,8 +247,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ── Active Nav Highlight via IntersectionObserver ─────────────────────────
     // More accurate than scroll-offset: tracks which section is most visible.
-    var sections  = Array.from(document.querySelectorAll('section[id]'));
-    var navLinks  = document.querySelectorAll('.nav-link');
+    var sections = Array.from(document.querySelectorAll('section[id]'));
+    var navLinks = document.querySelectorAll('.nav-link');
 
     if (sections.length > 0 && navLinks.length > 0) {
         var visibilityMap = {};
@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // ── Facilities Page: Mobile Nav Slide-in ──────────────────────────────────────
 (function () {
-    var menuBtn   = document.getElementById('facilities-menu-btn');
+    var menuBtn = document.getElementById('facilities-menu-btn');
     var mobileNav = document.getElementById('mobile-nav');
     if (menuBtn && mobileNav) {
         menuBtn.addEventListener('click', function () {
@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function () {
 document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) {
     link.style.position = 'relative';
     link.style.overflow = 'hidden';
-    link.style.display  = link.style.display || 'inline-flex';
+    link.style.display = link.style.display || 'inline-flex';
 
     link.addEventListener('click', function (e) {
         // Press scale animation
@@ -328,9 +328,79 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
         var ripple = document.createElement('span');
         ripple.classList.add('nav-ripple-el');
         var rect = this.getBoundingClientRect();
-        ripple.style.top  = (e.clientY - rect.top)  + 'px';
+        ripple.style.top = (e.clientY - rect.top) + 'px';
         ripple.style.left = (e.clientX - rect.left) + 'px';
         this.appendChild(ripple);
         ripple.addEventListener('animationend', function () { ripple.remove(); });
     });
 });
+(function () {
+    const link = document.getElementById('tos-link');
+    const modal = document.getElementById('tos-modal');
+    const panel = document.getElementById('tos-panel');
+    const backdrop = document.getElementById('tos-backdrop');
+    const closeBtn = document.getElementById('tos-close-btn');
+    const acceptBtn = document.getElementById('tos-accept-btn');
+
+    if (!link || !modal || !panel) return;
+
+    function openModal() {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+        // Allow the display change to apply before animating in
+        requestAnimationFrame(() => {
+            panel.classList.remove('scale-95', 'opacity-0');
+            panel.classList.add('scale-100', 'opacity-100');
+        });
+    }
+
+    function closeModal() {
+        panel.classList.remove('scale-100', 'opacity-100');
+        panel.classList.add('scale-95', 'opacity-0');
+        document.body.style.overflow = '';
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }, 250);
+    }
+
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+        openModal();
+    });
+
+    [backdrop, closeBtn, acceptBtn].forEach((el) => {
+        if (el) el.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+})();
+(function () {
+    var overlay = document.getElementById('pl-overlay');
+    if (sessionStorage.getItem('bp_visited')) {
+        overlay.style.display = 'none';
+        return;
+    }
+    sessionStorage.setItem('bp_visited', '1');
+    document.body.style.overflow = 'hidden';
+    var content = document.querySelector('.pl-content');
+    var stage = document.getElementById('pl-stage');
+    // Aim the dive zoom at the centre of the logo
+    function setOrigin() {
+        var c = content.getBoundingClientRect();
+        content.style.transformOrigin = '50% 50%';
+    }
+    setOrigin();
+    window.addEventListener('resize', setOrigin);
+    setTimeout(function () { setOrigin(); stage.classList.add('diving'); }, 1200);
+    setTimeout(function () {
+        overlay.classList.add('pl-hidden');
+        document.body.style.overflow = '';
+        setTimeout(function () { overlay.parentNode && overlay.parentNode.removeChild(overlay); }, 450);
+    }, 2050);
+})();

@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Enroll Now | Blueprint Training Centre</title>
-<link rel="icon" type="image/jpeg" href="image/logo.jpg">
-<meta name="description" content="Enroll in Blueprint Training Centre's certified professional programs in Dubai. Fill out our enrollment form to get started on your career development journey.">
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Enroll Now | Blueprint Training Centre</title>
+    <link rel="icon" type="image/jpeg" href="image/logo.jpg">
+    <meta name="description"
+        content="Enroll in Blueprint Training Centre's certified professional programs in Dubai. Fill out our enrollment form to get started on your career development journey.">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -103,176 +109,331 @@
             }
         }
     </script>
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="bg-background text-on-background min-h-screen flex flex-col antialiased">
-<!-- TopNavBar (Semantic Shell Suppressed for linear transactional page, but requested by prompt to maintain branding. We'll render a simplified version focusing on the logo and a 'Back' intent) -->
-<header class="bg-surface border-b border-outline-variant shadow-sm w-full top-0 sticky z-50">
-<div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-<a class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2 group" href="index">
-<span class="material-symbols-outlined text-secondary-container transition-transform group-hover:scale-110 duration-300">architecture</span>
-                Blueprint Training Centre
+    <!-- Navigation (same as index.html) -->
+    <header
+        class="relative bg-surface-container-lowest/95 backdrop-blur-xl fixed top-0 w-full z-50 shadow-[0_4px_30px_rgba(0,33,71,0.03)] transition-all duration-300 site-navbar overflow-hidden">
+        <!-- Blueprint grid texture -->
+        <div class="absolute inset-0 z-0 pointer-events-none opacity-[0.05]">
+            <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern height="24" id="header-grid" patternUnits="userSpaceOnUse" width="24">
+                        <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#002147" stroke-width="1"></path>
+                    </pattern>
+                </defs>
+                <rect fill="url(#header-grid)" height="100%" width="100%"></rect>
+            </svg>
+        </div>
+        <!-- Corner registration marks (drafting-style) -->
+        <div class="hidden md:block absolute left-6 top-1/2 -translate-y-1/2 w-3 h-3 border-l border-t border-secondary-container/70 z-0 pointer-events-none"></div>
+        <div class="hidden md:block absolute right-6 top-1/2 -translate-y-1/2 w-3 h-3 border-r border-t border-secondary-container/70 z-0 pointer-events-none"></div>
+        <!-- Top bar -->
+        <div
+            class="relative z-10 flex justify-between items-center max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop h-24">
+            <!-- Logo -->
+            <a class="flex items-center gap-2 transition-transform duration-300 hover:scale-[1.02]" href="index.html">
+                <img alt="Blueprint Training Centre Logo" class="h-28 w-auto object-contain"
+                    src="image/no-backgroundBG.png">
             </a>
-<div class="hidden md:flex gap-6">
-<!-- Transactional page: suppressing main navigation links to maintain focus on enrollment -->
-<a class="hover-underline text-on-surface-variant font-label-md text-label-md hover:text-secondary transition-colors flex items-center gap-1" href="index">
-<span class="material-symbols-outlined text-[18px]">arrow_back</span>
-                    Return to Main Site
-                </a>
-</div>
-</div>
-<!-- Horizon Accent Line -->
-<div class="h-[2px] w-full bg-surface-variant relative overflow-hidden">
-<div class="absolute inset-0 horizon-accent opacity-50"></div>
-</div>
-</header>
-<!-- Main Content Canvas -->
-<main class="flex-grow flex flex-col items-center justify-center py-stack-lg px-margin-mobile md:px-margin-desktop relative overflow-hidden">
-<!-- Background Architectural Motif (Subtle) -->
-<div class="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.03]">
-<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
-<path d="M 40 0 L 0 0 0 40" fill="none" stroke="#002147" stroke-width="1"></path>
-</pattern>
-</defs>
-<rect fill="url(#grid)" height="100%" width="100%"></rect>
-</svg>
-</div>
-<div class="max-w-4xl w-full z-10 relative">
-<!-- Hero Section -->
-<div class="text-center mb-stack-lg max-w-2xl mx-auto">
-<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-primary mb-stack-sm tracking-tight font-bold">
+        </div>
+        <!-- Drafting accent line -->
+        <div class="relative z-10 h-[3px] w-full bg-gradient-to-r from-primary-container via-secondary-container to-primary-container"></div>
+    </header>
+
+    <!-- Main Content Canvas -->
+    <main
+        class="flex-grow flex flex-col items-center justify-center py-stack-lg px-margin-mobile md:px-margin-desktop pt-24 relative overflow-hidden">
+        <!-- Background Architectural Motif (Subtle) -->
+        <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.03]">
+            <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#002147" stroke-width="1"></path>
+                    </pattern>
+                </defs>
+                <rect fill="url(#grid)" height="100%" width="100%"></rect>
+            </svg>
+        </div>
+        <div class="max-w-4xl w-full z-10 relative">
+            <!-- Hero Section -->
+            <div class="text-center mb-stack-lg max-w-2xl mx-auto">
+                <h1
+                    class="font-display-lg text-headline-lg-mobile md:text-display-lg text-primary mb-stack-sm tracking-tight font-bold">
                     Join Blueprint Training Centre
                 </h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant">
-                    Take the first step towards professional excellence. Complete the form below and our admissions team will be in touch within 24 hours.
+                <p class="font-body-lg text-body-lg text-on-surface-variant">
+                    Take the first step towards professional excellence. Complete the form below and our admissions team
+                    will be in touch within 24 hours.
                 </p>
-</div>
-<!-- Enrollment Form Container (Level 1 Card Elevation) -->
-<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-[0px_4px_12px_rgba(0,33,71,0.05)] overflow-hidden">
-<div class="grid grid-cols-1 md:grid-cols-12">
-<!-- Form Area -->
-<div class="md:col-span-7 p-gutter lg:p-[40px]">
-<h2 class="font-headline-md text-headline-md text-primary mb-stack-md font-semibold border-b border-outline-variant pb-2 inline-block">
+            </div>
+            <!-- Enrollment Form Container (Level 1 Card Elevation) -->
+            <div
+                class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-[0px_4px_12px_rgba(0,33,71,0.05)] overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-12">
+                    <!-- Form Area -->
+                    <div class="md:col-span-7 p-gutter lg:p-[40px]">
+                        <h2
+                            class="font-headline-md text-headline-md text-primary mb-stack-md font-semibold border-b border-outline-variant pb-2 inline-block">
                             Application Details
                         </h2>
-<form action="#" class="space-y-stack-md" method="POST">
-<!-- Personal Info Grid -->
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-stack-sm">
-<div>
-<label class="block font-label-sm text-label-sm text-on-surface mb-1" for="firstName">First Name</label>
-<input class="w-full bg-surface border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary-container focus:border-transparent transition-shadow" id="firstName" name="firstName" required="" type="text"/>
-</div>
-<div>
-<label class="block font-label-sm text-label-sm text-on-surface mb-1" for="lastName">Last Name</label>
-<input class="w-full bg-surface border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary-container focus:border-transparent transition-shadow" id="lastName" name="lastName" required="" type="text"/>
-</div>
-</div>
-<!-- Contact Info -->
-<div class="space-y-stack-sm">
-<div>
-<label class="block font-label-sm text-label-sm text-on-surface mb-1" for="email">Email Address</label>
-<input class="w-full bg-surface border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary-container focus:border-transparent transition-shadow" id="email" name="email" required="" type="email"/>
-</div>
-<div>
-<label class="block font-label-sm text-label-sm text-on-surface mb-1" for="phone">Phone Number</label>
-<input class="w-full bg-surface border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary-container focus:border-transparent transition-shadow" id="phone" name="phone" type="tel"/>
-</div>
-</div>
-<!-- Course Selection -->
-<div>
-<label class="block font-label-sm text-label-sm text-on-surface mb-1" for="course">Course of Interest</label>
-<div class="relative">
-<select class="w-full bg-surface border border-outline-variant rounded-lg pl-3 pr-10 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary-container focus:border-transparent appearance-none transition-shadow cursor-pointer" id="course" name="course" required="">
-<option disabled="" selected="" value="">Select a program</option>
-<option value="structural-engineering">Structural Engineering Fundamentals</option>
-<option value="architectural-drafting">Advanced Architectural Drafting</option>
-<option value="project-management">Construction Project Management</option>
-<option value="sustainable-design">Sustainable Building Design</option>
-</select>
-<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-on-surface-variant">
-<span class="material-symbols-outlined">expand_more</span>
-</div>
-</div>
-</div>
-<!-- Comments -->
-<div>
-<label class="block font-label-sm text-label-sm text-on-surface mb-1" for="comments">Additional Information / Comments</label>
-<textarea class="w-full bg-surface border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary-container focus:border-transparent transition-shadow resize-none placeholder-outline-variant" id="comments" name="comments" placeholder="Tell us about your background or specific interests..." rows="4"></textarea>
-</div>
-<!-- Actions -->
-<div class="pt-stack-sm flex flex-col sm:flex-row gap-4 items-center justify-between border-t border-outline-variant">
-<p class="font-label-sm text-label-sm text-on-surface-variant max-w-[200px]">
-                                    By submitting, you agree to our <a class="text-primary hover:underline" href="#">Terms of Service</a>.
+                        <form action="#" class="space-y-stack-md" method="POST">
+                            <!-- Personal Info Grid -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-stack-sm">
+                                <div>
+                                    <label class="block font-label-sm text-label-sm text-on-surface mb-1"
+                                        for="firstName">First Name</label>
+                                    <input
+                                        class="w-full bg-surface border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary-container focus:border-transparent transition-shadow"
+                                        id="firstName" name="firstName" required="" type="text" />
+                                </div>
+                                <div>
+                                    <label class="block font-label-sm text-label-sm text-on-surface mb-1"
+                                        for="lastName">Last Name</label>
+                                    <input
+                                        class="w-full bg-surface border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary-container focus:border-transparent transition-shadow"
+                                        id="lastName" name="lastName" required="" type="text" />
+                                </div>
+                            </div>
+                            <!-- Contact Info -->
+                            <div class="space-y-stack-sm">
+                                <div>
+                                    <label class="block font-label-sm text-label-sm text-on-surface mb-1"
+                                        for="email">Email Address</label>
+                                    <input
+                                        class="w-full bg-surface border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary-container focus:border-transparent transition-shadow"
+                                        id="email" name="email" required="" type="email" />
+                                </div>
+                                <div>
+                                    <label class="block font-label-sm text-label-sm text-on-surface mb-1"
+                                        for="phone">Phone Number</label>
+                                    <input
+                                        class="w-full bg-surface border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary-container focus:border-transparent transition-shadow"
+                                        id="phone" name="phone" type="tel" />
+                                </div>
+                            </div>
+                            <!-- Course Selection -->
+                            <div>
+                                <label class="block font-label-sm text-label-sm text-on-surface mb-1"
+                                    for="course">Course of Interest</label>
+                                <div class="relative">
+                                    <select
+                                        class="w-full bg-surface border border-outline-variant rounded-lg pl-3 pr-10 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary-container focus:border-transparent appearance-none transition-shadow cursor-pointer"
+                                        id="course" name="course" required="">
+                                        <option disabled="" selected="" value="">Select a program</option>
+                                        <option value="structural-engineering">SAMPLE</option>
+                                        <option value="architectural-drafting">SAMPLE</option>
+                                        <option value="project-management">SAMPLE</option>
+                                        <option value="sustainable-design">SAMPLE</option>
+                                    </select>
+                                    <div
+                                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-on-surface-variant">
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Comments -->
+                            <div>
+                                <label class="block font-label-sm text-label-sm text-on-surface mb-1"
+                                    for="comments">Additional Information / Comments</label>
+                                <textarea
+                                    class="w-full bg-surface border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary-container focus:border-transparent transition-shadow resize-none placeholder-outline-variant"
+                                    id="comments" name="comments"
+                                    placeholder="Tell us about your background or specific interests..."
+                                    rows="4"></textarea>
+                            </div>
+                            <!-- Actions -->
+                            <div
+                                class="pt-stack-sm flex flex-col sm:flex-row gap-4 items-center justify-between border-t border-outline-variant">
+                                <p class="font-label-sm text-label-sm text-on-surface-variant max-w-[200px]">
+                                    By submitting, you agree to our <a class="text-primary hover:underline" href="#"
+                                        id="tos-link">Terms of Service</a>.
                                 </p>
-<button class="w-full sm:w-auto bg-primary-container text-on-primary hover:bg-primary transition-colors font-label-md text-label-md px-6 py-3 rounded-lg flex items-center justify-center gap-2 group shadow-sm" type="button">
-<span>Submit Application</span>
-<span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">arrow_forward</span>
-</button>
-</div>
-</form>
-</div>
-<!-- Information Sidebar (Visual Anchor) -->
-<div class="md:col-span-5 bg-surface-container-low border-t md:border-t-0 md:border-l border-outline-variant p-gutter lg:p-[40px] relative overflow-hidden">
-<!-- Image representation of architecture/studying -->
-<div class="w-full h-48 mb-stack-md rounded-lg overflow-hidden border border-outline-variant relative">
-<div class="bg-cover bg-center w-full h-full" data-alt="A modern architectural drafting studio with bright, soft white lighting. Technical blueprints and structural models are laid out on a large wooden desk. A metallic ruler and compass catch the light, emphasizing precision and professionalism. The aesthetic is clean, corporate, and focuses on deep navy and crisp white tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuADvl1fnBoY2otMs3ef3ze1-km7Lb_XTVQ8uE7gYS1FmJ5ixkguMMoP2uH533NwCFA3sPzy0URsLYtD0XAUH-8p9AtwZLSaUbMRkO_Xnz3fCLIZxYGQvxOI1hRZMnfjztmvVMdW7wDa2A3nm0bEhdKfdSFvkUFD01jUWytHyWTX4PZaHKdG4tUWp_xA5x31x1B6JvdomZSeIg7DUMzMHv6_wLqefv2uufOaB4QgqLKX_2a2weoPBElc')"></div>
-</div>
-<div class="space-y-stack-md relative z-10">
-<div>
-<h3 class="font-headline-md text-headline-md text-primary mb-2 flex items-center gap-2">
-<span class="material-symbols-outlined text-secondary-container filled-icon">school</span>
+                                <button
+                                    class="w-full sm:w-auto bg-primary-container text-on-primary hover:bg-primary transition-colors font-label-md text-label-md px-6 py-3 rounded-lg flex items-center justify-center gap-2 group shadow-sm"
+                                    type="button">
+                                    <span>Submit Application</span>
+                                    <span
+                                        class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Information Sidebar (Visual Anchor) -->
+                    <div
+                        class="md:col-span-5 bg-surface-container-low border-t md:border-t-0 md:border-l border-outline-variant p-gutter lg:p-[40px] relative overflow-hidden">
+                        <!-- Image representation of architecture/studying -->
+                        <div
+                            class="w-full h-48 mb-stack-md rounded-lg overflow-hidden border border-outline-variant relative">
+                            <div class="bg-cover bg-center w-full h-full"
+                                data-alt="A modern architectural drafting studio with bright, soft white lighting. Technical blueprints and structural models are laid out on a large wooden desk. A metallic ruler and compass catch the light, emphasizing precision and professionalism. The aesthetic is clean, corporate, and focuses on deep navy and crisp white tones."
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuADvl1fnBoY2otMs3ef3ze1-km7Lb_XTVQ8uE7gYS1FmJ5ixkguMMoP2uH533NwCFA3sPzy0URsLYtD0XAUH-8p9AtwZLSaUbMRkO_Xnz3fCLIZxYGQvxOI1hRZMnfjztmvVMdW7wDa2A3nm0bEhdKfdSFvkUFD01jUWytHyWTX4PZaHKdG4tUWp_xA5x31x1B6JvdomZSeIg7DUMzMHv6_wLqefv2uufOaB4QgqLKX_2a2weoPBElc')">
+                            </div>
+                        </div>
+                        <div class="space-y-stack-md relative z-10">
+                            <div>
+                                <h3 class="font-headline-md text-headline-md text-primary mb-2 flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-secondary-container filled-icon">school</span>
                                     Why Blueprint?
                                 </h3>
-<p class="font-body-md text-body-md text-on-surface-variant">
-                                    Join a community of professionals committed to lifelong learning, certified achievement, and real-world excellence.
+                                <p class="font-body-md text-body-md text-on-surface-variant">
+                                    Join a community of professionals committed to lifelong learning, certified
+                                    achievement, and real-world excellence.
                                 </p>
-</div>
-<ul class="space-y-stack-sm">
-<li class="flex items-start gap-2">
-<span class="material-symbols-outlined text-secondary-container mt-1 text-[20px]">check_circle</span>
-<span class="font-body-md text-body-md text-on-surface">Industry-leading faculty</span>
-</li>
-<li class="flex items-start gap-2">
-<span class="material-symbols-outlined text-secondary-container mt-1 text-[20px]">check_circle</span>
-<span class="font-body-md text-body-md text-on-surface">State-of-the-art facilities</span>
-</li>
-<li class="flex items-start gap-2">
-<span class="material-symbols-outlined text-secondary-container mt-1 text-[20px]">check_circle</span>
-<span class="font-body-md text-body-md text-on-surface">Career placement support</span>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
-<!-- Footer Component from JSON -->
-<footer class="bg-primary-container text-on-primary-container w-full py-stack-lg border-t-2 border-secondary font-body-md text-body-md mt-auto relative z-10">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-<div class="md:col-span-4 lg:col-span-6 mb-stack-md md:mb-0">
-<span class="font-headline-md text-headline-md font-bold text-on-primary-container flex items-center gap-2 mb-2">
-<span class="material-symbols-outlined text-secondary-fixed">architecture</span>
-                    Blueprint Academy
-                </span>
-<p class="opacity-80 max-w-sm">
-                    Structural excellence begins with a solid foundation.
-                </p>
-</div>
-<div class="md:col-span-8 lg:col-span-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-stack-md">
-<div class="flex flex-wrap gap-x-6 gap-y-2">
-<a class="text-on-primary-container opacity-80 hover:text-secondary-fixed-dim transition-all cursor-pointer font-label-md" href="#">Privacy Policy</a>
-<a class="text-on-primary-container opacity-80 hover:text-secondary-fixed-dim transition-all cursor-pointer font-label-md" href="#">Terms of Service</a>
-<a class="text-on-primary-container opacity-80 hover:text-secondary-fixed-dim transition-all cursor-pointer font-label-md" href="#">Campus Map</a>
-<a class="text-on-primary-container opacity-80 hover:text-secondary-fixed-dim transition-all cursor-pointer font-label-md" href="#">Faculty Directory</a>
-</div>
-<div class="text-sm opacity-60 font-body-md">
-                    © 2024 Blueprint Training Centre. All rights reserved.
+                            </div>
+                            <ul class="space-y-stack-sm">
+                                <li class="flex items-start gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-secondary-container mt-1 text-[20px]">check_circle</span>
+                                    <span class="font-body-md text-body-md text-on-surface">Industry-leading
+                                        faculty</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-secondary-container mt-1 text-[20px]">check_circle</span>
+                                    <span class="font-body-md text-body-md text-on-surface">State-of-the-art
+                                        facilities</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-secondary-container mt-1 text-[20px]">check_circle</span>
+                                    <span class="font-body-md text-body-md text-on-surface">Career placement
+                                        support</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-</div>
-</div>
-</footer>
-<script src="script.js"></script>
-</body></html>
+            </div>
+        </div>
+    </main>
+    <!-- Footer Component from JSON -->
+    <footer class="bg-primary-container text-on-primary pt-[100px] pb-12">
+        <div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-16">
+                <!-- Brand Col -->
+                <div class="col-span-1 md:col-span-1">
+                    <img alt="Blueprint Training Centre Logo" class="h-14 w-auto " src="image/zoomed-logo.jpg"
+                        alt="blueprint training center logo">
+                    <p class="font-body-md text-[14px] text-primary-fixed-dim/70 mb-8 leading-relaxed">
+                        Professional Excellence in Training &amp; Development.
+                    </p>
+                    <div class="flex gap-4">
+                        <a aria-label="WhatsApp"
+                            class="w-10 h-10 rounded-full bg-white/10 text-on-primary flex items-center justify-center hover:bg-secondary-container hover:text-secondary-fixed-dim transition-all duration-300"
+                            href="https://wa.me/97145661639" rel="noopener noreferrer" target="_blank">
+                            <img src="https://img.icons8.com/?size=100&id=16712&format=png&color=ffffff" alt="WhatsApp"
+                                class="w-5 h-5">
+                        </a>
+                        <a aria-label="Facebook"
+                            class="w-10 h-10 rounded-full bg-white/10 text-on-primary flex items-center justify-center hover:bg-secondary-container hover:text-secondary-fixed-dim transition-all duration-300"
+                            href="https://www.facebook.com/profile.php?id=61593331912284&amp;mibextid=wwXIfr&amp;rdid=EHSktwfvUSdOjq5c&amp;share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18HiqNhavC%2F%3Fmibextid%3DwwXIfr"
+                            rel="noopener noreferrer" target="_blank">
+                            <img src="https://img.icons8.com/?size=100&id=118490&format=png&color=ffffff" alt="Facebook"
+                                class="w-5 h-5">
+                        </a>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-headline-sm text-[18px] font-semibold text-on-primary mb-6">
+                        Quick Links</h4>
+                    <ul class="space-y-4">
+                        <li class=""><a
+                                class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors"
+                                href="#home">Home</a></li>
+                        <li class=""><a
+                                class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors"
+                                href="#about">About</a></li>
+                        <li class=""><a
+                                class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors"
+                                href="#vision">Vision &amp; Mission</a></li>
+                        <li class=""><a
+                                class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors"
+                                href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Programs -->
+                <div>
+                    <h4 class="font-headline-sm text-[18px] font-semibold text-on-primary mb-6">
+                        Programs</h4>
+                    <ul class="space-y-4">
+                        <li class=""><a
+                                class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors"
+                                href="#">Management Excellence</a></li>
+                        <li class=""><a
+                                class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors"
+                                href="#">Technical Skills</a></li>
+                        <li class=""><a
+                                class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors"
+                                href="#">Leadership Development</a></li>
+                    </ul>
+                </div>
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-headline-sm text-[18px] font-semibold text-on-primary mb-6">
+                        Contact Us</h4>
+                    <ul class="space-y-4">
+                        <li class="font-body-md text-[15px] text-primary-fixed-dim/70">WhatsApp:
+                            +971 4 566 1639</li>
+                        <li class="font-body-md text-[15px] text-primary-fixed-dim/70">
+                            info@blueprint.ae</li>
+                        <li class="font-body-md text-[15px] text-primary-fixed-dim/70 mt-6"><a
+                                class="hover:text-secondary-container transition-colors underline underline-offset-4 decoration-primary-fixed-dim/30 hover:decoration-secondary-container"
+                                href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Copyright -->
+            <div
+                class="border-t border-white/10 pt-8 text-center flex flex-col md:flex-row justify-center items-center gap-4">
+                <p class="font-body-md text-[13px] text-primary-fixed-dim/50">
+                    © 2024 Blueprint Training Centre. All rights reserved.
+                </p>
+            </div>
+    </footer>
+    <!-- Terms of Service Modal -->
+    <div class="fixed inset-0 z-[100] hidden items-center justify-center px-4" id="tos-modal">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-[#002147]/50 backdrop-blur-sm" id="tos-backdrop"></div>
+        <!-- Modal Panel -->
+        <div class="relative bg-white w-full max-w-lg max-h-[85vh] rounded-xl shadow-2xl flex flex-col overflow-hidden transform transition-all duration-300 scale-95 opacity-0"
+            id="tos-panel">
+            <!-- Header -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-outline-variant">
+                <h3 class="font-headline-sm text-headline-sm text-primary">Terms of Service</h3>
+                <button aria-label="Close" class="text-on-surface-variant hover:text-primary transition-colors"
+                    id="tos-close-btn" type="button">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <!-- Body -->
+            <div class="px-6 py-5 overflow-y-auto font-body-md text-body-md text-on-surface-variant space-y-4">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                    nulla pariatur.</p>
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                    laborum.</p>
+            </div>
+            <!-- Footer -->
+            <div class="px-6 py-4 border-t border-outline-variant flex justify-end">
+                <button
+                    class="bg-primary-container text-on-primary hover:bg-primary transition-colors font-label-md text-label-md px-5 py-2.5 rounded-lg btn-transition"
+                    id="tos-accept-btn" type="button">
+                    I Understand
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+
+    </script>
+</body>
+
+</html>

@@ -182,9 +182,30 @@
                 }
         </script>
         <link rel="stylesheet" href="style.css">
+
+
 </head>
 
 <body class="bg-surface-container-lowest text-on-surface font-body-md antialiased overflow-x-hidden">
+
+        <!-- ── Preloader overlay (shown only on fresh session) ──────────────────────── -->
+        <div id="pl-overlay">
+                <div id="pl-stage">
+                        <div class="pl-grid"></div>
+                        <div class="pl-crop tl"></div>
+                        <div class="pl-crop tr"></div>
+                        <div class="pl-crop bl"></div>
+                        <div class="pl-crop br"></div>
+                        <div class="pl-content">
+                                <div class="pl-logo-wrap">
+                                        <img class="pl-logo-img" src="image/no-backgroundBG.png"
+                                                alt="Blueprint Training Centre" onerror="this.src='image/logo.jpg'">
+                                        <div class="pl-scan"></div>
+                                </div>
+                        </div>
+                        <div class="pl-flash"></div>
+                </div>
+        </div>
         <!-- Navigation -->
         <header
                 class="bg-surface-container-lowest/95 backdrop-blur-xl fixed top-0 w-full z-50 shadow-[0_4px_30px_rgba(0,33,71,0.03)] border-b border-surface-variant/50 transition-all duration-300 site-navbar">
@@ -194,7 +215,7 @@
                         <!-- Logo -->
                         <a class="flex items-center gap-2 transition-transform duration-300 hover:scale-[1.02]"
                                 href="#">
-                                <img alt="Blueprint Training Centre Logo" class="h-14 w-auto object-contain"
+                                <img alt="Blueprint Training Centre Logo" class="h-28 w-auto object-contain"
                                         src="image/no-backgroundBG.png">
                         </a>
                         <!-- Desktop Nav -->
