@@ -218,21 +218,13 @@
                             <div>
                                 <label class="block font-label-sm text-label-sm text-on-surface mb-1"
                                     for="course">Course of Interest</label>
-                                <div class="relative">
-                                    <select
-                                        class="w-full bg-surface border border-outline-variant rounded-lg pl-3 pr-10 py-2 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary-container focus:border-transparent appearance-none transition-shadow cursor-pointer"
-                                        id="course" name="course" required="">
-                                        <option disabled="" selected="" value="">Select a program</option>
-                                        <option value="structural-engineering">SAMPLE</option>
-                                        <option value="architectural-drafting">SAMPLE</option>
-                                        <option value="project-management">SAMPLE</option>
-                                        <option value="sustainable-design">SAMPLE</option>
-                                    </select>
-                                    <div
-                                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-on-surface-variant">
-                                        <span class="material-symbols-outlined">expand_more</span>
-                                    </div>
+                                <div class="relative flex items-center gap-3 w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 opacity-70 cursor-not-allowed select-none">
+                                    <span class="material-symbols-outlined text-[18px] text-secondary-container flex-shrink-0">construction</span>
+                                    <span class="font-body-md text-body-md text-on-surface-variant">Under Maintenance — available soon</span>
+                                    <span class="ml-auto inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container/20 border border-secondary-container/40 text-secondary-container font-label-sm text-[10px] uppercase tracking-widest flex-shrink-0">Coming Soon</span>
                                 </div>
+                                <!-- Hidden input so form still submits -->
+                                <input type="hidden" id="course" name="course" value="pending">
                             </div>
                             <!-- Comments -->
                             <div>
