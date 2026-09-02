@@ -300,7 +300,7 @@
                                         <div class="w-full h-full flex-shrink-0 relative">
                                                 <img class="w-full h-full object-cover mix-blend-overlay opacity-60"
                                                         data-alt="A sweeping wide-angle architectural shot of a modern, glass-facade corporate building or university campus. The scene is brightly lit with a clear blue sky, reflecting a professional, corporate aesthetic suitable for a high-end training institution. The color palette emphasizes clean whites, deep navy reflections, and subtle warm sunlight, conveying stability, structural integrity, and educational excellence."
-                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSyizwXiQMil1utUmccAIRg2bwW0jGOhl2IUiY8PgB0OSdYR-17_Qbjt8_A1eTBtEmGIW0vq3kVjOz_RRTOiqmC0sBz3pfTJn28RfLrKYDUFcb6yT72wa0nJR7N70vL683egW5LThN8QuhBhSN2CZs4Z2-5_Ln-Lt8k0pBNJMtxWxN-mJHnpn1dbf_3T_7jd_X6qaTCkRiGejsNJaCuFBeRrc33soT3-m3lru2T7VKRrZFEnDV0Q2j">
+                                                        src="image/tower.jpg">
                                                 <div
                                                         class="absolute inset-0 bg-gradient-to-r from-primary-container/90 via-primary-container/60 to-transparent">
                                                 </div>
@@ -376,14 +376,397 @@
                 <section class="py-section-py bg-surface-container-lowest" id="about">
                         <div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
                                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-center">
-                                        <div class="relative group">
+                                        <!-- Facilities Photo Gallery (Cinematic Premium Edition) -->
+                                        <div class="relative group fg-wrap">
+                                                <!-- Decorative tilted backing card -->
                                                 <div
                                                         class="absolute -inset-4 bg-surface-container-low rounded-2xl transform rotate-2 transition-transform duration-500 group-hover:rotate-1 z-0">
                                                 </div>
-                                                <img class="relative z-10 w-full h-[600px] object-cover rounded-xl shadow-[0_30px_60px_rgba(0,33,71,0.12)] transition-transform duration-700 group-hover:scale-[1.01]"
-                                                        data-alt="A brightly lit, modern office interior focusing on a clean, architectural drafting table or a sleek meeting area. The space is characterized by minimalist design, utilizing a palette of crisp white walls, subtle light gray structural elements, and professional navy blue accents. The mood is focused, organized, and structurally sound, reflecting the 'blueprint' concept."
-                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJCboI6ia3qlU93RMPucl6L9T6fnI2oscU8axQUiMjS0sTD-BsJv25O3S8aYSindJRP7_mlj--KyRJ5K_YjIQ0P3eqOmE9BL21jXBqX7LzjyDomaDXcZ9U0q48o2PYtXQr2Vjiwbk3n-wWaxfxY7bIS4CZqaujPLK4WI3N1kJA0dZuIqssr3c1w-M9-d30amBpPQZE5e9X3tkZHVVUrOo7e7a1Neo2iaFv_luobccAYK8Oa1CyPyU5">
+
+                                                <!-- Photo stack depth shadows — ghost cards behind the main photo -->
+                                                <div class="fg-ghost fg-ghost-2" aria-hidden="true"></div>
+                                                <div class="fg-ghost fg-ghost-1" aria-hidden="true"></div>
+
+                                                <!-- Main gallery stage -->
+                                                <div id="fg-stage"
+                                                        class="relative z-10 w-full rounded-xl overflow-visible cursor-pointer select-none"
+                                                        style="height:clamp(280px,50vw,580px);" role="button"
+                                                        tabindex="0"
+                                                        aria-label="Facilities photo gallery — click to see next photo"
+                                                        onclick="fgAdvance()"
+                                                        onkeydown="if(event.key==='Enter'||event.key===' ')fgAdvance()">
+
+                                                        <!-- Viewport clip — perspective MUST be on the direct parent of transformed cards -->
+                                                        <div id="fg-viewport"
+                                                                class="absolute inset-0 rounded-xl overflow-hidden"
+                                                                style="perspective:1100px; perspective-origin:50% 46%; box-shadow:0 30px 60px rgba(0,33,71,0.14),0 4px 16px rgba(0,33,71,0.08);">
+
+                                                                <!-- Rendered photo canvases -->
+                                                                <div class="fg-card fg-card-active" data-fi="0"></div>
+                                                                <div class="fg-card" data-fi="1"></div>
+                                                                <div class="fg-card" data-fi="2"></div>
+                                                                <div class="fg-card" data-fi="3"></div>
+                                                                <div class="fg-card" data-fi="4"></div>
+                                                                <div class="fg-card" data-fi="5"></div>
+                                                                <div class="fg-card" data-fi="6"></div>
+                                                                <div class="fg-card" data-fi="7"></div>
+
+                                                                <!-- Motion-blur veil — flashes during transition -->
+                                                                <div id="fg-veil" aria-hidden="true"></div>
+
+                                                                <!-- Press-down ripple -->
+                                                                <div id="fg-ripple" aria-hidden="true"></div>
+                                                        </div>
+
+                                                        <!-- Dot indicators -->
+                                                        <div id="fg-dots"
+                                                                class="absolute -bottom-7 left-1/2 -translate-x-1/2 flex gap-2"
+                                                                role="tablist" aria-label="Photo indicators">
+                                                                <button class="fg-dot fg-dot-active" data-fdi="0"
+                                                                        aria-label="Photo 1"
+                                                                        onclick="event.stopPropagation();fgGoTo(0)"></button>
+                                                                <button class="fg-dot" data-fdi="1" aria-label="Photo 2"
+                                                                        onclick="event.stopPropagation();fgGoTo(1)"></button>
+                                                                <button class="fg-dot" data-fdi="2" aria-label="Photo 3"
+                                                                        onclick="event.stopPropagation();fgGoTo(2)"></button>
+                                                                <button class="fg-dot" data-fdi="3" aria-label="Photo 4"
+                                                                        onclick="event.stopPropagation();fgGoTo(3)"></button>
+                                                                <button class="fg-dot" data-fdi="4" aria-label="Photo 5"
+                                                                        onclick="event.stopPropagation();fgGoTo(4)"></button>
+                                                                <button class="fg-dot" data-fdi="5" aria-label="Photo 6"
+                                                                        onclick="event.stopPropagation();fgGoTo(5)"></button>
+                                                                <button class="fg-dot" data-fdi="6" aria-label="Photo 7"
+                                                                        onclick="event.stopPropagation();fgGoTo(6)"></button>
+                                                                <button class="fg-dot" data-fdi="7" aria-label="Photo 8"
+                                                                        onclick="event.stopPropagation();fgGoTo(7)"></button>
+                                                        </div>
+
+                                                        <!-- Click-to-browse hint badge -->
+                                                        <div id="fg-hint" aria-hidden="true">
+                                                                <svg width="13" height="13" viewBox="0 0 24 24"
+                                                                        fill="none" stroke="currentColor"
+                                                                        stroke-width="2.5" stroke-linecap="round"
+                                                                        stroke-linejoin="round" style="flex-shrink:0">
+                                                                        <path d="M9 18l6-6-6-6" />
+                                                                </svg>
+                                                                Click to browse
+                                                        </div>
+                                                </div>
                                         </div>
+
+                                        <!-- ═══════════════════════════════════════════
+                                             GALLERY STYLES
+                                             ═══════════════════════════════════════════ -->
+                                        <style>
+                                                /* ── Wrapper ── */
+                                                .fg-wrap {
+                                                        position: relative;
+                                                }
+
+                                                /* ── Photo cards ── */
+                                                .fg-card {
+                                                        position: absolute;
+                                                        inset: 0;
+                                                        background-size: cover;
+                                                        background-position: center;
+                                                        background-repeat: no-repeat;
+                                                        border-radius: inherit;
+                                                        will-change: transform, opacity;
+                                                        transform-origin: 50% 100%;
+                                                        /* pivot at bottom -> like a hand sliding it off */
+                                                        /* Printed-photo white mat border */
+                                                        box-shadow:
+                                                                inset 0 0 0 10px rgba(255, 255, 255, 0.9),
+                                                                inset 0 0 0 11px rgba(200, 212, 228, 0.25),
+                                                                0 10px 26px rgba(0, 33, 71, 0.20);
+                                                }
+
+                                                /* ── Motion blur veil (subtle swipe streak) ── */
+                                                #fg-veil {
+                                                        position: absolute;
+                                                        inset: 0;
+                                                        border-radius: inherit;
+                                                        background: linear-gradient(100deg,
+                                                                        rgba(255, 255, 255, 0) 0%,
+                                                                        rgba(255, 255, 255, 0.22) 45%,
+                                                                        rgba(255, 255, 255, 0.05) 60%,
+                                                                        rgba(255, 255, 255, 0) 100%);
+                                                        opacity: 0;
+                                                        z-index: 60;
+                                                        pointer-events: none;
+                                                        transition: opacity 0.12s ease;
+                                                }
+
+                                                #fg-veil.fg-veil-flash {
+                                                        opacity: 1;
+                                                        transition: opacity 0.05s ease;
+                                                }
+
+                                                /* ── Ripple ── */
+                                                #fg-ripple {
+                                                        position: absolute;
+                                                        border-radius: 50%;
+                                                        background: rgba(255, 255, 255, 0.28);
+                                                        width: 0;
+                                                        height: 0;
+                                                        top: 50%;
+                                                        left: 50%;
+                                                        transform: translate(-50%, -50%) scale(0);
+                                                        opacity: 0;
+                                                        z-index: 65;
+                                                        pointer-events: none;
+                                                }
+
+                                                #fg-ripple.fg-ripple-go {
+                                                        animation: fg-ripple-anim 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+                                                }
+
+                                                @keyframes fg-ripple-anim {
+                                                        0% {
+                                                                width: 0;
+                                                                height: 0;
+                                                                opacity: 0.6;
+                                                                transform: translate(-50%, -50%) scale(0);
+                                                        }
+
+                                                        55% {
+                                                                opacity: 0.25;
+                                                        }
+
+                                                        100% {
+                                                                width: 200%;
+                                                                height: 200%;
+                                                                opacity: 0;
+                                                                transform: translate(-50%, -50%) scale(1);
+                                                        }
+                                                }
+
+                                                /* ── Dot indicators ── */
+                                                .fg-dot {
+                                                        display: block;
+                                                        width: 7px;
+                                                        height: 7px;
+                                                        border-radius: 50%;
+                                                        background: rgba(0, 33, 71, 0.20);
+                                                        border: none;
+                                                        padding: 0;
+                                                        cursor: pointer;
+                                                        transition: background 0.30s ease, width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+                                                }
+
+                                                .fg-dot:hover {
+                                                        background: rgba(0, 33, 71, 0.40);
+                                                }
+
+                                                .fg-dot.fg-dot-active {
+                                                        background: #002147;
+                                                        width: 20px;
+                                                        border-radius: 4px;
+                                                }
+
+                                                /* ── Click-hint badge ── */
+                                                #fg-hint {
+                                                        position: absolute;
+                                                        bottom: 14px;
+                                                        right: 14px;
+                                                        display: flex;
+                                                        align-items: center;
+                                                        gap: 5px;
+                                                        background: rgba(0, 0, 0, 0.44);
+                                                        -webkit-backdrop-filter: blur(6px);
+                                                        backdrop-filter: blur(6px);
+                                                        color: #fff;
+                                                        font-size: 11px;
+                                                        font-weight: 500;
+                                                        font-family: inherit;
+                                                        padding: 5px 10px;
+                                                        border-radius: 20px;
+                                                        z-index: 70;
+                                                        pointer-events: none;
+                                                        opacity: 1;
+                                                        transition: opacity 0.50s ease;
+                                                }
+
+                                                #fg-hint.fg-hint-gone {
+                                                        opacity: 0;
+                                                }
+
+                                                @media (prefers-reduced-motion: reduce) {
+                                                        .fg-card {
+                                                                transition: opacity 0.35s ease !important;
+                                                                transform: none !important;
+                                                        }
+
+                                                        #fg-veil,
+                                                        #fg-ripple {
+                                                                display: none;
+                                                        }
+                                                }
+
+                                                @media (max-width: 640px) {
+                                                        #fg-stage {
+                                                                height: 240px !important;
+                                                        }
+
+                                                        .fg-dot {
+                                                                width: 5px;
+                                                                height: 5px;
+                                                        }
+
+                                                        .fg-dot.fg-dot-active {
+                                                                width: 14px;
+                                                        }
+                                                }
+
+                                                @media (min-width: 641px) and (max-width: 1023px) {
+                                                        #fg-stage {
+                                                                height: clamp(260px, 42vw, 420px) !important;
+                                                        }
+                                                }
+                                        </style>
+
+                                        <script>
+                                                        (function () {
+                                                                'use strict';
+
+                                                                /* ════════════════════════════════════════════════
+                                                                   BROWSING AN OLD PHOTO STACK — click, and the top
+                                                                   print slides off to the side (alternating left/
+                                                                   right, like a hand pushing it aside) revealing the
+                                                                   next photo underneath, which was already resting
+                                                                   at a slight tilt and straightens up as it comes
+                                                                   to the front. The swiped photo is quietly recycled
+                                                                   to the bottom of the pile.
+                                                                ════════════════════════════════════════════════ */
+
+                                                                var IMGS = [
+                                                                        'facilities/IMG_7878.JPG',
+                                                                        'facilities/IMG_7882.png',
+                                                                        'facilities/IMG_7891.png',
+                                                                        'facilities/IMG_7895.JPG',
+                                                                        'facilities/IMG_7910.png',
+                                                                        'facilities/IMG_7916.JPG',
+                                                                        'facilities/IMG_7917.png',
+                                                                        'facilities/IMG_7925.png'
+                                                                ];
+                                                                var TOTAL = IMGS.length;
+                                                                var T_SWIPE = 480;   /* top photo sliding away, ms */
+                                                                var T_SETTLE = 420;   /* rest of pile shifting up, ms */
+
+                                                                var cur = 0;
+                                                                var busy = false;
+                                                                var hintGone = false;
+                                                                var swipeDir = 1;    /* alternates 1 / -1 for left/right variety */
+                                                                var cards, dots, veil, ripple, hint;
+
+                                                                IMGS.forEach(function (src) { (new Image()).src = src; });
+
+                                                                /* Resting look for a card at "offset" positions back in the pile (0 = top/visible) */
+                                                                function styleFor(offset) {
+                                                                        var capped = Math.min(offset, 4);
+                                                                        /* alternate slight tilt per depth so it looks like a hand-stacked pile of prints */
+                                                                        var tiltSign = (offset % 2 === 0) ? 1 : -1;
+                                                                        var tilt = capped === 0 ? 0 : tiltSign * (2 + capped * 1.3);
+                                                                        return {
+                                                                                transform: 'translate(' + (tiltSign * capped * 3) + 'px,' + (capped * 4) + 'px) ' +
+                                                                                        'rotate(' + tilt + 'deg) ' +
+                                                                                        'scale(' + (1 - capped * 0.035) + ')',
+                                                                                opacity: offset === 0 ? 1 : Math.max(0.4, 1 - capped * 0.15),
+                                                                                zIndex: 50 - offset
+                                                                        };
+                                                                }
+
+                                                                function applyStyle(card, s, withTransition) {
+                                                                        card.style.transition = withTransition
+                                                                                ? 'transform ' + T_SETTLE + 'ms cubic-bezier(0.25,0.9,0.35,1), opacity ' + T_SETTLE + 'ms ease'
+                                                                                : 'none';
+                                                                        card.style.transform = s.transform;
+                                                                        card.style.opacity = s.opacity;
+                                                                        card.style.zIndex = s.zIndex;
+                                                                }
+
+                                                                function init() {
+                                                                        cards = document.querySelectorAll('.fg-card');
+                                                                        dots = document.querySelectorAll('.fg-dot');
+                                                                        veil = document.getElementById('fg-veil');
+                                                                        ripple = document.getElementById('fg-ripple');
+                                                                        hint = document.getElementById('fg-hint');
+
+                                                                        cards.forEach(function (card, i) {
+                                                                                card.style.backgroundImage = "url('" + IMGS[i] + "')";
+                                                                                var offset = (i - cur + TOTAL) % TOTAL;
+                                                                                applyStyle(card, styleFor(offset), false);
+                                                                        });
+                                                                }
+
+                                                                function flashVeil() {
+                                                                        if (!veil) return;
+                                                                        veil.classList.add('fg-veil-flash');
+                                                                        setTimeout(function () { veil.classList.remove('fg-veil-flash'); }, 90);
+                                                                }
+
+                                                                function triggerRipple() {
+                                                                        if (!ripple) return;
+                                                                        ripple.classList.remove('fg-ripple-go');
+                                                                        void ripple.offsetWidth;
+                                                                        ripple.classList.add('fg-ripple-go');
+                                                                }
+
+                                                                function goTo(next) {
+                                                                        if (busy || next === cur) return;
+                                                                        busy = true;
+
+                                                                        if (!hintGone && hint) {
+                                                                                hint.classList.add('fg-hint-gone');
+                                                                                hintGone = true;
+                                                                        }
+
+                                                                        triggerRipple();
+
+                                                                        var topCard = cards[cur];
+                                                                        var dir = swipeDir;
+                                                                        swipeDir *= -1; /* alternate direction next time, like a real hand shuffling prints */
+
+                                                                        /* ── TOP PHOTO SLIDES/SWIPES OFF like pushing it aside by hand ── */
+                                                                        topCard.style.zIndex = '55';
+                                                                        topCard.style.transition =
+                                                                                'transform ' + T_SWIPE + 'ms cubic-bezier(0.36,0.66,0.35,1),' +
+                                                                                'opacity ' + T_SWIPE + 'ms ease-in';
+                                                                        topCard.style.transform =
+                                                                                'translate(' + (dir * 130) + '%, 18%) rotate(' + (dir * 22) + 'deg) scale(0.94)';
+                                                                        topCard.style.opacity = '0';
+
+                                                                        setTimeout(flashVeil, T_SWIPE * 0.3);
+
+                                                                        /* ── REST OF THE PILE SHIFTS UP ONE POSITION, STRAIGHTENING AS IT NEARS THE TOP ── */
+                                                                        for (var i = 0; i < TOTAL; i++) {
+                                                                                if (i === cur) continue;
+                                                                                var offset = (i - next + TOTAL) % TOTAL;
+                                                                                applyStyle(cards[i], styleFor(offset), true);
+                                                                        }
+
+                                                                        dots[cur].classList.remove('fg-dot-active');
+                                                                        dots[next].classList.add('fg-dot-active');
+
+                                                                        /* ── Recycle the swiped photo to the bottom of the pile, no visible snap ── */
+                                                                        setTimeout(function () {
+                                                                                var backOffset = (cur - next + TOTAL) % TOTAL;
+                                                                                applyStyle(topCard, styleFor(backOffset), false);
+                                                                                cur = next;
+                                                                                busy = false;
+                                                                        }, T_SWIPE + 20);
+                                                                }
+
+                                                                window.fgAdvance = function () { goTo((cur + 1) % TOTAL); };
+                                                                window.fgGoTo = function (n) { goTo(n); };
+
+                                                                if (document.readyState === 'loading') {
+                                                                        document.addEventListener('DOMContentLoaded', init);
+                                                                } else {
+                                                                        init();
+                                                                }
+                                                        })();
+                                        </script>
                                         <div class="pr-lg-8">
                                                 <div class="flex items-center gap-4 mb-8">
                                                         <div class="w-10 h-[2px] bg-secondary-container"></div>
@@ -397,17 +780,17 @@
                                                 </h2>
                                                 <p
                                                         class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
-                                                        Blueprint Training Centre is a premier professional development
-                                                        institution based in Dubai, UAE. We are committed to equipping
-                                                        individuals and organizations with the knowledge, skills, and
-                                                        certifications needed to thrive in today's competitive
-                                                        landscape.
+                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                        Consequatur mollitia voluptas exercitationem autem obcaecati
+                                                        quibusdam cum iusto ratione minus quasi ea voluptatem eum quo ut
+                                                        maxime minima, at qui ipsam.
                                                 </p>
                                                 <p
                                                         class="font-body-md text-body-md text-on-surface-variant mb-12 leading-relaxed">
-                                                        A Foundation Built on Excellence &amp; Professional Growth
-                                                        Aenean egestas magna at porttitor vehicula nullam augue ipsum,
-                                                        pellentesque ut blandit sed, sagittis convallis lorem.
+                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                        Nesciunt consequuntur magni cum enim? Alias amet doloremque
+                                                        fugit consequatur accusamus totam doloribus, fugiat suscipit
+                                                        non, sint maxime adipisci quos velit error.
                                                 </p>
                                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                                         <div
@@ -423,8 +806,8 @@
                                                                                 Structural Excellence</h4>
                                                                         <p
                                                                                 class="font-label-sm text-[14px] text-on-surface-variant/80">
-                                                                                Curriculum built on international
-                                                                                standards and best practices.</p>
+                                                                                Lorem ipsum dolor sit amet consectetur
+                                                                                adipisicing elit.</p>
                                                                 </div>
                                                         </div>
                                                         <div
@@ -440,8 +823,8 @@
                                                                                 Expert Training</h4>
                                                                         <p
                                                                                 class="font-label-sm text-[14px] text-on-surface-variant/80">
-                                                                                Led by certified industry professionals
-                                                                                with decades of experience.</p>
+                                                                                Lorem ipsum dolor sit amet consectetur
+                                                                                adipisicing elit.</p>
                                                                 </div>
                                                         </div>
                                                 </div>
@@ -474,11 +857,14 @@
                                                         Our Vision</h3>
                                                 <p
                                                         class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                                                        A Foundation Built on Excellence &amp; Professional Growth Sed
-                                                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                                        dolor in reprehenderit in voluptate.
+                                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                                        Cupiditate, mollitia sit. Ea non perspiciatis quod officiis quos
+                                                        exercitationem harum architecto omnis natus, officia vel
+                                                        asperiores culpa consequatur praesentium odit laborum. &amp;
+                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                        Voluptas, perspiciatis doloremque optio hic nostrum quam.
+                                                        Repellat veniam ullam, quae minus soluta quas? Commodi deserunt
+                                                        suscipit laudantium temporibus dicta laborum laboriosam?
                                                 </p>
                                         </div>
                                         <!-- Mission Card -->
@@ -494,10 +880,10 @@
                                                         Our Mission</h3>
                                                 <p
                                                         class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                                                        To deliver transformative, accredited training programs that
-                                                        equip professionals with practical skills, international
-                                                        certifications, and the confidence to excel in their fields -
-                                                        fostering a culture of continuous growth and lifelong learning.
+                                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro
+                                                        architecto maxime culpa dignissimos reprehenderit dolorum, quis
+                                                        voluptatibus exercitationem! Cum tempora dolore, ipsam eos
+                                                        accusamus dignissimos quidem libero est! Repellat, dolorum.
                                                 </p>
                                         </div>
                                 </div>
@@ -512,9 +898,10 @@
                                         <div class="w-16 h-[2px] bg-secondary-container mx-auto mb-8"></div>
                                         <p
                                                 class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
-                                                We combine academic rigor with practical application, giving you the
-                                                skills and credentials that matter most to employers and industry
-                                                leaders.
+                                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis
+                                                omnis veritatis necessitatibus eveniet quis officia tempora sint?
+                                                Tempore voluptates a quod officiis iure magni quas ab consequuntur?
+                                                Ipsum, nobis est?
                                         </p>
                                 </div>
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -530,8 +917,10 @@
                                                         Certified Programs</h4>
                                                 <p
                                                         class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                                                        Building Careers with Precision &amp; Excellence. Adipiscing
-                                                        elit proin gravida dolor sit.
+                                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas
+                                                        neque veritatis dolores odit corrupti consectetur fugit,
+                                                        voluptatem dignissimos officiis eaque architecto labore maiores
+                                                        aliquid rem. Nihil accusantium commodi magnam deserunt.
                                                 </p>
                                         </div>
                                         <!-- Feature 2 -->
@@ -546,8 +935,10 @@
                                                         Expert Instructors</h4>
                                                 <p
                                                         class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                                                        Learn from seasoned professionals and certified trainers who
-                                                        bring real-world expertise directly into the classroom.
+                                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam
+                                                        voluptates repellat in iste tempore, totam, sint adipisci enim
+                                                        soluta doloribus fuga. Commodi voluptatem perspiciatis adipisci
+                                                        esse assumenda accusantium, laborum enim.
                                                 </p>
                                         </div>
                                         <!-- Feature 3 -->
@@ -562,8 +953,10 @@
                                                         Modern Facilities</h4>
                                                 <p
                                                         class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                                                        State-of-the-art training rooms, collaborative spaces, and
-                                                        technology-equipped environments designed for optimal learning.
+                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
+                                                        expedita sint, exercitationem assumenda quibusdam, numquam
+                                                        veniam eum temporibus ullam optio, qui provident molestiae?
+                                                        Totam ullam eaque officia quam quidem aut.
                                                 </p>
                                         </div>
                                 </div>
@@ -577,7 +970,7 @@
                                                 <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Our
                                                         Facilities</h2>
                                                 <p class="font-body-md text-body-md text-on-surface-variant text-lg">
-                                                        World-class spaces designed for professional excellence.</p>
+                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit!</p>
                                         </div>
                                         <a class="inline-flex items-center gap-2 font-label-md text-label-md text-primary-container hover:text-secondary-container transition-colors group"
                                                 href="facilities">
@@ -588,23 +981,23 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                                         <div class="overflow-hidden rounded-xl premium-shadow group">
                                                 <img class="w-full h-64 lg:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
-                                                        data-alt="A pristine, highly organized corporate training room featuring rows of sleek desks and ergonomic chairs. The space is illuminated by bright, cool-toned white lighting that enhances focus and clarity. The color palette revolves around institutional whites, light grays, and structural navy blue accents on the walls, conveying a sense of rigorous professional education."
-                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDW-ngsNbKoqSgKKhBk8pS42VLbpQReTcBKMp1WjW3WamFRgJ7B0NZNGCFboQc0sQWl5PQek0xwSjZIQfrY5lK0qs3BeXVdwkDnoRnK_7n7hTDvjdGvf6jhFljq9QIs_mCibyaBMG11nCoD6I6OXGpEDaueSWlAKHMmuedbUWj_WT9_19sMBTmDBGCTiwRZ7gqWf6llB_pDE9dtF3LD7GS32F5e2kD7zivvzupFPq8QU8Ugu6W4ygv">
+                                                        alt="Facility image"
+                                                        src="facilities/IMG_7917.png">
                                         </div>
                                         <div class="overflow-hidden rounded-xl premium-shadow group">
                                                 <img class="w-full h-64 lg:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
-                                                        data-alt="A modern architectural lounge area within a professional institute, featuring minimalist geometric furniture. Sunlight streams through large glass windows, casting clean lines across the smooth white floors. The atmosphere is calm and corporate, utilizing deep navy structural columns and subtle golden-yellow accent lighting to reflect the brand's identity."
-                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA4Y6eBCfOjG7aizSwvYcFAM31dyYw-iFnhmlRydbhGsGDb59ocK_kVT7qe1RhVvute7aVR4TMK_zcWOKRf6bqwMJWiCbAyLODxa8CFYRWlFr_1wYrZUpB5IBh40OvbzHaL6uJtynJ_OAuCDADE_Z34jxYITusNqYT4365ZvnnLXn2qmLvdrQ2kdkIvxP6R-xf-nTe3Dd790DS4EzC-EgM03PbQ1K3hYSl6N8sTllXrTgxmBq12E-a">
+                                                        alt="Facility image"
+                                                        src="facilities/IMG_7891.png">
                                         </div>
                                         <div class="overflow-hidden rounded-xl premium-shadow group">
                                                 <img class="w-full h-64 lg:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
-                                                        data-alt="A close-up shot of a high-tech seminar podium in a brightly lit auditorium. The podium is made of polished wood and brushed steel, set against a backdrop of a clean white presentation screen. The lighting is focused and professional, ensuring a high-end corporate aesthetic suitable for executive training sessions."
-                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq45XDxrkfm8mVA3hcycKiHWvRX3U2SBRWW_pM0r2codF03-_PIEFIR7zaFtojHqC8OZvvJ9HE44RIrtVlwI7IMZbytAS_69T7C_ZrEc6b4TCZHjmCSVdNyyzzts8vsone-T7kv0bTK8ScCDnmpRrSHd-iCWS44raDjAW_teKkRNQBoDIPnwD2JCUoIenshjx7TpgzYNvpIcQFF2qES59h4Zvunml0_rVKTl3gEDt231s7_tF_6jUP">
+                                                        alt="Facility image"
+                                                        src="facilities/IMG_7878.JPG">
                                         </div>
                                         <div class="overflow-hidden rounded-xl premium-shadow group">
                                                 <img class="w-full h-64 lg:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
-                                                        data-alt="An expansive, open-plan collaborative workspace designed for group training. The room features large whiteboards, modular white tables, and navy blue seating. The aesthetic is clean, modern, and highly structured, emphasizing educational excellence and architectural precision with even, shadow-free lighting."
-                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeiOJE1Q9Qn9nbLYWOsXIVAjlEuSnShLqzvaqZi-RmPnPMKVzGMmLuHUN_Nu69vFCrTIquOmvmIUjqvnyUBdkN6xlwGGEN1_5F0Llzhx-iPUh8pHtLL5a40iMtiJHJns7pyzO503JAearAcDVUbdGIcz9QnJf39eDZDqcC3qoXYjHj7BjLJeLyysLJn1vhZdH_q2ROv8sCKVWEsg8PdmxxutJPJgzy_hWz6uY1g_HkDr0GU23ISTlb">
+                                                        alt="Facility image"
+                                                        src="facilities/IMG_7925.png">
                                         </div>
                                 </div>
                         </div>
