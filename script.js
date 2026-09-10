@@ -382,6 +382,7 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
 })();
 (function () {
     var overlay = document.getElementById('pl-overlay');
+    if (!overlay) return; // not on a page with a preloader
     if (sessionStorage.getItem('bp_visited')) {
         overlay.style.display = 'none';
         return;
@@ -403,4 +404,102 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
         document.body.style.overflow = '';
         setTimeout(function () { overlay.parentNode && overlay.parentNode.removeChild(overlay); }, 450);
     }, 2050);
+})();
+(function(){
+  var ALL = document.querySelectorAll('.cc');
+  if (!ALL || ALL.length === 0) return; // new courses.html uses .course-card — skip this block
+  var activeCat = 'all';
+  var searchVal = '';
+
+  /* â”€â”€ Count badges on pills â”€â”€ */
+  var counts = {};
+  ALL.forEach(function(c){ counts[c.dataset.cat] = (counts[c.dataset.cat]||0)+1; });
+  document.querySelectorAll('.fp[data-cat]').forEach(function(btn){
+    var cat = btn.dataset.cat;
+    var badge = btn.querySelector('.fp-badge');
+    if(badge && cat!=='all') badge.textContent = counts[cat]||0;
+  });
+
+  /* â”€â”€ Master filter â”€â”€ */
+  function applyFilter(){
+    var visible = 0;
+    ALL.forEach(function(card,i){
+      var catMatch = activeCat==='all' || card.dataset.cat===activeCat;
+      var titleEl = card.querySelector('.cc-header-title') || card.querySelector('.cc-title');
+      var searchMatch = !searchVal || (titleEl && titleEl.textContent.toLowerCase().includes(searchVal));
+      if(catMatch && searchMatch){
+        card.classList.remove('hidden-card');
+        card.style.animationDelay = (visible*0.035)+'s';
+        visible++;
+      } else {
+        card.classList.add('hidden-card');
+      }
+    });
+    var catNames = {'all':'All Programmes','language':'Language','management':'Management & Business','technology':'Technology & IT','creative':'Creative & Beauty','engineering':'Engineering'};
+    document.querySelector('.courses-title').textContent = catNames[activeCat]||'All Programmes';
+    var label = searchVal ? 'Found '+visible+' course'+(visible!==1?'s':'') : 'Showing '+visible+' of 27 courses';
+    document.getElementById('result-label').textContent = label;
+    var emptyEl = document.getElementById('empty-state');
+    emptyEl.classList.toggle('visible', visible===0);
+  }
+
+  /* â”€â”€ Category filter (pills) â”€â”€ */
+  window.filterCourses = function(btn){
+    var cat = btn.dataset.cat;
+    if(cat===activeCat && !searchVal) return;
+    activeCat = cat;
+    document.querySelectorAll('.fp').forEach(function(p){
+      p.classList.toggle('active', p===btn);
+      p.setAttribute('aria-selected', p===btn);
+    });
+    window.scrollTo({top:document.getElementById('main-content').offsetTop-140,behavior:'smooth'});
+    applyFilter();
+  };
+
+  /* â”€â”€ Category strip chips â”€â”€ */
+  window.filterByChip = function(cat){
+    var btn = document.querySelector('.fp[data-cat="'+cat+'"]');
+    if(btn) filterCourses(btn);
+  };
+
+  /* â”€â”€ Search â”€â”€ */
+  var searchInput = document.getElementById('course-search');
+  searchInput.addEventListener('input', function(){
+    searchVal = this.value.toLowerCase().trim();
+    applyFilter();
+  });
+
+  /* â”€â”€ Mobile nav (side drawer) â”€â”€ */
+  var mobileMenu = document.getElementById('mobile-menu');
+  var mobileBackdrop = document.getElementById('mobile-backdrop');
+  var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  var mobileMenuClose = document.getElementById('mobile-menu-close');
+  function openMobileMenu() {
+    mobileMenu.classList.remove('-translate-x-full');
+    mobileBackdrop.classList.remove('opacity-0','pointer-events-none');
+    mobileBackdrop.classList.add('opacity-100');
+    mobileMenuBtn && mobileMenuBtn.setAttribute('aria-expanded','true');
+  }
+  function closeMobileMenu() {
+    mobileMenu.classList.add('-translate-x-full');
+    mobileBackdrop.classList.add('opacity-0','pointer-events-none');
+    mobileBackdrop.classList.remove('opacity-100');
+    mobileMenuBtn && mobileMenuBtn.setAttribute('aria-expanded','false');
+  }
+  if(mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
+  if(mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+  if(mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobileMenu);
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape') closeMobileMenu();
+  });
+
+  /* â”€â”€ Card enter key â”€â”€ */
+  ALL.forEach(function(card){
+    card.addEventListener('keydown',function(e){
+      if(e.key==='Enter'){ var a=card.querySelector('.cc-enroll')||card.querySelector('.cc-arrow'); if(a) a.click(); }
+    });
+  });
+
+  /* â”€â”€ Stagger animation on load â”€â”€ */
+  ALL.forEach(function(card,i){ card.style.animationDelay = (i*0.04)+'s'; });
 })();

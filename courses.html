@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Our Courses | Blueprint Training Centre</title>
+<link rel="icon" type="image/jpeg" href="image/logo.jpg">
+<meta name="description" content="Explore Blueprint Training Centre's 27 professional courses in Dubai. UAE-certified programmes in management, technology, language, creative arts, and engineering.">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "error-container": "#ffdad6",
+        "on-surface-variant": "#44474e",
+        "tertiary-fixed": "#c9e7f7",
+        "surface-container-high": "#e7e8e9",
+        "primary-container": "#002147",
+        "on-primary-fixed-variant": "#2d476f",
+        "surface-container-low": "#f3f4f5",
+        "on-primary": "#ffffff",
+        "surface": "#f8f9fa",
+        "on-tertiary-container": "#708d9b",
+        "surface-tint": "#465f88",
+        "primary-fixed": "#d6e3ff",
+        "on-tertiary-fixed-variant": "#2e4b57",
+        "on-primary-fixed": "#001b3d",
+        "on-tertiary": "#ffffff",
+        "on-tertiary-fixed": "#001f2a",
+        "secondary-container": "#feb316",
+        "inverse-surface": "#2e3132",
+        "on-secondary-fixed": "#281900",
+        "outline-variant": "#c4c6cf",
+        "outline": "#74777f",
+        "tertiary": "#000d13",
+        "on-background": "#191c1d",
+        "tertiary-container": "#032531",
+        "secondary-fixed": "#ffdead",
+        "inverse-primary": "#aec7f6",
+        "surface-container": "#edeeef",
+        "secondary-fixed-dim": "#ffba3b",
+        "background": "#f8f9fa",
+        "on-primary-container": "#708ab5",
+        "tertiary-fixed-dim": "#adcbda",
+        "on-error": "#ffffff",
+        "on-secondary": "#ffffff",
+        "surface-variant": "#e1e3e4",
+        "surface-bright": "#f8f9fa",
+        "secondary": "#7f5700",
+        "on-surface": "#191c1d",
+        "inverse-on-surface": "#f0f1f2",
+        "error": "#ba1a1a",
+        "on-secondary-fixed-variant": "#604100",
+        "primary-fixed-dim": "#aec7f6",
+        "primary": "#000a1e",
+        "surface-container-lowest": "#ffffff",
+        "surface-dim": "#d9dadb",
+        "surface-container-highest": "#e1e3e4",
+        "on-error-container": "#93000a",
+        "on-secondary-container": "#6a4800"
+      },
+      borderRadius: { "DEFAULT": "0.125rem","lg": "0.25rem","xl": "0.5rem","full": "0.75rem" },
+      spacing: {
+        "stack-sm": "12px","margin-desktop": "40px","stack-md": "24px","gutter": "24px",
+        "stack-lg": "48px","base": "8px","container-max": "1280px","margin-mobile": "16px","section-py": "120px"
+      },
+      fontFamily: {
+        "body-lg": ["Hanken Grotesk","sans-serif"],"display-lg": ["Hanken Grotesk","sans-serif"],
+        "headline-lg-mobile": ["Hanken Grotesk","sans-serif"],"label-sm": ["Hanken Grotesk","sans-serif"],
+        "headline-md": ["Hanken Grotesk","sans-serif"],"body-md": ["Hanken Grotesk","sans-serif"],
+        "label-md": ["Hanken Grotesk","sans-serif"],"headline-lg": ["Hanken Grotesk","sans-serif"]
+      },
+      fontSize: {
+        "body-lg": ["18px",{"lineHeight":"28px","fontWeight":"400"}],
+        "display-lg": ["56px",{"lineHeight":"64px","letterSpacing":"-0.02em","fontWeight":"700"}],
+        "headline-lg-mobile": ["32px",{"lineHeight":"40px","fontWeight":"600"}],
+        "label-sm": ["12px",{"lineHeight":"16px","fontWeight":"500","letterSpacing":"0.05em"}],
+        "headline-md": ["28px",{"lineHeight":"36px","fontWeight":"600","letterSpacing":"-0.01em"}],
+        "body-md": ["16px",{"lineHeight":"26px","fontWeight":"400"}],
+        "label-md": ["14px",{"lineHeight":"20px","letterSpacing":"0.05em","fontWeight":"600","textTransform":"uppercase"}],
+        "headline-lg": ["40px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"600"}]
+      }
+    }
+  }
+}
+</script>
+<link rel="stylesheet" href="style.css">
+<style>
+.course-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,33,71,.07),0 1px 4px rgba(0,33,71,.04);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease;display:flex;flex-direction:column;}
+.course-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,33,71,.14),0 4px 12px rgba(0,33,71,.08);}
+.course-card-header{padding:28px 24px 20px;position:relative;overflow:hidden;}
+.course-num{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:12px;}
+.course-icon-wrap{width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;margin-bottom:14px;backdrop-filter:blur(4px);}
+.course-icon-wrap .material-symbols-outlined{font-size:26px;color:#fff;}
+.course-title{font-size:17px;font-weight:700;color:#fff;line-height:1.3;}
+.course-card-body{padding:20px 24px 24px;flex:1;display:flex;flex-direction:column;}
+.course-desc{font-size:14px;line-height:1.7;color:#44474e;flex:1;margin-bottom:16px;}
+.course-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+.course-meta-badge{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:#44474e;background:#f3f4f5;border-radius:999px;padding:4px 10px;}
+.course-meta-badge .material-symbols-outlined{font-size:14px;}
+.course-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.course-cat-tag{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px;border-radius:999px;}
+.course-enroll-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;letter-spacing:.04em;color:#002147;text-decoration:none;transition:gap .25s ease;}
+.course-enroll-btn .material-symbols-outlined{font-size:16px;transition:transform .25s ease;}
+.course-enroll-btn:hover{gap:10px;}
+.course-enroll-btn:hover .material-symbols-outlined{transform:translateX(3px);}
+.filter-pill{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid #c4c6cf;background:#fff;color:#44474e;transition:all .25s cubic-bezier(.22,1,.36,1);white-space:nowrap;outline:none;letter-spacing:.02em;}
+.filter-pill:hover{border-color:#002147;color:#002147;background:#f3f4f5;box-shadow:0 4px 14px rgba(0,33,71,.08);transform:translateY(-1px);}
+.filter-pill.active{background:#002147;color:#fff;border-color:#002147;box-shadow:0 4px 16px rgba(0,33,71,.22);}
+.filter-pill.active:hover{background:#003166;}
+.search-input{height:40px;padding:0 14px 0 38px;border:1.5px solid #c4c6cf;border-radius:999px;font-size:13.5px;font-weight:500;font-family:inherit;background:#fff;color:#191c1d;outline:none;transition:all .25s ease;width:200px;}
+#courses-filter-bar{transition:top 0.32s cubic-bezier(0.4,0,0.2,1);}
+.search-input:focus{border-color:#002147;box-shadow:0 0 0 3px rgba(0,33,71,.08);width:240px;}
+.course-card.hidden{display:none;}
+.courses-cta{background:linear-gradient(135deg,#002147 0%,#003166 100%);position:relative;overflow:hidden;}
+.courses-cta::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(254,179,22,.15) 0%,transparent 70%);pointer-events:none;}
+.courses-cta::after{content:'';position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(110,180,255,.1) 0%,transparent 70%);pointer-events:none;}
+</style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md antialiased overflow-x-hidden">
+
+<!-- Navigation -->
+<header class="bg-surface-container-lowest/95 backdrop-blur-xl fixed top-0 w-full z-50 shadow-[0_4px_30px_rgba(0,33,71,0.03)] border-b border-surface-variant/50 transition-all duration-300 site-navbar">
+  <div class="flex justify-between items-center max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop h-24">
+    <a class="flex items-center gap-2 transition-transform duration-300 hover:scale-[1.02] flex-shrink-0 w-28 h-24" href="index.html" aria-label="Blueprint Training Centre home">
+      <img alt="Blueprint Training Centre Logo" class="h-28 w-auto object-contain" src="image/no-backgroundBG.png" onerror="this.onerror=null;this.src='image/logo.jpg'">
+    </a>
+    <nav class="hidden md:flex items-center gap-8" role="navigation" aria-label="Main navigation">
+      <a class="nav-link relative font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors duration-300" href="index.html">Home</a>
+      <a class="nav-link relative font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors duration-300" href="index.html#about">About</a>
+      <a class="nav-link relative font-label-md text-label-md text-primary-container active" href="courses.html">Courses</a>
+      <a class="nav-link relative font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors duration-300" href="index.html#vision">Vision &amp; Mission</a>
+      <a class="nav-link relative font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors duration-300" href="index.html#contact">Contact</a>
+    </nav>
+    <div class="hidden md:block">
+      <a class="inline-flex items-center justify-center px-8 py-3.5 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-md hover:bg-secondary-fixed btn-transition" href="enrollment.html">Enroll Now</a>
+    </div>
+    <button class="md:hidden flex items-center justify-center w-10 h-10 text-primary-container hover:bg-surface-container rounded-lg transition-colors" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+      <span class="material-symbols-outlined text-[26px]">menu</span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Backdrop -->
+<div class="fixed inset-0 z-[55] bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden" id="mobile-backdrop"></div>
+
+<!-- Mobile Drawer -->
+<div class="fixed inset-y-0 left-0 z-[60] flex flex-col p-6 h-full w-72 bg-surface shadow-xl transform -translate-x-full transition-transform duration-300 md:hidden" id="mobile-menu">
+  <div class="flex justify-between items-center mb-8">
+    <div class="font-bold text-[18px] text-primary leading-tight">Blueprint Training</div>
+    <button class="flex items-center justify-center w-9 h-9 text-primary hover:bg-surface-container rounded-lg transition-colors" id="mobile-menu-close" aria-label="Close menu">
+      <span class="material-symbols-outlined text-[22px]">close</span>
+    </button>
+  </div>
+  <div class="flex flex-col gap-1">
+    <a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-md text-body-md" href="index.html"><span class="material-symbols-outlined text-[22px]">home</span>Home</a>
+    <a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-md text-body-md" href="index.html#about"><span class="material-symbols-outlined text-[22px]">info</span>About</a>
+    <a class="flex items-center gap-4 px-3 py-3 rounded-lg bg-surface-container-high text-primary-container font-body-md text-body-md" href="courses.html"><span class="material-symbols-outlined text-[22px]">school</span>Courses</a>
+    <a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-md text-body-md" href="index.html#vision"><span class="material-symbols-outlined text-[22px]">visibility</span>Vision &amp; Mission</a>
+    <a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-md text-body-md" href="index.html#contact"><span class="material-symbols-outlined text-[22px]">mail</span>Contact</a>
+  </div>
+  <div class="mt-auto pt-6 border-t border-surface-variant">
+    <a class="flex items-center justify-center w-full px-6 py-3 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-lg hover:bg-secondary-fixed transition-colors btn-transition" href="enrollment.html">Enroll Now</a>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="relative w-full bg-primary-container overflow-hidden pt-24">
+  <div class="absolute inset-0 opacity-[0.025]" style="background-image:linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px);background-size:48px 48px;"></div>
+  <div class="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(254,179,22,.15) 0%,transparent 70%);"></div>
+  <div class="absolute -bottom-20 -left-20 w-[350px] h-[350px] rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(110,180,255,.12) 0%,transparent 70%);"></div>
+  <div class="relative z-10 max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-20 md:py-28 flex flex-col md:flex-row items-center gap-16">
+    <div class="flex-1">
+      <h1 class="text-on-primary mb-5 leading-tight" style="font-size:clamp(36px,5vw,62px);font-weight:800;letter-spacing:-.025em;">
+        Invest in<br>Your <span style="color:#feb316;">Future</span>
+      </h1>
+      <p class="mb-10 leading-relaxed" style="font-size:17px;max-width:500px;color:rgba(255,255,255,.65);">
+        27 industry-aligned programmes designed to accelerate your career. From language fluency to engineering expertise &mdash; your next qualification starts here.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="enrollment.html" class="inline-flex items-center gap-2 px-8 py-4 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-full hover:bg-secondary-fixed btn-transition">
+          <span class="material-symbols-outlined" style="font-size:18px;">edit_note</span>Enroll Now
+        </a>
+        <a href="index.html#contact" class="inline-flex items-center gap-2 px-8 py-4 text-on-primary font-label-md text-label-md rounded-full hover:bg-on-primary/10 btn-transition backdrop-blur-sm" style="border:1.5px solid rgba(255,255,255,.25);">
+          <span class="material-symbols-outlined" style="font-size:18px;">call</span>Contact Us
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-0 left-0 right-0 h-[3px] opacity-40" style="background:linear-gradient(90deg,#feb316,#fff 50%,#feb316);"></div>
+</section>
+
+<!-- Filter Bar -->
+<div id="courses-filter-bar" class="sticky z-40 border-b py-4" style="top:96px;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-color:#e1e3e4;box-shadow:0 2px 12px rgba(0,33,71,.05);">
+  <div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop flex flex-wrap items-center gap-3">
+    <div class="flex items-center gap-2 flex-wrap flex-1">
+      <button class="filter-pill active" data-filter="all"><span class="material-symbols-outlined" style="font-size:15px;">apps</span>All <span class="ml-1 px-2 py-0.5 rounded-full text-[10px] font-bold" style="background:rgba(255,255,255,.2);">27</span></button>
+      <button class="filter-pill" data-filter="language"><span class="material-symbols-outlined" style="font-size:15px;">translate</span>Language <span class="ml-1 px-2 py-0.5 rounded-full text-[10px] font-bold" style="background:rgba(0,33,71,.08);color:#002147;">3</span></button>
+      <button class="filter-pill" data-filter="management"><span class="material-symbols-outlined" style="font-size:15px;">business_center</span>Management <span class="ml-1 px-2 py-0.5 rounded-full text-[10px] font-bold" style="background:rgba(0,33,71,.08);color:#002147;">13</span></button>
+      <button class="filter-pill" data-filter="technology"><span class="material-symbols-outlined" style="font-size:15px;">computer</span>Technology <span class="ml-1 px-2 py-0.5 rounded-full text-[10px] font-bold" style="background:rgba(0,33,71,.08);color:#002147;">6</span></button>
+      <button class="filter-pill" data-filter="creative"><span class="material-symbols-outlined" style="font-size:15px;">palette</span>Creative <span class="ml-1 px-2 py-0.5 rounded-full text-[10px] font-bold" style="background:rgba(0,33,71,.08);color:#002147;">6</span></button>
+      <button class="filter-pill" data-filter="engineering"><span class="material-symbols-outlined" style="font-size:15px;">engineering</span>Engineering <span class="ml-1 px-2 py-0.5 rounded-full text-[10px] font-bold" style="background:rgba(0,33,71,.08);color:#002147;">3</span></button>
+    </div>
+    <div class="relative">
+      
+      <input class="search-input" id="course-search" type="search" placeholder="Search courses&hellip;" aria-label="Search courses">
+    </div>
+  </div>
+</div>
+
+<!-- Courses Grid -->
+<main class="py-16 md:py-20 bg-surface-container-lowest" id="main-content">
+  <div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
+    <div class="flex items-center justify-between mb-10 gap-4 flex-wrap">
+      <div>
+        <p class="font-label-md text-label-md text-secondary mb-2 tracking-widest">OUR PROGRAMMES</p>
+        <h2 class="font-headline-lg text-headline-lg text-primary-container leading-tight">All Courses</h2>
+      </div>
+      <span id="result-label" class="text-[13px] font-semibold text-on-surface-variant bg-surface-container px-4 py-2 rounded-full border border-surface-variant" aria-live="polite">Showing all 27 courses</span>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="courses-grid" role="list" aria-label="Course listings">
+
+      <article class="course-card" data-cat="language" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#1a56db,#3b82f6);"><div class="course-num">Course 01</div><div class="course-icon-wrap"><span class="material-symbols-outlined">translate</span></div><h3 class="course-title">English Proficiency</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>All Levels</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>8 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#e8f0fe;color:#1a56db;">Language</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><div class="course-num">Course 02</div><div class="course-icon-wrap"><span class="material-symbols-outlined">business_center</span></div><h3 class="course-title">Secretarial &amp; Office Management</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Beginner</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>6 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fef3c7;color:#92400e;">Management</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><div class="course-num">Course 03</div><div class="course-icon-wrap"><span class="material-symbols-outlined">rocket_launch</span></div><h3 class="course-title">Entrepreneurship Management</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>10 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fef3c7;color:#92400e;">Management</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="creative" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);"><div class="course-num">Course 04</div><div class="course-icon-wrap"><span class="material-symbols-outlined">spa</span></div><h3 class="course-title">Cosmetology Skills Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>All Levels</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#f5f3ff;color:#6d28d9;">Creative</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="creative" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);"><div class="course-num">Course 05</div><div class="course-icon-wrap"><span class="material-symbols-outlined">face_retouching_natural</span></div><h3 class="course-title">Makeup Skills Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Beginner</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>8 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#f5f3ff;color:#6d28d9;">Creative</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="technology" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#059669,#10b981);"><div class="course-num">Course 06</div><div class="course-icon-wrap"><span class="material-symbols-outlined">table_chart</span></div><h3 class="course-title">Microsoft Excel Skills Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>All Levels</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>5 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#ecfdf5;color:#065f46;">Technology</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#0369a1,#0ea5e9);"><div class="course-num">Course 07</div><div class="course-icon-wrap"><span class="material-symbols-outlined">groups</span></div><h3 class="course-title">Leadership Management Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>8 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#e0f2fe;color:#0369a1;">Management</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><div class="course-num">Course 08</div><div class="course-icon-wrap"><span class="material-symbols-outlined">receipt_long</span></div><h3 class="course-title">UAE Corporate Tax Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>4 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fef3c7;color:#92400e;">Management</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="language" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#1a56db,#3b82f6);"><div class="course-num">Course 09</div><div class="course-icon-wrap"><span class="material-symbols-outlined">translate</span></div><h3 class="course-title">Arabic for Everyday &amp; Workplace Communication</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Beginner</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>8 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#e8f0fe;color:#1a56db;">Language</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="technology" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#059669,#10b981);"><div class="course-num">Course 10</div><div class="course-icon-wrap"><span class="material-symbols-outlined">computer</span></div><h3 class="course-title">Advanced MS Office for Professionals</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Advanced</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>6 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#ecfdf5;color:#065f46;">Technology</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><div class="course-num">Course 11</div><div class="course-icon-wrap"><span class="material-symbols-outlined">local_shipping</span></div><h3 class="course-title">Logistics &amp; Supply Chain Management</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>10 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fef3c7;color:#92400e;">Management</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><div class="course-num">Course 12</div><div class="course-icon-wrap"><span class="material-symbols-outlined">calculate</span></div><h3 class="course-title">Accounting Skills Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>All Levels</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>8 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fef3c7;color:#92400e;">Management</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="language" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#1a56db,#3b82f6);"><div class="course-num">Course 13</div><div class="course-icon-wrap"><span class="material-symbols-outlined">school</span></div><h3 class="course-title">IELTS Exam Preparation</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>8 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#e8f0fe;color:#1a56db;">Language</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><div class="course-num">Course 14</div><div class="course-icon-wrap"><span class="material-symbols-outlined">settings_suggest</span></div><h3 class="course-title">Operations Management Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>8 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fef3c7;color:#92400e;">Management</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><div class="course-num">Course 15</div><div class="course-icon-wrap"><span class="material-symbols-outlined">business</span></div><h3 class="course-title">Business Management for Professionals</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Advanced</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fef3c7;color:#92400e;">Management</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><div class="course-num">Course 16</div><div class="course-icon-wrap"><span class="material-symbols-outlined">shopping_cart_checkout</span></div><h3 class="course-title">Procurement Management Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>6 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fef3c7;color:#92400e;">Management</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><div class="course-num">Course 17</div><div class="course-icon-wrap"><span class="material-symbols-outlined">manage_accounts</span></div><h3 class="course-title">Human Resources Skills Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>All Levels</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>8 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fef3c7;color:#92400e;">Management</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="creative" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);"><div class="course-num">Course 18</div><div class="course-icon-wrap"><span class="material-symbols-outlined">draw</span></div><h3 class="course-title">Graphic Design Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Beginner</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>10 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#f5f3ff;color:#6d28d9;">Creative</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="creative" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);"><div class="course-num">Course 19</div><div class="course-icon-wrap"><span class="material-symbols-outlined">camera_alt</span></div><h3 class="course-title">Photography Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>All Levels</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>8 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#f5f3ff;color:#6d28d9;">Creative</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="technology" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#059669,#10b981);"><div class="course-num">Course 20</div><div class="course-icon-wrap"><span class="material-symbols-outlined">computer</span></div><h3 class="course-title">Computer Essentials Skills Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Beginner</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>4 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#ecfdf5;color:#065f46;">Technology</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="creative" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);"><div class="course-num">Course 21</div><div class="course-icon-wrap"><span class="material-symbols-outlined">videocam</span></div><h3 class="course-title">Videography Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>All Levels</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>10 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#f5f3ff;color:#6d28d9;">Creative</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="technology" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#059669,#10b981);"><div class="course-num">Course 22</div><div class="course-icon-wrap"><span class="material-symbols-outlined">trending_up</span></div><h3 class="course-title">Social Media Marketing Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>All Levels</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>6 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#ecfdf5;color:#065f46;">Technology</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="technology" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#059669,#10b981);"><div class="course-num">Course 23</div><div class="course-icon-wrap"><span class="material-symbols-outlined">architecture</span></div><h3 class="course-title">AutoCAD Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Beginner</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>8 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#ecfdf5;color:#065f46;">Technology</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="creative" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);"><div class="course-num">Course 24</div><div class="course-icon-wrap"><span class="material-symbols-outlined">content_cut</span></div><h3 class="course-title">Hair Stylist Skills Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Beginner</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#f5f3ff;color:#6d28d9;">Creative</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="engineering" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#dc2626,#f87171);"><div class="course-num">Course 25</div><div class="course-icon-wrap"><span class="material-symbols-outlined">engineering</span></div><h3 class="course-title">Revit Architecture for Professionals</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>10 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fff1f2;color:#9f1239;">Engineering</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="engineering" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#dc2626,#f87171);"><div class="course-num">Course 26</div><div class="course-icon-wrap"><span class="material-symbols-outlined">foundation</span></div><h3 class="course-title">Civil Engineering Skills Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fff1f2;color:#9f1239;">Engineering</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+      <article class="course-card" data-cat="engineering" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#dc2626,#f87171);"><div class="course-num">Course 27</div><div class="course-icon-wrap"><span class="material-symbols-outlined">straighten</span></div><h3 class="course-title">Quantity Surveying for Professionals</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>10 Weeks</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fff1f2;color:#9f1239;">Engineering</span><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></article>
+
+    </div>
+    <div id="empty-state" class="hidden flex-col items-center justify-center py-24 text-center">
+      <span class="material-symbols-outlined text-[64px] mb-4" style="color:#74777f;">search_off</span>
+      <p class="text-on-surface-variant font-body-md text-body-md">No courses match your search. Try a different keyword or category.</p>
+    </div>
+  </div>
+</main>
+
+<!-- CTA -->
+<section class="courses-cta py-20 md:py-28" aria-labelledby="cta-heading">
+  <div class="relative z-10 max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row items-center justify-between gap-10">
+    <div class="text-center md:text-left">
+      <p class="font-label-md text-label-md tracking-widest mb-3" style="color:#feb316;">START YOUR JOURNEY</p>
+      <h2 id="cta-heading" class="text-on-primary mb-4 leading-tight" style="font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.02em;">Ready to Transform Your Career?</h2>
+      <p class="max-w-xl leading-relaxed" style="font-size:16px;color:rgba(255,255,255,.65);">Join hundreds of professionals who have advanced their careers with Blueprint Training Centre. Enrol today.</p>
+    </div>
+    <a href="enrollment.html" class="flex-shrink-0 inline-flex items-center gap-3 px-10 py-4 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-full hover:bg-secondary-fixed btn-transition whitespace-nowrap">
+      Start Enrolling <span class="material-symbols-outlined" style="font-size:18px;">arrow_forward</span>
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-primary-container text-on-primary pt-[100px] pb-12">
+  <div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-16">
+      <div class="col-span-1 md:col-span-1">
+        <img alt="Blueprint Training Centre Logo" class="h-14 w-auto mb-6" src="image/zoomed-logo.jpg" onerror="this.onerror=null;this.src='image/logo.jpg'">
+        <p class="font-body-md text-[14px] mb-8 leading-relaxed" style="color:rgba(214,227,255,.7);">Professional Excellence in Training &amp; Development. Building careers in Dubai and across the UAE.</p>
+        <div class="flex gap-4">
+          <a aria-label="WhatsApp" class="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-secondary-container" style="background:rgba(255,255,255,.1);" href="https://wa.me/971559809491" rel="noopener noreferrer" target="_blank"><img src="https://img.icons8.com/?size=100&id=16712&format=png&color=ffffff" alt="WhatsApp" class="w-5 h-5"></a>
+          <a aria-label="Facebook" class="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-secondary-container" style="background:rgba(255,255,255,.1);" href="https://www.facebook.com/profile.php?id=61593331912284" rel="noopener noreferrer" target="_blank"><img src="https://img.icons8.com/?size=100&id=118490&format=png&color=ffffff" alt="Facebook" class="w-5 h-5"></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-[18px] font-semibold text-on-primary mb-6">Quick Links</h4>
+        <ul class="space-y-4">
+          <li><a class="text-[15px] hover:text-secondary-container transition-colors" style="color:rgba(214,227,255,.7);" href="index.html">Home</a></li>
+          <li><a class="text-[15px] hover:text-secondary-container transition-colors" style="color:rgba(214,227,255,.7);" href="index.html#about">About</a></li>
+          <li><a class="text-[15px] hover:text-secondary-container transition-colors" style="color:rgba(214,227,255,.7);" href="index.html#vision">Vision &amp; Mission</a></li>
+          <li><a class="text-[15px] hover:text-secondary-container transition-colors" style="color:rgba(214,227,255,.7);" href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-[18px] font-semibold text-on-primary mb-6">Programs</h4>
+        <ul class="space-y-4">
+          <li><a class="text-[15px] hover:text-secondary-container transition-colors" style="color:rgba(214,227,255,.7);" href="#">Management Excellence</a></li>
+          <li><a class="text-[15px] hover:text-secondary-container transition-colors" style="color:rgba(214,227,255,.7);" href="#">Technical Skills</a></li>
+          <li><a class="text-[15px] hover:text-secondary-container transition-colors" style="color:rgba(214,227,255,.7);" href="#">Leadership Development</a></li>
+          <li><a class="text-[15px] font-semibold text-secondary-container hover:text-secondary-fixed transition-colors" href="courses.html">All Courses</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-[18px] font-semibold text-on-primary mb-6">Contact Us</h4>
+        <ul class="space-y-4">
+          <li class="text-[15px]" style="color:rgba(214,227,255,.7);">WhatsApp: +971 55 980 9491</li>
+          <li class="text-[15px]" style="color:rgba(214,227,255,.7);">info@blueprint.ae</li>
+          <li class="text-[15px] mt-6" style="color:rgba(214,227,255,.7);"><a class="hover:text-secondary-container transition-colors underline underline-offset-4" style="text-decoration-color:rgba(214,227,255,.3);" href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t pt-8 text-center" style="border-color:rgba(255,255,255,.1);">
+      <p class="text-[13px]" style="color:rgba(214,227,255,.5);">&copy; 2024 Blueprint Training Centre. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+(function(){
+  /* ── Filter bar: sync top with navbar hide/show (dynamic height) ── */
+  var navbar = document.querySelector('.site-navbar');
+  var filterBar = document.getElementById('courses-filter-bar');
+  function getNavbarHeight(){
+    return navbar ? navbar.getBoundingClientRect().height : 96;
+  }
+  function syncFilterBar(){
+    if(!filterBar) return;
+    filterBar.style.top = (navbar && navbar.classList.contains('navbar-hidden')) ? '0px' : getNavbarHeight()+'px';
+  }
+  if(navbar && filterBar){
+    new MutationObserver(syncFilterBar).observe(navbar, {attributes:true, attributeFilter:['class']});
+    window.addEventListener('resize', syncFilterBar);
+  }
+
+  /* ── Course filter & search ── */
+  var pills  = document.querySelectorAll('.filter-pill');
+  var cards  = document.querySelectorAll('.course-card');
+  var search = document.getElementById('course-search');
+  var label  = document.getElementById('result-label');
+  var empty  = document.getElementById('empty-state');
+  var total  = cards.length; /* dynamic — no hardcoded 27 */
+  var current = 'all', query = '';
+
+  function update(){
+    var visible = 0;
+    cards.forEach(function(c){
+      var catOk = current === 'all' || c.dataset.cat === current;
+      var titleEl = c.querySelector('.course-title');
+      var titleText = titleEl ? titleEl.textContent.toLowerCase() : '';
+      var qOk = query === '' || titleText.indexOf(query) !== -1;
+      if(catOk && qOk){ c.classList.remove('hidden'); visible++; }
+      else c.classList.add('hidden');
+    });
+    label.textContent = visible === total
+      ? 'Showing all ' + total + ' courses'
+      : 'Showing ' + visible + ' of ' + total + ' courses';
+    if(visible === 0){ empty.classList.remove('hidden'); empty.classList.add('flex'); }
+    else { empty.classList.add('hidden'); empty.classList.remove('flex'); }
+  }
+
+  pills.forEach(function(p){
+    p.addEventListener('click', function(){
+      pills.forEach(function(x){ x.classList.remove('active'); });
+      p.classList.add('active');
+      current = p.dataset.filter;
+      update();
+    });
+  });
+
+  if(search) search.addEventListener('input', function(){
+    query = search.value.trim().toLowerCase();
+    update();
+  });
+})();
+</script>
+</body>
+</html>
