@@ -188,25 +188,24 @@ header.menu-open .mobile-btn-icon--close {
     transform: rotate(0deg) scale(1);
 }
 
-/* ── Auto-hide Navbar on Scroll ──────────────────────────────────────────────── */
+/* ── Sticky Navbar ────────────────────────────────────────────────────────────── */
 /*
- * .site-navbar — applied to the fixed header/nav on all pages.
- * Adds the transform transition that the JS scroll handler relies on.
- * We use a separate transition property so it doesn't conflict with
- * any existing 'transition-all' Tailwind utility.
+ * .site-navbar — always-visible sticky header applied on all pages.
+ * Promoted to its own GPU compositor layer via will-change so the
+ * box-shadow transition never triggers a repaint of page content.
  */
 .site-navbar {
-    transition:
-        transform 0.32s cubic-bezier(0.4, 0, 0.2, 1),
-        box-shadow 0.3s ease;
+    will-change: box-shadow, background-color;
+    transform: translateZ(0);          /* GPU layer promotion */
+    backface-visibility: hidden;       /* prevent subpixel flicker */
+    transition: box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/*
- * When .navbar-hidden is applied, the bar slides fully off the top edge.
- * translateY(-110%) ensures the drop-shadow is also hidden.
- */
-.site-navbar.navbar-hidden {
-    transform: translateY(-110%);
+/* Elevated shadow added by JS once user scrolls past the top zone */
+.site-navbar.scrolled {
+    box-shadow: 0 2px 20px rgba(0, 33, 71, 0.09), 0 1px 4px rgba(0, 33, 71, 0.05);
+    background-color: rgba(255, 255, 255, 0.98);
 }
 
 #pl-overlay {
@@ -217,7 +216,10 @@ header.menu-open .mobile-btn-icon--close {
     align-items: center;
     justify-content: center;
     background: #ffffff;
-    transition: opacity .4s ease;
+    /* Pre-promote to GPU layer so the fade never causes a page repaint */
+    will-change: opacity;
+    transform: translateZ(0);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #pl-overlay.pl-hidden {
@@ -233,6 +235,9 @@ header.menu-open .mobile-btn-icon--close {
     align-items: center;
     justify-content: center;
     background: radial-gradient(ellipse at 50% 40%, rgba(254, 179, 22, .07), transparent 55%), #fff;
+    /* Isolate paint to this layer — prevents the zoom from triggering page repaints */
+    contain: strict;
+    overflow: hidden;
 }
 
 .pl-grid {
@@ -241,6 +246,7 @@ header.menu-open .mobile-btn-icon--close {
     background-image: linear-gradient(#002147 1px, transparent 1px), linear-gradient(90deg, #002147 1px, transparent 1px);
     background-size: 42px 42px;
     opacity: .055;
+    will-change: opacity;                /* pre-promote layer for fade-out */
     animation: pl-driftGrid 18s linear infinite;
     mask-image: radial-gradient(ellipse at 50% 45%, black 35%, transparent 78%);
     -webkit-mask-image: radial-gradient(ellipse at 50% 45%, black 35%, transparent 78%);
@@ -306,7 +312,9 @@ header.menu-open .mobile-btn-icon--close {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* Pre-promote layer — browser allocates GPU memory before animation fires */
     will-change: transform, opacity;
+    transform: translateZ(0);
 }
 
 .pl-logo-wrap {
@@ -378,72 +386,39 @@ header.menu-open .mobile-btn-icon--close {
     }
 }
 
+/* ── Preloader exit: zoom dissolve ── */
+/* Scale capped at 6 (was 28) — still looks like flying into the logo
+   but avoids the massive GPU texture rasterisation that caused lag.
+   opacity + transform are the only composited properties so it runs
+   entirely on the GPU at 60fps. */
 #pl-stage.diving .pl-content {
-    animation: pl-diveZoom .85s cubic-bezier(.55, 0, 1, .45) forwards;
+    animation: pl-diveZoom 0.8s cubic-bezier(0.4, 0, 1, 1) forwards;
 }
 
 @keyframes pl-diveZoom {
-    0% {
-        transform: scale(1);
-        opacity: 1
-    }
-
-    50% {
-        opacity: 1
-    }
-
-    100% {
-        transform: scale(28);
-        opacity: 0
-    }
+    0%   { transform: scale(1);  opacity: 1 }
+    40%  { opacity: 1 }
+    100% { transform: scale(6);  opacity: 0 }
 }
 
 #pl-stage.diving .pl-grid {
-    animation: pl-gridPull .85s ease-in forwards;
+    animation: pl-gridFade 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-@keyframes pl-gridPull {
-    to {
-        transform: scale(5);
-        opacity: 0
-    }
+@keyframes pl-gridFade {
+    to { opacity: 0 }
 }
 
 #pl-stage.diving .pl-crop {
-    animation: pl-cropOut .3s ease-in forwards;
+    animation: pl-cropOut .25s ease-out forwards;
 }
 
 @keyframes pl-cropOut {
-    to {
-        opacity: 0
-    }
+    to { opacity: 0 }
 }
 
 .pl-flash {
-    position: absolute;
-    inset: 0;
-    background: #fff;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 5;
-}
-
-#pl-stage.diving .pl-flash {
-    animation: pl-flashIn .85s ease-in forwards;
-}
-
-@keyframes pl-flashIn {
-    0% {
-        opacity: 0
-    }
-
-    65% {
-        opacity: 0
-    }
-
-    100% {
-        opacity: 1
-    }
+    display: none;  /* flash not needed with the new fade-up exit */
 }
 
 @media(prefers-reduced-motion:reduce) {
@@ -494,6 +469,8 @@ header.menu-open .mobile-btn-icon--close {
 
 html {
     scroll-behavior: smooth;
+    /* Offset anchor scroll targets so they land below the sticky navbar */
+    scroll-padding-top: 96px;
 }
 
 body {
@@ -503,6 +480,11 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* Prevent layout shift from scrollbar appearing/disappearing */
+    scrollbar-gutter: stable;
 }
 
 /* â”€â”€ NAV â”€â”€ */

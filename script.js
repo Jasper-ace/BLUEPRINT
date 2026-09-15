@@ -2,62 +2,30 @@
 // Blueprint Training — script.js
 // ─────────────────────────────────────────────────────────────────────────────
 
-// ── Auto-hide Navbar on Scroll ────────────────────────────────────────────────
-// Hides the navbar when scrolling DOWN, reveals it when scrolling UP.
-// Works universally on every page (index.html, facilities.html, etc.) by
-// targeting the .site-navbar class.
+// ── Sticky Navbar: Scroll Elevation ──────────────────────────────────────────
+// The navbar stays fully visible at all times (sticky).
+// Class toggle runs directly in the scroll event (no rAF delay) for
+// zero-lag shadow response.
 (function () {
     var navbar = document.querySelector('.site-navbar');
     if (!navbar) return;
 
-    var lastScrollY = window.scrollY;
-    var ticking = false;
-
-    // Minimum scroll distance before we react — prevents jitter on tiny nudges
-    var THRESHOLD = 5;
-    // Don't hide the navbar until the user has scrolled past this point
-    var TOP_ZONE = 80;
-
-    function updateNavbar() {
-        var currentScrollY = window.scrollY;
-        var diff = currentScrollY - lastScrollY;
-
-        if (currentScrollY <= TOP_ZONE) {
-            // Always show near the top of the page
-            navbar.classList.remove('navbar-hidden');
-        } else if (diff > THRESHOLD) {
-            // Scrolling DOWN — hide
-            navbar.classList.add('navbar-hidden');
-
-            // If the mobile menu is open, close it gracefully
-            var mobileMenuDrawer = document.getElementById('mobile-menu');
-            var mobileBackdropEl2 = document.getElementById('mobile-backdrop');
-            if (mobileMenuDrawer && !mobileMenuDrawer.classList.contains('-translate-x-full')) {
-                mobileMenuDrawer.classList.add('-translate-x-full');
-                if (mobileBackdropEl2) {
-                    mobileBackdropEl2.classList.add('opacity-0', 'pointer-events-none');
-                    mobileBackdropEl2.classList.remove('opacity-100');
-                }
-                document.body.style.overflow = '';
-                var menuBtn = document.getElementById('mobile-menu-btn');
-                if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
-            }
-        } else if (diff < -THRESHOLD) {
-            // Scrolling UP — reveal
-            navbar.classList.remove('navbar-hidden');
-        }
-
-        lastScrollY = currentScrollY;
-        ticking = false;
-    }
+    var TOP_ZONE = 10; // px - shadow appears once scrolled past this
+    var isScrolled = false;
 
     window.addEventListener('scroll', function () {
-        if (!ticking) {
-            requestAnimationFrame(updateNavbar);
-            ticking = true;
+        var shouldBeScrolled = window.scrollY > TOP_ZONE;
+        if (shouldBeScrolled !== isScrolled) {
+            isScrolled = shouldBeScrolled;
+            navbar.classList.toggle('scrolled', isScrolled);
         }
     }, { passive: true });
+
+    // Run once on load in case the page was refreshed mid-scroll
+    isScrolled = window.scrollY > TOP_ZONE;
+    navbar.classList.toggle('scrolled', isScrolled);
 })();
+
 
 // ── Smooth Scroll Helper ──────────────────────────────────────────────────────
 /**
@@ -80,8 +48,8 @@ function smoothScrollToSection(targetId, duration) {
         document.querySelector('nav[class*="fixed"]');
     var navHeight = navbar ? navbar.getBoundingClientRect().height : 0;
 
-    // 8px breathing room so the section heading isn't flush against the navbar
-    var targetTop = target.getBoundingClientRect().top + window.scrollY - navHeight - 8;
+    // 32px breathing room so the section heading sits comfortably below the navbar
+    var targetTop = target.getBoundingClientRect().top + window.scrollY - navHeight - 0;
     var startY = window.scrollY;
     var distance = targetTop - startY;
     var startTime = null;
@@ -393,17 +361,20 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
     var stage = document.getElementById('pl-stage');
     // Aim the dive zoom at the centre of the logo
     function setOrigin() {
-        var c = content.getBoundingClientRect();
         content.style.transformOrigin = '50% 50%';
     }
     setOrigin();
     window.addEventListener('resize', setOrigin);
-    setTimeout(function () { setOrigin(); stage.classList.add('diving'); }, 1200);
+    // Kick off the exit animation after the logo has been on screen (1400ms hold)
+    setTimeout(function () { setOrigin(); stage.classList.add('diving'); }, 1400);
+    // The fade-up animation is 0.7s — start fading the overlay at 1400 + 700 = 2100ms
+    // Then release body scroll immediately so the page is ready underneath
     setTimeout(function () {
         overlay.classList.add('pl-hidden');
         document.body.style.overflow = '';
-        setTimeout(function () { overlay.parentNode && overlay.parentNode.removeChild(overlay); }, 450);
-    }, 2050);
+        // Remove DOM node after the 0.6s CSS opacity transition fully completes
+        setTimeout(function () { overlay.parentNode && overlay.parentNode.removeChild(overlay); }, 650);
+    }, 2100);
 })();
 (function(){
   var ALL = document.querySelectorAll('.cc');
