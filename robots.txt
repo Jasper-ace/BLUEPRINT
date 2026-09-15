@@ -1,0 +1,12 @@
+# robots.txt — blueprint-tc.com
+
+User-agent: *
+Allow: /
+
+# Allow Googlebot to crawl all resources needed for rendering
+Allow: /style.css
+Allow: /script.js
+Allow: /image/
+Allow: /facilities/
+
+Sitemap: https://blueprint-tc.com/sitemap.xml
