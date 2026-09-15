@@ -11,7 +11,7 @@
 
   <!-- Courses -->
   <url>
-    <loc>https://blueprint-tc.com/courses.html</loc>
+    <loc>https://blueprint-tc.com/courses</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -19,7 +19,7 @@
 
   <!-- Enroll -->
   <url>
-    <loc>https://blueprint-tc.com/enrollment.html</loc>
+    <loc>https://blueprint-tc.com/enrollment</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -27,7 +27,7 @@
 
   <!-- Facilities -->
   <url>
-    <loc>https://blueprint-tc.com/facilities.html</loc>
+    <loc>https://blueprint-tc.com/facilities</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
