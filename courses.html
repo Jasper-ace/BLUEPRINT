@@ -81,8 +81,13 @@
 }
 </script>
 
+<!-- Google Fonts: Hanken Grotesk -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+<!-- Tailwind CDN -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
 tailwind.config = {
@@ -90,280 +95,1975 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        "error-container": "#ffdad6",
-        "on-surface-variant": "#44474e",
-        "tertiary-fixed": "#c9e7f7",
-        "surface-container-high": "#e7e8e9",
+        primary: "#000a1e",
         "primary-container": "#002147",
-        "on-primary-fixed-variant": "#2d476f",
-        "surface-container-low": "#f3f4f5",
+        "primary-dark": "#001633",
         "on-primary": "#ffffff",
-        "surface": "#f8f9fa",
-        "on-tertiary-container": "#708d9b",
-        "surface-tint": "#465f88",
-        "primary-fixed": "#d6e3ff",
-        "on-tertiary-fixed-variant": "#2e4b57",
-        "on-primary-fixed": "#001b3d",
-        "on-tertiary": "#ffffff",
-        "on-tertiary-fixed": "#001f2a",
+        secondary: "#feb316",
+        "secondary-dark": "#e59f00",
         "secondary-container": "#feb316",
-        "inverse-surface": "#2e3132",
-        "on-secondary-fixed": "#281900",
-        "outline-variant": "#c4c6cf",
-        "outline": "#74777f",
-        "tertiary": "#000d13",
-        "on-background": "#191c1d",
-        "tertiary-container": "#032531",
+        "on-secondary-container": "#6a4800",
         "secondary-fixed": "#ffdead",
-        "inverse-primary": "#aec7f6",
-        "surface-container": "#edeeef",
-        "secondary-fixed-dim": "#ffba3b",
-        "background": "#f8f9fa",
-        "on-primary-container": "#708ab5",
-        "tertiary-fixed-dim": "#adcbda",
-        "on-error": "#ffffff",
-        "on-secondary": "#ffffff",
-        "surface-variant": "#e1e3e4",
-        "surface-bright": "#f8f9fa",
-        "secondary": "#7f5700",
-        "on-surface": "#191c1d",
-        "inverse-on-surface": "#f0f1f2",
-        "error": "#ba1a1a",
-        "on-secondary-fixed-variant": "#604100",
-        "primary-fixed-dim": "#aec7f6",
-        "primary": "#000a1e",
+        "on-secondary-fixed": "#281900",
+        accent: "#1a56db",
         "surface-container-lowest": "#ffffff",
-        "surface-dim": "#d9dadb",
+        "surface-container-low": "#f3f4f5",
+        "surface-container": "#edeeef",
+        "surface-container-high": "#e7e8e9",
         "surface-container-highest": "#e1e3e4",
-        "on-error-container": "#93000a",
-        "on-secondary-container": "#6a4800"
-      },
-      borderRadius: { "DEFAULT": "0.125rem","lg": "0.25rem","xl": "0.5rem","full": "0.75rem" },
-      spacing: {
-        "stack-sm": "12px","margin-desktop": "40px","stack-md": "24px","gutter": "24px",
-        "stack-lg": "48px","base": "8px","container-max": "1280px","margin-mobile": "16px","section-py": "120px"
+        "surface-variant": "#e1e3e4",
+        "on-surface-variant": "#44474e"
       },
       fontFamily: {
-        "body-lg": ["Hanken Grotesk","sans-serif"],"display-lg": ["Hanken Grotesk","sans-serif"],
-        "headline-lg-mobile": ["Hanken Grotesk","sans-serif"],"label-sm": ["Hanken Grotesk","sans-serif"],
-        "headline-md": ["Hanken Grotesk","sans-serif"],"body-md": ["Hanken Grotesk","sans-serif"],
-        "label-md": ["Hanken Grotesk","sans-serif"],"headline-lg": ["Hanken Grotesk","sans-serif"]
+        sans: ["'Hanken Grotesk'", "sans-serif"],
+        "label-md": ["'Hanken Grotesk'", "sans-serif"],
+        "body-md": ["'Hanken Grotesk'", "sans-serif"]
       },
       fontSize: {
-        "body-lg": ["18px",{"lineHeight":"28px","fontWeight":"400"}],
-        "display-lg": ["56px",{"lineHeight":"64px","letterSpacing":"-0.02em","fontWeight":"700"}],
-        "headline-lg-mobile": ["32px",{"lineHeight":"40px","fontWeight":"600"}],
-        "label-sm": ["12px",{"lineHeight":"16px","fontWeight":"500","letterSpacing":"0.05em"}],
-        "headline-md": ["28px",{"lineHeight":"36px","fontWeight":"600","letterSpacing":"-0.01em"}],
-        "body-md": ["16px",{"lineHeight":"26px","fontWeight":"400"}],
-        "label-md": ["14px",{"lineHeight":"20px","letterSpacing":"0.05em","fontWeight":"600","textTransform":"uppercase"}],
-        "headline-lg": ["40px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"600"}]
+        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600", textTransform: "uppercase" }],
+        "body-md": ["16px", { lineHeight: "26px", fontWeight: "400" }]
+      },
+      spacing: {
+        "margin-desktop": "40px",
+        "margin-mobile": "16px"
       }
     }
   }
 }
 </script>
-<link rel="stylesheet" href="style.css">
+
 <style>
-.course-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,33,71,.07),0 1px 4px rgba(0,33,71,.04);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease;display:flex;flex-direction:column;}
-.course-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,33,71,.14),0 4px 12px rgba(0,33,71,.08);}
-.course-card-header{padding:28px 24px 20px;position:relative;overflow:hidden;}
-.course-num{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:12px;}
-.course-icon-wrap{width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;margin-bottom:14px;backdrop-filter:blur(4px);}
-.course-icon-wrap .material-symbols-outlined{font-size:26px;color:#fff;}
-.course-title{font-size:17px;font-weight:700;color:#fff;line-height:1.3;}
-.course-card-body{padding:20px 24px 24px;flex:1;display:flex;flex-direction:column;}
-.course-desc{font-size:14px;line-height:1.7;color:#44474e;flex:1;margin-bottom:16px;}
-.course-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
-.course-meta-badge{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:#44474e;background:#f3f4f5;border-radius:999px;padding:4px 10px;}
-.course-meta-badge .material-symbols-outlined{font-size:14px;}
-.course-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;}
-.course-cat-tag{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px;border-radius:999px;}
-.course-enroll-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;letter-spacing:.04em;color:#002147;text-decoration:none;transition:gap .25s ease;}
-.course-enroll-btn .material-symbols-outlined{font-size:16px;transition:transform .25s ease;}
-.course-enroll-btn:hover{gap:10px;}
-.course-enroll-btn:hover .material-symbols-outlined{transform:translateX(3px);}
-.filter-pill{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid #c4c6cf;background:#fff;color:#44474e;transition:all .25s cubic-bezier(.22,1,.36,1);white-space:nowrap;outline:none;letter-spacing:.02em;}
-.filter-pill:hover{border-color:#002147;color:#002147;background:#f3f4f5;box-shadow:0 4px 14px rgba(0,33,71,.08);transform:translateY(-1px);}
-.filter-pill.active{background:#002147;color:#fff;border-color:#002147;box-shadow:0 4px 16px rgba(0,33,71,.22);}
-.filter-pill.active:hover{background:#003166;}
-.search-input{height:40px;padding:0 14px 0 38px;border:1.5px solid #c4c6cf;border-radius:999px;font-size:13.5px;font-weight:500;font-family:inherit;background:#fff;color:#191c1d;outline:none;transition:all .25s ease;width:200px;}
-#courses-filter-bar{transition:top 0.32s cubic-bezier(0.4,0,0.2,1);}
-.search-input:focus{border-color:#002147;box-shadow:0 0 0 3px rgba(0,33,71,.08);width:240px;}
-.course-card.hidden{display:none;}
+/* ── Reset & Typography ── */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #1e293b;
+  background-color: #f8fafc;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* ── Accessible Focus Ring ── */
+:focus-visible {
+  outline: 2px solid #feb316 !important;
+  outline-offset: 3px !important;
+}
+
+.btn-transition {
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-transition:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 33, 71, 0.15);
+}
+
+/* ── Light / Dark Mode Tokens ── */
+:root {
+  --bg-main: #f8fafc;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --card-shadow: 0 4px 20px -2px rgba(0, 33, 71, 0.05), 0 2px 6px -1px rgba(0, 33, 71, 0.03);
+  --card-hover-shadow: 0 20px 32px -4px rgba(0, 33, 71, 0.10), 0 8px 16px -2px rgba(0, 33, 71, 0.05);
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --nav-bg: rgba(255, 255, 255, 0.94);
+  --sticky-bar-bg: rgba(255, 255, 255, 0.96);
+  --bar-border: #e2e8f0;
+}
+
+
+
+/* ── Site Navbar ── */
+.site-navbar {
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--bar-border);
+  transition: all 0.25s ease;
+}
+
+.nav-link {
+  position: relative;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+  font-size: 14px;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #002147;
+}
+
+
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #feb316;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.25s ease;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  transform: scaleX(1);
+}
+
+
+/* ── Category Colors & Icon Tiles ── */
+/* Language */
+.cat-accent-language { background-color: #1a56db; }
+.cat-tile-language { background: #eff4ff; color: #1a56db; }
+.cat-tag-language { background: #eff4ff; color: #1a56db; border: 1px solid #dbeafe; }
+
+/* Management */
+.cat-accent-management { background-color: #d97706; }
+.cat-tile-management { background: #fffbeb; color: #b45309; }
+.cat-tag-management { background: #fffbeb; color: #b45309; border: 1px solid #fef3c7; }
+
+/* Technology */
+.cat-accent-technology { background-color: #059669; }
+.cat-tile-technology { background: #ecfdf5; color: #047857; }
+.cat-tag-technology { background: #ecfdf5; color: #047857; border: 1px solid #d1fae5; }
+
+/* Creative */
+.cat-accent-creative { background-color: #7c3aed; }
+.cat-tile-creative { background: #f5f3ff; color: #6d28d9; }
+.cat-tag-creative { background: #f5f3ff; color: #6d28d9; border: 1px solid #ede9fe; }
+
+/* Engineering */
+.cat-accent-engineering { background-color: #dc2626; }
+.cat-tile-engineering { background: #fef2f2; color: #b91c1c; }
+.cat-tag-engineering { background: #fef2f2; color: #b91c1c; border: 1px solid #fee2e2; }
+
+/* Dark mode category tile overrides */
+
+
+.cat-icon-tile {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cat-tag {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+/* ── Course Cards ── */
+.course-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-hover-shadow);
+  border-color: #cbd5e1;
+}
+
+
+
+.card-accent-strip {
+  height: 3px;
+  width: 100%;
+}
+
+.course-title {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text-main);
+}
+
+.course-desc {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
 .courses-cta{background:linear-gradient(135deg,#002147 0%,#003166 100%);position:relative;overflow:hidden;}
-.courses-cta::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(254,179,22,.15) 0%,transparent 70%);pointer-events:none;}
-.courses-cta::after{content:'';position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(110,180,255,.1) 0%,transparent 70%);pointer-events:none;}
-.course-outline-btn{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;letter-spacing:.02em;color:#002147;background:rgba(0,33,71,.06);border:1px solid rgba(0,33,71,.12);padding:4px 10px;border-radius:999px;cursor:pointer;transition:all .2s ease;text-decoration:none;}
-.course-outline-btn:hover{background:#002147;color:#fff;border-color:#002147;transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,33,71,.12);}
-.outline-modal-backdrop{position:fixed;inset:0;background:rgba(0,18,38,.65);backdrop-filter:blur(6px);z-index:999;opacity:0;pointer-events:none;transition:opacity .25s ease;display:flex;align-items:center;justify-content:center;padding:16px;}
-.outline-modal-backdrop.active{opacity:1;pointer-events:auto;}
-.outline-modal-panel{background:#fff;border-radius:20px;max-width:820px;width:100%;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 25px 60px rgba(0,25,50,.35);transform:scale(.95) translateY(12px);transition:all .28s cubic-bezier(.22,1,.36,1);overflow:hidden;}
-.outline-modal-backdrop.active .outline-modal-panel{transform:scale(1) translateY(0);}
+
+/* Level Badges Colour-Coding */
+.level-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  line-height: 1.2;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+}
+
+/* Beginner: Green */
+.level-beginner {
+  background-color: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+.level-beginner .badge-dot { background-color: #16a34a; }
+
+/* Intermediate: Amber */
+.level-intermediate {
+  background-color: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+.level-intermediate .badge-dot { background-color: #d97706; }
+
+/* Advanced: Red */
+.level-advanced {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+.level-advanced .badge-dot { background-color: #dc2626; }
+
+/* All Levels: Blue */
+.level-all {
+  background-color: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+}
+.level-all .badge-dot { background-color: #2563eb; }
+
+/* Dark mode level badges */
+
+
+/* ── Card Buttons ── */
+.view-outline-btn {
+  background: transparent;
+  border: none;
+  padding: 6px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(148, 163, 184, 0.5);
+}
+
+.view-outline-btn:hover {
+  color: #002147;
+  text-decoration-color: #002147;
+}
+
+
+
+.enroll-btn {
+  background-color: #002147;
+  color: #ffffff;
+  border: 1px solid #002147;
+}
+
+.enroll-btn:hover {
+  background-color: #003166;
+  border-color: #003166;
+  transform: translateY(-1px);
+}
+
+
+
+/* ── Sticky Filter Bar ── */
+#courses-filter-bar {
+  position: sticky;
+  top: 96px;
+  z-index: 30;
+  background: var(--sticky-bar-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--bar-border);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+  transition: top 0.25s ease;
+}
+
+/* Horizontal scrolling pills for mobile */
+.filter-pills-scroll {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 4px 0;
+}
+.filter-pills-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--bar-border);
+  background: var(--card-bg);
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.filter-pill:hover {
+  border-color: #002147;
+  color: #002147;
+  background: #f1f5f9;
+}
+
+
+
+.filter-pill.active {
+  background: #002147;
+  color: #ffffff;
+  border-color: #002147;
+}
+
+
+
+.pill-count-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 9999px;
+  background: rgba(0, 33, 71, 0.08);
+  color: inherit;
+}
+
+.filter-pill.active .pill-count-badge {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+
+
+/* Search Input */
+.search-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--text-muted);
+  font-size: 18px !important;
+  line-height: 1 !important;
+  z-index: 2;
+}
+
+.search-input {
+  height: 38px;
+  padding: 0 14px 0 38px !important;
+  border: 1px solid var(--bar-border) !important;
+  border-radius: 9999px !important;
+  font-size: 13.5px !important;
+  background: var(--card-bg) !important;
+  color: var(--text-main) !important;
+  outline: none !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease;
+  width: 200px;
+}
+
+.search-input:focus {
+  border-color: #002147 !important;
+  box-shadow: 0 0 0 3px rgba(0, 33, 71, 0.1) !important;
+  width: 240px;
+}
+
+
+
+/* Level Select Dropdown */
+.level-select {
+  height: 38px;
+  padding: 0 30px 0 12px;
+  border: 1px solid var(--bar-border);
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--card-bg);
+  color: var(--text-main);
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.level-select:focus {
+  border-color: #002147;
+}
+
+
+
+/* ── Outline Modal ── */
+.outline-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 18, 38, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.outline-modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.outline-modal-panel {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  max-width: 860px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 60px rgba(0, 25, 50, 0.35);
+  transform: scale(0.96) translateY(10px);
+  transition: transform 0.25s cubic-bezier(0.2, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.outline-modal-backdrop.active .outline-modal-panel {
+  transform: scale(1) translateY(0);
+}
+
+/* Gold Timeline for Sessions */
+.timeline-session-card {
+  position: relative;
+  background: #f8fafc;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+
+
+.session-number-pill {
+  background: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fef3c7;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+
+
+/* ── Quality: One Staggered Fade-in Animation ── */
+@keyframes gridItemFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade {
+  animation: gridItemFadeIn 0.35s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
 </style>
 </head>
-<body class="bg-surface-container-lowest text-on-surface font-body-md antialiased overflow-x-hidden">
+<body class="antialiased overflow-x-hidden min-h-screen flex flex-col">
 
 <!-- Navigation -->
-<header class="bg-surface-container-lowest/95 backdrop-blur-xl fixed top-0 w-full z-50 shadow-[0_4px_30px_rgba(0,33,71,0.03)] border-b border-surface-variant/50 transition-all duration-300 site-navbar">
-  <div class="flex justify-between items-center max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop h-24">
-    <a class="flex items-center gap-2 transition-transform duration-300 hover:scale-[1.02] flex-shrink-0 w-28 h-24" href="index.html" aria-label="Blueprint Training Centre home">
-      <img alt="Blueprint Training Centre Logo" class="h-28 w-auto object-contain" src="image/no-backgroundBG.png" onerror="this.onerror=null;this.src='image/logo.jpg'">
-    </a>
-    <nav class="hidden md:flex items-center gap-8" role="navigation" aria-label="Main navigation">
-      <a class="nav-link relative font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors duration-300" href="index.html">Home</a>
-      <a class="nav-link relative font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors duration-300" href="index.html#about">About</a>
-      <a class="nav-link relative font-label-md text-label-md text-primary-container active" href="courses.html">Courses</a>
-      <a class="nav-link relative font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors duration-300" href="index.html#vision">Vision &amp; Mission</a>
-      <a class="nav-link relative font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors duration-300" href="index.html#contact">Contact</a>
-    </nav>
-    <div class="hidden md:block">
-      <a class="inline-flex items-center justify-center px-8 py-3.5 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-md hover:bg-secondary-fixed btn-transition" href="enrollment.html">Enroll Now</a>
-    </div>
-    <button class="md:hidden flex items-center justify-center w-10 h-10 text-primary-container hover:bg-surface-container rounded-lg transition-colors" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
-      <span class="material-symbols-outlined text-[26px]">menu</span>
-    </button>
-  </div>
+<header
+        class="bg-surface-container-lowest/95 backdrop-blur-xl fixed top-0 w-full z-50 shadow-[0_4px_30px_rgba(0,33,71,0.03)] border-b border-surface-variant/50 transition-all duration-300 site-navbar">
+        <!-- Top bar -->
+        <div
+                class="flex justify-between items-center max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop h-24">
+                <!-- Logo -->
+                <a class="flex items-center gap-2 transition-transform duration-300 hover:scale-[1.02] flex-shrink-0 w-28 h-24"
+                        href="index.html">
+                        <img alt="Blueprint Training Centre Logo" class="h-28 w-auto object-contain"
+                                src="image/no-backgroundBG.png"
+                                onerror="this.onerror=null;this.src='image/logo.jpg'">
+                </a>
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center gap-8">
+                        <a class="nav-link relative font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors duration-300"
+                                href="index.html">Home</a>
+                        <a class="nav-link relative font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors duration-300"
+                                href="index.html#about">About</a>
+                        <a class="nav-link relative font-label-md text-label-md text-primary-container active"
+                                href="courses.html">Courses</a>
+                        <a class="nav-link relative font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors duration-300"
+                                href="index.html#vision">Vision &amp; Mission</a>
+                        <a class="nav-link relative font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors duration-300"
+                                href="index.html#contact">Contact</a>
+                </nav>
+                <!-- CTA -->
+                <div class="hidden md:block">
+                        <a class="inline-flex items-center justify-center px-8 py-3.5 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-md hover:bg-secondary-fixed btn-transition"
+                                href="enrollment.html">
+                                Enroll Now
+                        </a>
+                </div>
+                <!-- Mobile Menu Toggle -->
+                <button class="md:hidden flex items-center justify-center w-10 h-10 text-primary-container hover:bg-surface-container rounded-lg transition-colors"
+                        id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+                        <span class="material-symbols-outlined text-[26px]">menu</span>
+                </button>
+        </div>
 </header>
 
-<!-- Mobile Backdrop -->
-<div class="fixed inset-0 z-[55] bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden" id="mobile-backdrop"></div>
+<!-- Mobile Side Drawer Backdrop -->
+<div class="fixed inset-0 z-[55] bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"
+        id="mobile-backdrop"></div>
 
-<!-- Mobile Drawer -->
-<div class="fixed inset-y-0 left-0 z-[60] flex flex-col p-6 h-full w-72 bg-surface shadow-xl transform -translate-x-full transition-transform duration-300 md:hidden" id="mobile-menu">
-  <div class="flex justify-between items-center mb-8">
-    <div class="font-bold text-[18px] text-primary leading-tight">Blueprint Training</div>
-    <button class="flex items-center justify-center w-9 h-9 text-primary hover:bg-surface-container rounded-lg transition-colors" id="mobile-menu-close" aria-label="Close menu">
-      <span class="material-symbols-outlined text-[22px]">close</span>
-    </button>
-  </div>
-  <div class="flex flex-col gap-1">
-    <a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-md text-body-md" href="index.html"><span class="material-symbols-outlined text-[22px]">home</span>Home</a>
-    <a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-md text-body-md" href="index.html#about"><span class="material-symbols-outlined text-[22px]">info</span>About</a>
-    <a class="flex items-center gap-4 px-3 py-3 rounded-lg bg-surface-container-high text-primary-container font-body-md text-body-md" href="courses.html"><span class="material-symbols-outlined text-[22px]">school</span>Courses</a>
-    <a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-md text-body-md" href="index.html#vision"><span class="material-symbols-outlined text-[22px]">visibility</span>Vision &amp; Mission</a>
-    <a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-md text-body-md" href="index.html#contact"><span class="material-symbols-outlined text-[22px]">mail</span>Contact</a>
-  </div>
-  <div class="mt-auto pt-6 border-t border-surface-variant">
-    <a class="flex items-center justify-center w-full px-6 py-3 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-lg hover:bg-secondary-fixed transition-colors btn-transition" href="enrollment.html">Enroll Now</a>
-  </div>
+<!-- Mobile Side Drawer -->
+<div class="fixed inset-y-0 left-0 z-[60] flex flex-col p-6 h-full w-72 bg-surface shadow-xl transform -translate-x-full transition-transform duration-300 md:hidden"
+        id="mobile-menu">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-8">
+                <div class="font-bold text-[18px] text-primary leading-tight">Blueprint Training</div>
+                <button class="flex items-center justify-center w-9 h-9 text-primary hover:bg-surface-container rounded-lg transition-colors"
+                        id="mobile-menu-close" aria-label="Close menu">
+                        <span class="material-symbols-outlined text-[22px]">close</span>
+                </button>
+        </div>
+        <!-- Nav Links -->
+        <div class="flex flex-col gap-1">
+                <a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-md text-body-md"
+                        href="index.html">
+                        <span class="material-symbols-outlined text-[22px]">home</span>Home
+                </a>
+                <a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-md text-body-md"
+                        href="index.html#about">
+                        <span class="material-symbols-outlined text-[22px]">info</span>About
+                </a>
+                <a class="flex items-center gap-4 px-3 py-3 rounded-lg bg-surface-container-high text-primary font-semibold transition-colors font-body-md text-body-md"
+                        href="courses.html">
+                        <span class="material-symbols-outlined text-[22px]">school</span>Courses
+                </a>
+                <a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-md text-body-md"
+                        href="index.html#vision">
+                        <span class="material-symbols-outlined text-[22px]">visibility</span>Vision &amp;
+                        Mission
+                </a>
+                <a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-md text-body-md"
+                        href="index.html#contact">
+                        <span class="material-symbols-outlined text-[22px]">mail</span>Contact
+                </a>
+        </div>
+        <!-- Enroll Now pinned to bottom -->
+        <div class="mt-auto pt-6 border-t border-surface-variant">
+                <a class="flex items-center justify-center w-full px-6 py-3 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-lg hover:bg-secondary-fixed transition-colors btn-transition"
+                        href="enrollment.html">
+                        Enroll Now
+                </a>
+        </div>
 </div>
 
-<!-- Hero -->
-<section class="relative w-full bg-primary-container overflow-hidden pt-24">
-  <div class="absolute inset-0 opacity-[0.025]" style="background-image:linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px);background-size:48px 48px;"></div>
-  <div class="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(254,179,22,.15) 0%,transparent 70%);"></div>
-  <div class="absolute -bottom-20 -left-20 w-[350px] h-[350px] rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(110,180,255,.12) 0%,transparent 70%);"></div>
-  <div class="relative z-10 max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-20 md:py-28 flex flex-col md:flex-row items-center gap-16">
-    <div class="flex-1">
-      <h1 class="text-on-primary mb-5 leading-tight" style="font-size:clamp(36px,5vw,62px);font-weight:800;letter-spacing:-.025em;">
-        Invest in<br>Your <span style="color:#feb316;">Future</span>
+<!-- Hero Section with Browse by Field Panel -->
+<!-- Longer / Taller -->
+<section class="relative w-full bg-[#002147] text-white pt-36 pb-28 md:pt-48 md:pb-36 overflow-hidden">
+
+  <!-- Subtle Architectural Grid Background -->
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image:linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px);background-size:40px 40px;"></div>
+  <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(254,179,22,0.15) 0%,transparent 70%);"></div>
+
+  <div class="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 md:px-10">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-semibold mb-5 text-white/90">
+        <span>Approved &amp; permitted by KHDA &bull; Dubai, UAE</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 leading-tight">
+        Invest in your <span class="text-secondary">future</span> with professional skills.
       </h1>
-      <p class="mb-10 leading-relaxed" style="font-size:17px;max-width:500px;color:rgba(255,255,255,.65);">
-        27 industry-aligned programmes designed to accelerate your career. From language fluency to engineering expertise &mdash; your next qualification starts here.
+      <p class="text-base sm:text-lg text-white/75 leading-relaxed max-w-2xl mb-8">
+        Explore 27 industry-recognised training programmes delivered by certified experts in Dubai. Build verifiable expertise in language, management, technology, creative arts, and engineering.
       </p>
-      <div class="flex flex-wrap gap-4">
-        <a href="enrollment.html" class="inline-flex items-center gap-2 px-8 py-4 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-full hover:bg-secondary-fixed btn-transition">
-          <span class="material-symbols-outlined" style="font-size:18px;">edit_note</span>Enroll Now
+      <div class="flex flex-wrap gap-4 items-center">
+        <a href="#courses-grid" class="inline-flex items-center gap-2 px-7 py-3.5 bg-secondary text-primary font-bold text-sm rounded-lg hover:bg-secondary-dark hover:shadow-[0_10px_25px_rgba(254,179,22,0.35)] btn-transition">
+          <span class="material-symbols-outlined text-[19px]">explore</span>
+          <span>Browse all courses</span>
         </a>
-        <a href="index.html#contact" class="inline-flex items-center gap-2 px-8 py-4 text-on-primary font-label-md text-label-md rounded-full hover:bg-on-primary/10 btn-transition backdrop-blur-sm" style="border:1.5px solid rgba(255,255,255,.25);">
-          <span class="material-symbols-outlined" style="font-size:18px;">call</span>Contact Us
+        <a href="https://wa.me/971559809491" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-7 py-3.5 text-white bg-white/10 hover:bg-white/20 border border-white/25 hover:border-white/40 font-semibold text-sm rounded-lg btn-transition">
+          <span class="material-symbols-outlined text-[19px]">chat</span>
+          <span>Speak with an advisor</span>
         </a>
       </div>
     </div>
   </div>
-  <div class="absolute bottom-0 left-0 right-0 h-[3px] opacity-40" style="background:linear-gradient(90deg,#feb316,#fff 50%,#feb316);"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-[3px]" style="background:linear-gradient(90deg,#feb316,#ffffff 50%,#feb316);"></div>
 </section>
 
-<!-- Filter Bar -->
-<div id="courses-filter-bar" class="sticky z-40 border-b py-4" style="top:96px;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-color:#e1e3e4;box-shadow:0 2px 12px rgba(0,33,71,.05);">
-  <div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop flex flex-wrap items-center gap-3">
-    <div class="flex items-center gap-2 flex-wrap flex-1">
-      <button class="filter-pill active" data-filter="all"><span class="material-symbols-outlined" style="font-size:15px;">apps</span>All </button>
-      <button class="filter-pill" data-filter="language"><span class="material-symbols-outlined" style="font-size:15px;">translate</span>Language </button>
-      <button class="filter-pill" data-filter="management"><span class="material-symbols-outlined" style="font-size:15px;">business_center</span>Management </button>
-      <button class="filter-pill" data-filter="technology"><span class="material-symbols-outlined" style="font-size:15px;">computer</span>Technology </button>
-      <button class="filter-pill" data-filter="creative"><span class="material-symbols-outlined" style="font-size:15px;">palette</span>Creative </button>
-      <button class="filter-pill" data-filter="engineering"><span class="material-symbols-outlined" style="font-size:15px;">engineering</span>Engineering </button>
+<!-- Sticky Filter Bar -->
+<div id="courses-filter-bar">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-10 py-3.5 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+    <!-- Category Pills with Live Counts (Horizontally scrollable on mobile) -->
+    <div class="filter-pills-scroll flex-1" role="tablist" aria-label="Course categories">
+      <button class="filter-pill active" data-filter="all" role="tab" aria-selected="true">
+        <span class="material-symbols-outlined text-[16px]">apps</span>
+        <span>All</span>
+        <span class="pill-count-badge" id="count-all">27</span>
+      </button>
+      <button class="filter-pill" data-filter="language" role="tab" aria-selected="false">
+        <span class="material-symbols-outlined text-[16px]">translate</span>
+        <span>Language</span>
+        <span class="pill-count-badge" id="count-language">3</span>
+      </button>
+      <button class="filter-pill" data-filter="management" role="tab" aria-selected="false">
+        <span class="material-symbols-outlined text-[16px]">business_center</span>
+        <span>Management</span>
+        <span class="pill-count-badge" id="count-management">10</span>
+      </button>
+      <button class="filter-pill" data-filter="technology" role="tab" aria-selected="false">
+        <span class="material-symbols-outlined text-[16px]">computer</span>
+        <span>Technology</span>
+        <span class="pill-count-badge" id="count-technology">5</span>
+      </button>
+      <button class="filter-pill" data-filter="creative" role="tab" aria-selected="false">
+        <span class="material-symbols-outlined text-[16px]">palette</span>
+        <span>Creative</span>
+        <span class="pill-count-badge" id="count-creative">6</span>
+      </button>
+      <button class="filter-pill" data-filter="engineering" role="tab" aria-selected="false">
+        <span class="material-symbols-outlined text-[16px]">engineering</span>
+        <span>Engineering</span>
+        <span class="pill-count-badge" id="count-engineering">3</span>
+      </button>
     </div>
-    <div class="relative">
-      
-      <input class="search-input" id="course-search" type="search" placeholder="Search courses&hellip;" aria-label="Search courses">
+
+    <!-- Search Box with Magnifier Icon -->
+    <div class="flex items-center gap-3 justify-end flex-shrink-0">
+      <div class="search-input-wrap">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input class="search-input" id="course-search" type="search" placeholder="Search courses&hellip;" aria-label="Search courses">
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Courses Grid -->
-<main class="py-16 md:py-20 bg-surface-container-lowest" id="main-content">
-  <div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
-    <div class="flex items-center justify-between mb-10 gap-4 flex-wrap">
+<!-- Main Content / Course Grid Section -->
+<main class="py-12 md:py-16 flex-1" id="main-content">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-10">
+    
+    <!-- Section Header Row -->
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 pb-6 border-b border-slate-200">
+      <!-- Left: Heading and One-line certification note -->
       <div>
-        <p class="font-label-md text-label-md text-secondary mb-2 tracking-widest">OUR PROGRAMMES</p>
-        <h2 class="font-headline-lg text-headline-lg text-primary-container leading-tight">All Courses</h2>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-1 text-primary">
+          All courses
+        </h2>
+        <p class="text-sm text-slate-500 flex items-center gap-1.5">
+          <span>All programmes are UAE certified and permitted by KHDA in Dubai.</span>
+        </p>
       </div>
-      
+
+      <!-- Right: Level Filter above live Showing X of Y courses count -->
+      <div class="flex flex-col sm:items-end gap-2 flex-shrink-0">
+        <div class="flex items-center gap-2">
+          <label for="level-filter" class="text-xs font-semibold uppercase tracking-wider text-slate-400">Level</label>
+          <select id="level-filter" class="level-select" aria-label="Filter by level">
+            <option value="any">Any level</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+        <!-- Live count -->
+        <span id="courses-count-label" class="text-xs font-semibold text-slate-500" aria-live="polite">
+          Showing 27 of 27 courses
+        </span>
+      </div>
     </div>
+
+    <!-- Course Cards Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="courses-grid" role="list" aria-label="Course listings">
+<article class="course-card group animate-fade" data-cat="language" data-level="beginner" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-language"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-language">
+                <span class="material-symbols-outlined text-[24px]">translate</span>
+              </div>
+              <span class="cat-tag cat-tag-language">Language</span>
+            </div>
 
-      <article class="course-card" data-cat="language" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#1a56db,#3b82f6);"><div class="course-icon-wrap"><span class="material-symbols-outlined">translate</span></div><h3 class="course-title">English Proficiency</h3></div><div class="course-card-body"><p class="course-desc">Develop clear, confident spoken and written English skills for personal and workplace success in the UAE. Build fluency, refine pronunciation, and master contemporary professional correspondence through practical scenarios.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>All Levels</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#e8f0fe;color:#1a56db;">Language</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" data-outline="english-proficiency" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Arabic for Everyday &amp; Workplace Communication</h3>
 
-      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><div class="course-icon-wrap"><span class="material-symbols-outlined">business_center</span></div><h3 class="course-title">Secretarial &amp; Office Management</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Beginner</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fef3c7;color:#92400e;">Management</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><div class="course-icon-wrap"><span class="material-symbols-outlined">rocket_launch</span></div><h3 class="course-title">Entrepreneurship Management</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fef3c7;color:#92400e;">Management</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-beginner">
+                <span class="badge-dot"></span>
+                <span>Beginner</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
 
-      <article class="course-card" data-cat="creative" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);"><div class="course-icon-wrap"><span class="material-symbols-outlined">spa</span></div><h3 class="course-title">Cosmetology Skills Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>All Levels</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#f5f3ff;color:#6d28d9;">Creative</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Arabic%20for%20Everyday%20%26amp%3B%20Workplace%20Communication%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
 
-      <article class="course-card" data-cat="creative" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);"><div class="course-icon-wrap"><span class="material-symbols-outlined">face_retouching_natural</span></div><h3 class="course-title">Makeup Skills Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Beginner</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#f5f3ff;color:#6d28d9;">Creative</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+<article class="course-card group animate-fade" data-cat="language" data-level="all-levels" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-language"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-language">
+                <span class="material-symbols-outlined text-[24px]">translate</span>
+              </div>
+              <span class="cat-tag cat-tag-language">Language</span>
+            </div>
 
-      <article class="course-card" data-cat="technology" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#059669,#10b981);"><div class="course-icon-wrap"><span class="material-symbols-outlined">table_chart</span></div><h3 class="course-title">Microsoft Excel Skills Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>All Levels</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#ecfdf5;color:#065f46;">Technology</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">English Proficiency</h3>
 
-      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#0369a1,#0ea5e9);"><div class="course-icon-wrap"><span class="material-symbols-outlined">groups</span></div><h3 class="course-title">Leadership Management Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#e0f2fe;color:#0369a1;">Management</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Develop clear, confident spoken and written English skills for personal and workplace success in the UAE. Build fluency, refine pronunciation, and master contemporary professional correspondence through practical scenarios.</p>
 
-      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><div class="course-icon-wrap"><span class="material-symbols-outlined">receipt_long</span></div><h3 class="course-title">UAE Corporate Tax Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fef3c7;color:#92400e;">Management</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-all">
+                <span class="badge-dot"></span>
+                <span>All Levels</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
 
-      <article class="course-card" data-cat="language" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#1a56db,#3b82f6);"><div class="course-icon-wrap"><span class="material-symbols-outlined">translate</span></div><h3 class="course-title">Arabic for Everyday &amp; Workplace Communication</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Beginner</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#e8f0fe;color:#1a56db;">Language</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20English%20Proficiency%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
 
-      <article class="course-card" data-cat="technology" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#059669,#10b981);"><div class="course-icon-wrap"><span class="material-symbols-outlined">computer</span></div><h3 class="course-title">Advanced MS Office for Professionals</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Advanced</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#ecfdf5;color:#065f46;">Technology</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+<article class="course-card group animate-fade" data-cat="language" data-level="intermediate" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-language"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-language">
+                <span class="material-symbols-outlined text-[24px]">school</span>
+              </div>
+              <span class="cat-tag cat-tag-language">Language</span>
+            </div>
 
-      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><div class="course-icon-wrap"><span class="material-symbols-outlined">local_shipping</span></div><h3 class="course-title">Logistics &amp; Supply Chain Management</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fef3c7;color:#92400e;">Management</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">IELTS Exam Preparation</h3>
 
-      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><div class="course-icon-wrap"><span class="material-symbols-outlined">calculate</span></div><h3 class="course-title">Accounting Skills Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>All Levels</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fef3c7;color:#92400e;">Management</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-      <article class="course-card" data-cat="language" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#1a56db,#3b82f6);"><div class="course-icon-wrap"><span class="material-symbols-outlined">school</span></div><h3 class="course-title">IELTS Exam Preparation</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#e8f0fe;color:#1a56db;">Language</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-intermediate">
+                <span class="badge-dot"></span>
+                <span>Intermediate</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
 
-      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><div class="course-icon-wrap"><span class="material-symbols-outlined">settings_suggest</span></div><h3 class="course-title">Operations Management Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fef3c7;color:#92400e;">Management</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20IELTS%20Exam%20Preparation%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
 
-      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><div class="course-icon-wrap"><span class="material-symbols-outlined">business</span></div><h3 class="course-title">Business Management for Professionals</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Advanced</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fef3c7;color:#92400e;">Management</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+<article class="course-card group animate-fade" data-cat="management" data-level="all-levels" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-management"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-management">
+                <span class="material-symbols-outlined text-[24px]">calculate</span>
+              </div>
+              <span class="cat-tag cat-tag-management">Management</span>
+            </div>
 
-      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><div class="course-icon-wrap"><span class="material-symbols-outlined">shopping_cart_checkout</span></div><h3 class="course-title">Procurement Management Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fef3c7;color:#92400e;">Management</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Accounting Skills Training</h3>
 
-      <article class="course-card" data-cat="management" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#d97706,#f59e0b);"><div class="course-icon-wrap"><span class="material-symbols-outlined">manage_accounts</span></div><h3 class="course-title">Human Resources Skills Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>All Levels</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fef3c7;color:#92400e;">Management</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-      <article class="course-card" data-cat="creative" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);"><div class="course-icon-wrap"><span class="material-symbols-outlined">draw</span></div><h3 class="course-title">Graphic Design Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Beginner</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#f5f3ff;color:#6d28d9;">Creative</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-all">
+                <span class="badge-dot"></span>
+                <span>All Levels</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
 
-      <article class="course-card" data-cat="creative" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);"><div class="course-icon-wrap"><span class="material-symbols-outlined">camera_alt</span></div><h3 class="course-title">Photography Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>All Levels</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#f5f3ff;color:#6d28d9;">Creative</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Accounting%20Skills%20Training%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
 
-      <article class="course-card" data-cat="technology" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#059669,#10b981);"><div class="course-icon-wrap"><span class="material-symbols-outlined">computer</span></div><h3 class="course-title">Computer Essentials Skills Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Beginner</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#ecfdf5;color:#065f46;">Technology</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+<article class="course-card group animate-fade" data-cat="management" data-level="advanced" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-management"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-management">
+                <span class="material-symbols-outlined text-[24px]">business</span>
+              </div>
+              <span class="cat-tag cat-tag-management">Management</span>
+            </div>
 
-      <article class="course-card" data-cat="creative" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);"><div class="course-icon-wrap"><span class="material-symbols-outlined">videocam</span></div><h3 class="course-title">Videography Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>All Levels</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#f5f3ff;color:#6d28d9;">Creative</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Business Management for Professionals</h3>
 
-      <article class="course-card" data-cat="technology" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#059669,#10b981);"><div class="course-icon-wrap"><span class="material-symbols-outlined">trending_up</span></div><h3 class="course-title">Social Media Marketing Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>All Levels</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#ecfdf5;color:#065f46;">Technology</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-      <article class="course-card" data-cat="technology" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#059669,#10b981);"><div class="course-icon-wrap"><span class="material-symbols-outlined">architecture</span></div><h3 class="course-title">AutoCAD Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Beginner</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#ecfdf5;color:#065f46;">Technology</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-advanced">
+                <span class="badge-dot"></span>
+                <span>Advanced</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
 
-      <article class="course-card" data-cat="creative" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);"><div class="course-icon-wrap"><span class="material-symbols-outlined">content_cut</span></div><h3 class="course-title">Hair Stylist Skills Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Beginner</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#f5f3ff;color:#6d28d9;">Creative</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Business%20Management%20for%20Professionals%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
 
-      <article class="course-card" data-cat="engineering" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#dc2626,#f87171);"><div class="course-icon-wrap"><span class="material-symbols-outlined">engineering</span></div><h3 class="course-title">Revit Architecture for Professionals</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fff1f2;color:#9f1239;">Engineering</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+<article class="course-card group animate-fade" data-cat="management" data-level="intermediate" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-management"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-management">
+                <span class="material-symbols-outlined text-[24px]">rocket_launch</span>
+              </div>
+              <span class="cat-tag cat-tag-management">Management</span>
+            </div>
 
-      <article class="course-card" data-cat="engineering" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#dc2626,#f87171);"><div class="course-icon-wrap"><span class="material-symbols-outlined">foundation</span></div><h3 class="course-title">Civil Engineering Skills Training</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fff1f2;color:#9f1239;">Engineering</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Entrepreneurship Management</h3>
 
-      <article class="course-card" data-cat="engineering" role="listitem"><div class="course-card-header" style="background:linear-gradient(135deg,#dc2626,#f87171);"><div class="course-icon-wrap"><span class="material-symbols-outlined">straighten</span></div><h3 class="course-title">Quantity Surveying for Professionals</h3></div><div class="course-card-body"><p class="course-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><div class="course-meta"><span class="course-meta-badge"><span class="material-symbols-outlined">signal_cellular_alt</span>Intermediate</span><span class="course-meta-badge"><span class="material-symbols-outlined">schedule</span>12 Sessions (3 hrs)</span><span class="course-meta-badge"><span class="material-symbols-outlined">verified</span>UAE Certified</span></div><div class="course-foot"><span class="course-cat-tag" style="background:#fff1f2;color:#9f1239;">Engineering</span><div class="flex items-center gap-2"><button type="button" class="course-outline-btn" aria-haspopup="dialog"><span class="material-symbols-outlined" style="font-size:15px;">menu_book</span>Outline</button><a href="enrollment.html" class="course-enroll-btn">Enroll <span class="material-symbols-outlined">arrow_forward</span></a></div></div></div></article>
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-intermediate">
+                <span class="badge-dot"></span>
+                <span>Intermediate</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Entrepreneurship%20Management%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="management" data-level="all-levels" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-management"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-management">
+                <span class="material-symbols-outlined text-[24px]">manage_accounts</span>
+              </div>
+              <span class="cat-tag cat-tag-management">Management</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Human Resources Skills Training</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-all">
+                <span class="badge-dot"></span>
+                <span>All Levels</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Human%20Resources%20Skills%20Training%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="management" data-level="intermediate" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-management"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-management">
+                <span class="material-symbols-outlined text-[24px]">groups</span>
+              </div>
+              <span class="cat-tag cat-tag-management">Management</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Leadership Management Training</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-intermediate">
+                <span class="badge-dot"></span>
+                <span>Intermediate</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Leadership%20Management%20Training%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="management" data-level="intermediate" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-management"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-management">
+                <span class="material-symbols-outlined text-[24px]">local_shipping</span>
+              </div>
+              <span class="cat-tag cat-tag-management">Management</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Logistics &amp; Supply Chain Management</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-intermediate">
+                <span class="badge-dot"></span>
+                <span>Intermediate</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Logistics%20%26amp%3B%20Supply%20Chain%20Management%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="management" data-level="intermediate" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-management"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-management">
+                <span class="material-symbols-outlined text-[24px]">settings_suggest</span>
+              </div>
+              <span class="cat-tag cat-tag-management">Management</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Operations Management Training</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-intermediate">
+                <span class="badge-dot"></span>
+                <span>Intermediate</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Operations%20Management%20Training%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="management" data-level="intermediate" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-management"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-management">
+                <span class="material-symbols-outlined text-[24px]">shopping_cart_checkout</span>
+              </div>
+              <span class="cat-tag cat-tag-management">Management</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Procurement Management Training</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-intermediate">
+                <span class="badge-dot"></span>
+                <span>Intermediate</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Procurement%20Management%20Training%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="management" data-level="beginner" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-management"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-management">
+                <span class="material-symbols-outlined text-[24px]">business_center</span>
+              </div>
+              <span class="cat-tag cat-tag-management">Management</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Secretarial &amp; Office Management</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-beginner">
+                <span class="badge-dot"></span>
+                <span>Beginner</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Secretarial%20%26amp%3B%20Office%20Management%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="management" data-level="intermediate" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-management"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-management">
+                <span class="material-symbols-outlined text-[24px]">receipt_long</span>
+              </div>
+              <span class="cat-tag cat-tag-management">Management</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">UAE Corporate Tax Training</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-intermediate">
+                <span class="badge-dot"></span>
+                <span>Intermediate</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20UAE%20Corporate%20Tax%20Training%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="technology" data-level="advanced" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-technology"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-technology">
+                <span class="material-symbols-outlined text-[24px]">computer</span>
+              </div>
+              <span class="cat-tag cat-tag-technology">Technology</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Advanced MS Office for Professionals</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-advanced">
+                <span class="badge-dot"></span>
+                <span>Advanced</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Advanced%20MS%20Office%20for%20Professionals%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="technology" data-level="beginner" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-technology"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-technology">
+                <span class="material-symbols-outlined text-[24px]">architecture</span>
+              </div>
+              <span class="cat-tag cat-tag-technology">Technology</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">AutoCAD Training</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-beginner">
+                <span class="badge-dot"></span>
+                <span>Beginner</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20AutoCAD%20Training%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="technology" data-level="beginner" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-technology"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-technology">
+                <span class="material-symbols-outlined text-[24px]">computer</span>
+              </div>
+              <span class="cat-tag cat-tag-technology">Technology</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Computer Essentials Skills Training</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-beginner">
+                <span class="badge-dot"></span>
+                <span>Beginner</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Computer%20Essentials%20Skills%20Training%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="technology" data-level="all-levels" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-technology"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-technology">
+                <span class="material-symbols-outlined text-[24px]">table_chart</span>
+              </div>
+              <span class="cat-tag cat-tag-technology">Technology</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Microsoft Excel Skills Training</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-all">
+                <span class="badge-dot"></span>
+                <span>All Levels</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Microsoft%20Excel%20Skills%20Training%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="technology" data-level="all-levels" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-technology"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-technology">
+                <span class="material-symbols-outlined text-[24px]">trending_up</span>
+              </div>
+              <span class="cat-tag cat-tag-technology">Technology</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Social Media Marketing Training</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-all">
+                <span class="badge-dot"></span>
+                <span>All Levels</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Social%20Media%20Marketing%20Training%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="creative" data-level="all-levels" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-creative"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-creative">
+                <span class="material-symbols-outlined text-[24px]">spa</span>
+              </div>
+              <span class="cat-tag cat-tag-creative">Creative</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Cosmetology Skills Training</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-all">
+                <span class="badge-dot"></span>
+                <span>All Levels</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Cosmetology%20Skills%20Training%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="creative" data-level="beginner" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-creative"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-creative">
+                <span class="material-symbols-outlined text-[24px]">draw</span>
+              </div>
+              <span class="cat-tag cat-tag-creative">Creative</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Graphic Design Training</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-beginner">
+                <span class="badge-dot"></span>
+                <span>Beginner</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Graphic%20Design%20Training%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="creative" data-level="beginner" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-creative"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-creative">
+                <span class="material-symbols-outlined text-[24px]">content_cut</span>
+              </div>
+              <span class="cat-tag cat-tag-creative">Creative</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Hair Stylist Skills Training</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-beginner">
+                <span class="badge-dot"></span>
+                <span>Beginner</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Hair%20Stylist%20Skills%20Training%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="creative" data-level="beginner" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-creative"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-creative">
+                <span class="material-symbols-outlined text-[24px]">face_retouching_natural</span>
+              </div>
+              <span class="cat-tag cat-tag-creative">Creative</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Makeup Skills Training</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-beginner">
+                <span class="badge-dot"></span>
+                <span>Beginner</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Makeup%20Skills%20Training%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="creative" data-level="all-levels" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-creative"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-creative">
+                <span class="material-symbols-outlined text-[24px]">camera_alt</span>
+              </div>
+              <span class="cat-tag cat-tag-creative">Creative</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Photography Training</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-all">
+                <span class="badge-dot"></span>
+                <span>All Levels</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Photography%20Training%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="creative" data-level="all-levels" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-creative"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-creative">
+                <span class="material-symbols-outlined text-[24px]">videocam</span>
+              </div>
+              <span class="cat-tag cat-tag-creative">Creative</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Videography Training</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-all">
+                <span class="badge-dot"></span>
+                <span>All Levels</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Videography%20Training%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="engineering" data-level="intermediate" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-engineering"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-engineering">
+                <span class="material-symbols-outlined text-[24px]">foundation</span>
+              </div>
+              <span class="cat-tag cat-tag-engineering">Engineering</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Civil Engineering Skills Training</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-intermediate">
+                <span class="badge-dot"></span>
+                <span>Intermediate</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Civil%20Engineering%20Skills%20Training%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="engineering" data-level="intermediate" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-engineering"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-engineering">
+                <span class="material-symbols-outlined text-[24px]">straighten</span>
+              </div>
+              <span class="cat-tag cat-tag-engineering">Engineering</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Quantity Surveying for Professionals</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-intermediate">
+                <span class="badge-dot"></span>
+                <span>Intermediate</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Quantity%20Surveying%20for%20Professionals%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+<article class="course-card group animate-fade" data-cat="engineering" data-level="intermediate" role="listitem">
+          <!-- Top Category Accent Strip -->
+          <div class="card-accent-strip cat-accent-engineering"></div>
+          
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <!-- Header Row: Icon Tile & Category Pill -->
+            <div class="flex items-start justify-between gap-3 mb-5">
+              <div class="cat-icon-tile cat-tile-engineering">
+                <span class="material-symbols-outlined text-[24px]">engineering</span>
+              </div>
+              <span class="cat-tag cat-tag-engineering">Engineering</span>
+            </div>
+
+            <!-- Course Title -->
+            <h3 class="course-title mb-3">Revit Architecture for Professionals</h3>
+
+            <!-- Description (clamped to 4 lines) -->
+            <p class="course-desc text-sm line-clamp-4 mb-6 flex-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+            <!-- Metadata Row: Level Badge & Sessions (Single Row) -->
+            <div class="meta-row flex items-center justify-between gap-2 pt-4 border-t border-slate-100 mb-5">
+              <span class="level-badge level-intermediate">
+                <span class="badge-dot"></span>
+                <span>Intermediate</span>
+              </span>
+              <span class="duration-pill flex items-center gap-1.5 text-xs font-semibold text-slate-500">
+                <span class="material-symbols-outlined text-[15px]">schedule</span>
+                <span>12 sessions &middot; 3 hrs</span>
+              </span>
+            </div>
+
+            <!-- Action Row: Enroll Button & Quiet Text Link for View Outline -->
+            <div class="card-action-row flex items-center justify-between gap-3">
+              <button type="button" class="view-outline-btn" aria-haspopup="dialog">
+                <span>View outline</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">menu_book</span>
+              </button>
+              <a href="https://wa.me/971559809491?text=Hello%2C%20I%20am%20interested%20in%20enrolling%20in%20the%20Revit%20Architecture%20for%20Professionals%20at%20Blueprint%20Training%20Centre.%20I%20would%20appreciate%20it%20if%20you%20could%20provide%20me%20with%20further%20information%20regarding%20the%20course%20schedule%2C%20fees%2C%20and%20enrollment%20requirements.%20Thank%20you%2C%20and%20I%20look%20forward%20to%20hearing%20from%20you." target="_blank" rel="noopener noreferrer" class="enroll-btn inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-xs transition-all">
+                <span>Enroll</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
     </div>
-    <div id="empty-state" class="hidden flex-col items-center justify-center py-24 text-center">
-      <span class="material-symbols-outlined text-[64px] mb-4" style="color:#74777f;">search_off</span>
-      <p class="text-on-surface-variant font-body-md text-body-md">No courses match your search. Try a different keyword or category.</p>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden flex-col items-center justify-center py-20 px-4 text-center rounded-2xl border border-dashed border-slate-300 my-8">
+      <div class="w-14 h-14 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mb-4">
+        <span class="material-symbols-outlined text-[30px]">search_off</span>
+      </div>
+      <h3 class="text-lg font-bold text-slate-800 mb-2">No matching courses found</h3>
+      <p class="text-sm text-slate-500 max-w-md mb-6">
+        No courses match your current filter combination. Try clearing your search term or selecting a different level.
+      </p>
+      <button type="button" id="clear-filters-btn" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white font-semibold text-xs rounded-lg hover:opacity-95 transition-all">
+        <span class="material-symbols-outlined text-[16px]">restart_alt</span>
+        <span>Clear filters</span>
+      </button>
     </div>
+
   </div>
 </main>
 
@@ -426,276 +2126,438 @@ tailwind.config = {
   </div>
 </footer>
 
-<!-- Course Outline Modal -->
-<div id="course-outline-modal" class="outline-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-course-title">
+<!-- Outline Modal with Gold Timeline -->
+<div id="course-outline-modal" class="outline-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-course-title" aria-describedby="modal-course-subtitle" tabindex="-1">
   <div class="outline-modal-panel">
     <!-- Header -->
-    <div class="p-6 md:p-8 text-white relative flex-shrink-0" style="background:linear-gradient(135deg,#002147 0%,#003166 100%);">
+    <div class="p-6 md:p-8 bg-[#002147] text-white relative flex-shrink-0">
       <button type="button" id="modal-close-btn" class="absolute top-5 right-5 w-9 h-9 rounded-full flex items-center justify-center text-white/80 hover:text-white hover:bg-white/10 transition-colors" aria-label="Close modal">
         <span class="material-symbols-outlined text-[24px]">close</span>
       </button>
-      <div id="modal-course-badge" class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase mb-3" style="background:rgba(254,179,22,.18);color:#feb316;border:1px solid rgba(254,179,22,.35);">
-        <span class="material-symbols-outlined text-[14px]">verified</span> Course &bull; UAE Certified
+      <div id="modal-course-badge" class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase mb-3 bg-secondary/20 text-secondary border border-secondary/30">
+        <span class="material-symbols-outlined text-[14px]">verified</span>
+        <span>Course outline &bull; UAE certified</span>
       </div>
-      <h2 id="modal-course-title" class="text-2xl md:text-3xl font-bold tracking-tight mb-2">Course Outline</h2>
-      <p id="modal-course-subtitle" class="text-sm md:text-base text-white/80 max-w-2xl leading-relaxed">
-        Comprehensive 12-session structured training programme designed for practical skill mastery and professional growth in the UAE.
+      <h2 id="modal-course-title" class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">Course outline</h2>
+      <p id="modal-course-subtitle" class="text-sm text-white/80 max-w-2xl leading-relaxed">
+        Structured 12-session training programme (3 hours per session) at Blueprint Training Centre, Dubai.
       </p>
     </div>
 
-    <!-- Scrollable Body -->
+    <!-- Scrollable Body with Gold Timeline -->
     <div class="p-6 md:p-8 overflow-y-auto space-y-8 flex-1">
-      <!-- 1. Metadata Summary -->
+      <!-- 1. Metadata Summary Grid -->
       <div>
-        <h3 class="text-xs font-bold tracking-widest uppercase text-secondary mb-3 flex items-center gap-1.5">
-          <span class="material-symbols-outlined text-[16px]">info</span> Course Overview &amp; Details
+        <h3 class="text-xs font-bold tracking-widest uppercase text-slate-400 mb-3 flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]">info</span>
+          <span>Course overview &amp; details</span>
         </h3>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div class="p-3.5 rounded-xl border border-surface-variant bg-surface-container-lowest">
-            <span class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold block mb-1">Level</span>
-            <span id="modal-level-val" class="font-bold text-sm text-primary-container flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">signal_cellular_alt</span>All Levels</span>
+          <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50">
+            <span class="text-[11px] uppercase tracking-wider text-slate-500 font-semibold block mb-1">Level</span>
+            <span id="modal-level-val" class="font-bold text-sm text-primary flex items-center gap-1.5">All Levels</span>
           </div>
-          <div class="p-3.5 rounded-xl border border-surface-variant bg-surface-container-lowest">
-            <span class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold block mb-1">Duration</span>
-            <span id="modal-duration-val" class="font-bold text-sm text-primary-container flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">schedule</span>12 Sessions (3 hrs)</span>
+          <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50">
+            <span class="text-[11px] uppercase tracking-wider text-slate-500 font-semibold block mb-1">Duration</span>
+            <span class="font-bold text-sm text-primary flex items-center gap-1.5">12 sessions</span>
           </div>
-          <div class="p-3.5 rounded-xl border border-surface-variant bg-surface-container-lowest">
-            <span class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold block mb-1">Certification</span>
-            <span id="modal-cert-val" class="font-bold text-sm text-primary-container flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">verified</span>UAE Certified</span>
+          <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50">
+            <span class="text-[11px] uppercase tracking-wider text-slate-500 font-semibold block mb-1">Session length</span>
+            <span class="font-bold text-sm text-primary flex items-center gap-1.5">3 hrs each</span>
           </div>
-          <div class="p-3.5 rounded-xl border border-surface-variant bg-surface-container-lowest">
-            <span class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold block mb-1">Schedule</span>
-            <span id="modal-schedule-val" class="font-bold text-sm text-primary-container flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-primary">timer</span>3 hrs / session</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2. Learning Outcomes -->
-      <div>
-        <h3 class="text-xs font-bold tracking-widest uppercase text-secondary mb-3 flex items-center gap-1.5">
-          <span class="material-symbols-outlined text-[16px]">emoji_events</span> Key Learning Outcomes
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
-          <div class="p-4 rounded-xl border border-surface-variant/80 bg-surface-container-low flex flex-col gap-2">
-            <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-              <span class="material-symbols-outlined text-[20px]">auto_stories</span>
-            </div>
-            <h4 class="font-bold text-[14px] text-primary-container">Core Knowledge &amp; Principles</h4>
-            <p class="text-[13px] text-on-surface-variant leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam feugiat orci nec dictum varius non pellentesque.</p>
-          </div>
-          <div class="p-4 rounded-xl border border-surface-variant/80 bg-surface-container-low flex flex-col gap-2">
-            <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-              <span class="material-symbols-outlined text-[20px]">construction</span>
-            </div>
-            <h4 class="font-bold text-[14px] text-primary-container">Applied Practical Skills</h4>
-            <p class="text-[13px] text-on-surface-variant leading-relaxed">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur.</p>
-          </div>
-          <div class="p-4 rounded-xl border border-surface-variant/80 bg-surface-container-low flex flex-col gap-2">
-            <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-              <span class="material-symbols-outlined text-[20px]">workspace_premium</span>
-            </div>
-            <h4 class="font-bold text-[14px] text-primary-container">Industry Certification Readiness</h4>
-            <p class="text-[13px] text-on-surface-variant leading-relaxed">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50">
+            <span class="text-[11px] uppercase tracking-wider text-slate-500 font-semibold block mb-1">Certification</span>
+            <span class="font-bold text-sm text-primary flex items-center gap-1.5">UAE certified</span>
           </div>
         </div>
       </div>
 
-      <!-- 3. Session Breakdown (12 Sessions - 3 hrs each) -->
+      <!-- 2. Course Description -->
       <div>
-        <h3 class="text-xs font-bold tracking-widest uppercase text-secondary mb-3 flex items-center gap-1.5">
-          <span class="material-symbols-outlined text-[16px]">calendar_month</span> Programme Outline (12 Sessions &bull; 3 hrs each)
-        </h3>
-        <div id="modal-sessions-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <!-- Populated dynamically -->
+        <h3 class="text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Description</h3>
+        <p id="modal-desc-text" class="text-sm text-slate-600 leading-relaxed"></p>
+      </div>
+
+      <!-- 3. Gold Timeline (12 Sessions: 2 columns desktop, 1 column mobile) -->
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-xs font-bold tracking-widest uppercase text-slate-400 flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px] text-amber-500">timeline</span>
+            <span>12-Session gold curriculum timeline</span>
+          </h3>
+          <span class="text-xs font-semibold text-amber-600">Total 36 contact hours</span>
+        </div>
+        
+        <!-- Two columns on desktop, one column on mobile -->
+        <div id="modal-timeline-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+          <!-- Populated by JavaScript -->
         </div>
       </div>
     </div>
 
     <!-- Modal Footer -->
-    <div class="p-4 md:p-6 bg-surface-container-low border-t border-surface-variant flex items-center justify-between gap-4 flex-wrap flex-shrink-0">
-      <div class="text-xs text-on-surface-variant">
-        Questions? WhatsApp: <strong class="text-primary-container">+971 55 980 9491</strong>
+    <div class="p-4 md:p-6 bg-slate-50 border-t border-slate-200 flex items-center justify-between gap-4 flex-wrap flex-shrink-0">
+      <div class="text-xs text-slate-500">
+        Have questions? WhatsApp: <strong class="text-primary">+971 55 980 9491</strong>
       </div>
       <div class="flex items-center gap-3">
-        <button type="button" id="modal-footer-close" class="px-5 py-2.5 rounded-lg border border-surface-variant text-sm font-semibold text-on-surface-variant hover:bg-surface-container transition-colors">
+        <button type="button" id="modal-footer-close" class="px-5 py-2.5 rounded-lg border border-slate-300 text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-colors">
           Close
         </button>
-        <a id="modal-wa-link" href="https://wa.me/971559809491" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-2.5 bg-secondary-container text-on-secondary-container text-sm font-bold rounded-lg hover:bg-secondary-fixed transition-colors">
-          <span>Enroll Now</span>
-          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        <a id="modal-wa-link" href="https://wa.me/971559809491" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-2.5 bg-secondary text-primary font-bold text-sm rounded-lg hover:bg-secondary-dark transition-colors">
+          <span>Enroll now</span>
+          <span class="material-symbols-outlined text-[17px]">arrow_forward</span>
         </a>
       </div>
     </div>
   </div>
 </div>
-<script src="script.js"></script>
+
+<!-- Inline JavaScript -->
 <script>
-(function(){
-  /* ── Filter bar: sync top with navbar hide/show (dynamic height) ── */
+(function() {
+  "use strict";
+
+  /* ── 1. Navbar elevation on scroll ── */
   var navbar = document.querySelector('.site-navbar');
-  var filterBar = document.getElementById('courses-filter-bar');
-  function getNavbarHeight(){
-    return navbar ? navbar.getBoundingClientRect().height : 96;
-  }
-  function syncFilterBar(){
-    if(!filterBar) return;
-    filterBar.style.top = (navbar && navbar.classList.contains('navbar-hidden')) ? '0px' : getNavbarHeight()+'px';
-  }
-  if(navbar && filterBar){
-    new MutationObserver(syncFilterBar).observe(navbar, {attributes:true, attributeFilter:['class']});
-    window.addEventListener('resize', syncFilterBar);
+  window.addEventListener('scroll', function() {
+    if (!navbar) return;
+    if (window.scrollY > 20) {
+      navbar.classList.add('shadow-md');
+    } else {
+      navbar.classList.remove('shadow-md');
+    }
+  });
+
+  /* ── 2. Mobile Drawer ── */
+  var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  var mobileMenuClose = document.getElementById('mobile-menu-close');
+  var mobileMenu = document.getElementById('mobile-menu');
+  var mobileBackdrop = document.getElementById('mobile-backdrop');
+
+  function openMobileNav() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.remove('-translate-x-full');
+    if (mobileBackdrop) {
+      mobileBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+      mobileBackdrop.classList.add('opacity-100');
+    }
+    if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'true');
   }
 
-  /* ── Course filter & search ── */
-  var pills  = document.querySelectorAll('.filter-pill');
-  var cards  = document.querySelectorAll('.course-card');
-  var search = document.getElementById('course-search');
-  var label  = document.getElementById('result-label');
-  var empty  = document.getElementById('empty-state');
-  var total  = cards.length; /* dynamic — no hardcoded 27 */
-  var current = 'all', query = '';
+  function closeMobileNav() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.add('-translate-x-full');
+    if (mobileBackdrop) {
+      mobileBackdrop.classList.add('opacity-0', 'pointer-events-none');
+      mobileBackdrop.classList.remove('opacity-100');
+    }
+    if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
+  }
 
-  function update(){
+  if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileNav);
+  if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileNav);
+  if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobileNav);
+
+  /* ── 3. Filter, Search, and Level Filter State ── */
+  var pills = document.querySelectorAll('.filter-pill');
+  var cards = document.querySelectorAll('.course-card');
+  var searchInput = document.getElementById('course-search');
+  var levelSelect = document.getElementById('level-filter');
+  var countLabel = document.getElementById('courses-count-label');
+  var emptyState = document.getElementById('empty-state');
+  var clearFiltersBtn = document.getElementById('clear-filters-btn');
+  var totalCards = cards.length;
+
+  var currentCat = 'all';
+  var currentLevel = 'any';
+  var searchQuery = '';
+
+  function matchesLevel(cardLevel, selectedLevel) {
+    if (selectedLevel === 'any') return true;
+    var normCard = (cardLevel || '').toLowerCase();
+    // Rule: "All Levels" courses must appear under every level filter
+    if (normCard === 'all-levels' || normCard === 'all levels') return true;
+    return normCard === selectedLevel;
+  }
+
+  function update() {
     var visible = 0;
-    cards.forEach(function(c){
-      var catOk = current === 'all' || c.dataset.cat === current;
-      var titleEl = c.querySelector('.course-title');
-      var titleText = titleEl ? titleEl.textContent.toLowerCase() : '';
-      var qOk = query === '' || titleText.indexOf(query) !== -1;
-      if(catOk && qOk){ c.classList.remove('hidden'); visible++; }
-      else c.classList.add('hidden');
+
+    cards.forEach(function(card) {
+      var cat = card.dataset.cat || '';
+      var lvl = card.dataset.level || '';
+      var title = (card.querySelector('.course-title')?.textContent || '').toLowerCase();
+
+      var catOk = (currentCat === 'all') || (cat === currentCat);
+      var lvlOk = matchesLevel(lvl, currentLevel);
+      var queryOk = (searchQuery === '') || (title.indexOf(searchQuery) !== -1);
+
+      if (catOk && lvlOk && queryOk) {
+        card.style.display = '';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
     });
-    if(label) label.textContent = visible === total
-      ? 'Showing all ' + total + ' courses'
-      : 'Showing ' + visible + ' of ' + total + ' courses';
-    if(visible === 0){ empty.classList.remove('hidden'); empty.classList.add('flex'); }
-    else { empty.classList.add('hidden'); empty.classList.remove('flex'); }
+
+    // Update Showing X of Y courses count
+    if (countLabel) {
+      countLabel.textContent = 'Showing ' + visible + ' of ' + totalCards + ' courses';
+    }
+
+    // Update empty state
+    if (emptyState) {
+      if (visible === 0) {
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+      } else {
+        emptyState.classList.add('hidden');
+        emptyState.classList.remove('flex');
+      }
+    }
+
+    // Update dynamic counts on pills based on level & search
+    updatePillCounts();
   }
 
-  pills.forEach(function(p){
-    p.addEventListener('click', function(){
-      pills.forEach(function(x){ x.classList.remove('active'); });
-      p.classList.add('active');
-      current = p.dataset.filter;
+  function updatePillCounts() {
+    var catCounts = {
+      all: 0,
+      language: 0,
+      management: 0,
+      technology: 0,
+      creative: 0,
+      engineering: 0
+    };
+
+    cards.forEach(function(card) {
+      var cat = card.dataset.cat || '';
+      var lvl = card.dataset.level || '';
+      var title = (card.querySelector('.course-title')?.textContent || '').toLowerCase();
+
+      var lvlOk = matchesLevel(lvl, currentLevel);
+      var queryOk = (searchQuery === '') || (title.indexOf(searchQuery) !== -1);
+
+      if (lvlOk && queryOk) {
+        catCounts.all++;
+        if (catCounts.hasOwnProperty(cat)) {
+          catCounts[cat]++;
+        }
+      }
+    });
+
+    Object.keys(catCounts).forEach(function(k) {
+      var badge = document.getElementById('count-' + k);
+      if (badge) {
+        badge.textContent = catCounts[k];
+      }
+    });
+  }
+
+  // Category Pill Clicks
+  pills.forEach(function(pill) {
+    pill.addEventListener('click', function() {
+      pills.forEach(function(p) {
+        p.classList.remove('active');
+        p.setAttribute('aria-selected', 'false');
+      });
+      pill.classList.add('active');
+      pill.setAttribute('aria-selected', 'true');
+      currentCat = pill.dataset.filter || 'all';
       update();
     });
   });
 
-  if(search) search.addEventListener('input', function(){
-    query = search.value.trim().toLowerCase();
-    update();
-  });
+  // Search input
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      searchQuery = searchInput.value.trim().toLowerCase();
+      update();
+    });
+  }
 
-  /* ── Course Outline Modal (Dynamic 12 Sessions) ── */
+  // Level filter select
+  if (levelSelect) {
+    levelSelect.addEventListener('change', function() {
+      currentLevel = levelSelect.value;
+      update();
+    });
+  }
+
+  // Clear filters button
+  if (clearFiltersBtn) {
+    clearFiltersBtn.addEventListener('click', function() {
+      currentCat = 'all';
+      currentLevel = 'any';
+      searchQuery = '';
+      if (searchInput) searchInput.value = '';
+      if (levelSelect) levelSelect.value = 'any';
+      pills.forEach(function(p) {
+        if (p.dataset.filter === 'all') {
+          p.classList.add('active');
+          p.setAttribute('aria-selected', 'true');
+        } else {
+          p.classList.remove('active');
+        }
+      });
+      update();
+    });
+  }
+
+
+  /* ── 4. Outline Modal (Gold Timeline & Keyboard Focus Trap) ── */
   var outlineModal = document.getElementById('course-outline-modal');
   var modalCloseBtn = document.getElementById('modal-close-btn');
   var modalFooterClose = document.getElementById('modal-footer-close');
   var modalTitle = document.getElementById('modal-course-title');
   var modalBadge = document.getElementById('modal-course-badge');
   var modalSubtitle = document.getElementById('modal-course-subtitle');
+  var modalDescText = document.getElementById('modal-desc-text');
   var modalLevelVal = document.getElementById('modal-level-val');
-  var modalCertVal = document.getElementById('modal-cert-val');
   var modalWaLink = document.getElementById('modal-wa-link');
-  var modalSessionsGrid = document.getElementById('modal-sessions-grid');
+  var timelineGrid = document.getElementById('modal-timeline-grid');
 
-  var sessionModules = [
-    { num: 'Session 01', tag: '3 Hours', title: 'Introduction & Core Fundamentals' },
-    { num: 'Session 02', tag: '3 Hours', title: 'Essential Principles & Methodologies' },
-    { num: 'Session 03', tag: '3 Hours', title: 'Standard Industry Frameworks & Tools' },
-    { num: 'Session 04', tag: '3 Hours', title: 'Practical Applications & Core Exercises' },
-    { num: 'Session 05', tag: '3 Hours', title: 'Applied Case Analysis & Problem Solving' },
-    { num: 'Session 06', tag: '3 Hours', title: 'Interactive Workshop & Hands-on Lab' },
-    { num: 'Session 07', tag: '3 Hours', title: 'Intermediate Techniques & Workflow' },
-    { num: 'Session 08', tag: '3 Hours', title: 'Advanced Concepts & Execution Strategies' },
-    { num: 'Session 09', tag: '3 Hours', title: 'Industry Best Practices & Guidelines' },
-    { num: 'Session 10', tag: '3 Hours', title: 'Collaborative Projects & Scenario Simulations' },
-    { num: 'Session 11', tag: '3 Hours', title: 'Comprehensive Skill Review & Synthesis' },
-    { num: 'Session 12', tag: '3 Hours', title: 'Capstone Assessment & Certification' }
+  var lastFocusedElement = null;
+
+  var sessionData = [
+    { num: "Session 01", title: "Introduction & Core Fundamentals", desc: "Foundational principles, terminology, and baseline evaluation." },
+    { num: "Session 02", title: "Essential Principles & Methods", desc: "Core concepts, frameworks, and practical conventions." },
+    { num: "Session 03", title: "Standard Protocols & Tools", desc: "Industry workflows, standard operating tools, and safety/quality basics." },
+    { num: "Session 04", title: "Applied Exercises & Demonstrations", desc: "Hands-on guided walkthroughs and real-time case practice." },
+    { num: "Session 05", title: "Practical Case Studies & Analysis", desc: "Reviewing workplace scenarios and diagnosing key problem spaces." },
+    { num: "Session 06", title: "Interactive Workshop & Lab", desc: "Collaborative studio exercise and intermediate tool execution." },
+    { num: "Session 07", title: "Intermediate Techniques & Workflow", desc: "Refining precision, speed, and standard operational execution." },
+    { num: "Session 08", title: "Tactical Execution & Scenarios", desc: "Unscripted scenario solving and advanced troubleshooting." },
+    { num: "Session 09", title: "Industry Standards & Compliance", desc: "Regulatory alignment, best practices, and regional UAE benchmarks." },
+    { num: "Session 10", title: "Collaborative Project Simulations", desc: "Team simulation, peer review, and complex scenario handling." },
+    { num: "Session 11", title: "Skill Synthesis & Integration", desc: "Holistic review of all topics and pre-evaluation readiness." },
+    { num: "Session 12", title: "Capstone Evaluation & Certification", desc: "Final practical assessment, instructor feedback, and certificate issuance." }
   ];
 
-  function buildSessions(){
-    if(!modalSessionsGrid) return;
-    modalSessionsGrid.innerHTML = '';
-    sessionModules.forEach(function(s){
-      var item = document.createElement('div');
-      item.className = 'p-4 rounded-xl border border-surface-variant bg-surface-container-lowest flex flex-col gap-2';
-      item.innerHTML = '<div class="flex items-center justify-between">' +
-        '<span class="text-xs font-bold text-primary uppercase tracking-wider">' + s.num + '</span>' +
-        '<span class="text-[11px] font-semibold text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-full">' + s.tag + '</span>' +
+  function renderTimeline() {
+    if (!timelineGrid) return;
+    timelineGrid.innerHTML = '';
+    sessionData.forEach(function(s, idx) {
+      var card = document.createElement('div');
+      card.className = 'timeline-session-card flex items-start gap-3 relative overflow-hidden';
+      card.innerHTML = 
+        '<div class="flex flex-col items-center flex-shrink-0 pt-0.5">' +
+          '<span class="w-2.5 h-2.5 rounded-full bg-amber-500 ring-4 ring-amber-100 mb-2"></span>' +
+          '<span class="w-px h-full bg-amber-200"></span>' +
         '</div>' +
-        '<h4 class="text-[14px] font-bold text-primary-container">' + s.title + '</h4>' +
-        '<ul class="text-[13px] text-on-surface-variant space-y-1.5 list-disc list-inside">' +
-        '<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>' +
-        '<li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>' +
-        '<li>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</li>' +
-        '</ul>';
-      modalSessionsGrid.appendChild(item);
+        '<div class="flex-1">' +
+          '<div class="flex items-center justify-between gap-2 mb-1">' +
+            '<span class="session-number-pill">' + s.num + '</span>' +
+            '<span class="text-[11px] font-semibold text-slate-400">3 hrs</span>' +
+          '</div>' +
+          '<h4 class="text-xs font-bold text-slate-800 mb-1">' + s.title + '</h4>' +
+          '<p class="text-[12px] text-slate-500 leading-relaxed">' + s.desc + '</p>' +
+        '</div>';
+      timelineGrid.appendChild(card);
     });
   }
 
-  function openOutlineModal(card){
-    if(!outlineModal) return;
-    var title = 'Course Outline';
-    var cat = 'Professional';
-    var level = 'All Levels';
-    var cert = 'UAE Certified';
+  function openOutlineModal(cardEl, triggerBtn) {
+    if (!outlineModal || !cardEl) return;
+    lastFocusedElement = triggerBtn || document.activeElement;
 
-    if(card){
-      var tEl = card.querySelector('.course-title');
-      if(tEl) title = tEl.textContent.trim();
+    var title = cardEl.querySelector('.course-title')?.textContent.trim() || 'Course outline';
+    var cat = cardEl.dataset.cat || '';
+    var desc = cardEl.querySelector('.course-desc')?.textContent.trim() || '';
+    var lvl = cardEl.querySelector('.level-badge span:last-child')?.textContent.trim() || 'All Levels';
 
-      var cEl = card.querySelector('.course-cat-tag');
-      if(cEl) cat = cEl.textContent.trim();
+    if (modalTitle) modalTitle.textContent = title;
+    if (modalBadge) {
+      modalBadge.innerHTML = '<span class="material-symbols-outlined text-[14px]">verified</span><span>' + cat.toUpperCase() + ' &bull; UAE CERTIFIED</span>';
+    }
+    if (modalSubtitle) {
+      modalSubtitle.textContent = 'Structured 12-session training programme (3 hours per session) at Blueprint Training Centre, Dubai.';
+    }
+    if (modalDescText) modalDescText.textContent = desc;
+    if (modalLevelVal) modalLevelVal.textContent = lvl;
 
-      var badges = card.querySelectorAll('.course-meta-badge');
-      if(badges.length > 0) level = badges[0].textContent.trim();
-      if(badges.length > 2) cert = badges[2].textContent.trim();
+    if (modalWaLink) {
+      modalWaLink.href = 'https://wa.me/971559809491?text=' + encodeURIComponent('Hello, I am interested in enrolling in the ' + title + ' at Blueprint Training Centre. I would appreciate it if you could provide me with further information regarding the course schedule, fees, and enrollment requirements. Thank you, and I look forward to hearing from you.');
     }
 
-    if(modalTitle) modalTitle.textContent = title;
-    if(modalBadge) modalBadge.innerHTML = '<span class="material-symbols-outlined text-[14px]">verified</span> ' + cat + ' &bull; ' + cert;
-    if(modalSubtitle) modalSubtitle.textContent = 'Structured 12-session training programme (3 hours per session) at Blueprint Training Centre, Dubai.';
-    if(modalLevelVal) modalLevelVal.innerHTML = '<span class="material-symbols-outlined text-[16px] text-primary">signal_cellular_alt</span>' + level;
-    if(modalCertVal) modalCertVal.innerHTML = '<span class="material-symbols-outlined text-[16px] text-primary">verified</span>' + cert;
-
-    if(modalWaLink){
-      modalWaLink.href = 'https://wa.me/971559809491?text=' + encodeURIComponent('Hi, I would like to enroll in the ' + title + ' course at Blueprint Training Centre.');
-    }
-
-    buildSessions();
+    renderTimeline();
     outlineModal.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    // Move focus into modal
+    setTimeout(function() {
+      if (modalCloseBtn) modalCloseBtn.focus();
+      else outlineModal.focus();
+    }, 50);
   }
 
-  function closeOutlineModal(){
-    if(!outlineModal) return;
+  function closeOutlineModal() {
+    if (!outlineModal) return;
     outlineModal.classList.remove('active');
     document.body.style.overflow = '';
+
+    // Return focus to trigger button
+    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+      lastFocusedElement.focus();
+    }
   }
 
-  document.querySelectorAll('.course-outline-btn').forEach(function(btn){
-    btn.addEventListener('click', function(e){
+  // Attach click to all outline buttons
+  document.querySelectorAll('.view-outline-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
       e.preventDefault();
       var card = btn.closest('.course-card');
-      openOutlineModal(card);
+      openOutlineModal(card, btn);
     });
   });
 
-  if(modalCloseBtn) modalCloseBtn.addEventListener('click', closeOutlineModal);
-  if(modalFooterClose) modalFooterClose.addEventListener('click', closeOutlineModal);
+  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeOutlineModal);
+  if (modalFooterClose) modalFooterClose.addEventListener('click', closeOutlineModal);
 
-  if(outlineModal){
-    outlineModal.addEventListener('click', function(e){
-      if(e.target === outlineModal) closeOutlineModal();
+  if (outlineModal) {
+    outlineModal.addEventListener('click', function(e) {
+      if (e.target === outlineModal) closeOutlineModal();
     });
   }
 
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && outlineModal && outlineModal.classList.contains('active')){
+  // Keyboard navigation: Escape to close & Tab trap
+  document.addEventListener('keydown', function(e) {
+    if (!outlineModal || !outlineModal.classList.contains('active')) return;
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
       closeOutlineModal();
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      var focusableElements = outlineModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      var focusable = Array.prototype.filter.call(focusableElements, function(el) {
+        return el.offsetWidth > 0 || el.offsetHeight > 0 || el === document.activeElement;
+      });
+      if (focusable.length === 0) return;
+
+      var firstElement = focusable[0];
+      var lastElement = focusable[focusable.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
     }
   });
-  })();
+
+  // Initial pill counts setup
+  update();
+})();
 </script>
 </body>
 </html>
