@@ -2262,6 +2262,8 @@ html.dark .level-all-levels {
   border: 1px solid var(--card-border);
   border-radius: 12px;
   padding: 14px 16px;
+  align-self: start;
+  height: fit-content;
 }
 
 

@@ -826,12 +826,16 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
   var modalSubtitle = document.getElementById('modal-course-subtitle');
   var modalDescText = document.getElementById('modal-desc-text');
   var modalLevelVal = document.getElementById('modal-level-val');
+  var modalDurationVal = document.getElementById('modal-duration-val');
+  var modalScheduleVal = document.getElementById('modal-schedule-val');
+  var modalTimelineHeading = document.getElementById('modal-timeline-heading');
+  var modalHoursVal = document.getElementById('modal-hours-val');
   var modalWaLink = document.getElementById('modal-wa-link');
   var timelineGrid = document.getElementById('modal-timeline-grid');
 
   var lastFocusedElement = null;
 
-  var sessionData = [
+  var sessionData12 = [
     { num: "Session 01", title: "Introduction & Core Fundamentals", desc: "Foundational principles, terminology, and baseline evaluation." },
     { num: "Session 02", title: "Essential Principles & Methods", desc: "Core concepts, frameworks, and practical conventions." },
     { num: "Session 03", title: "Standard Protocols & Tools", desc: "Industry workflows, standard operating tools, and safety/quality basics." },
@@ -846,27 +850,143 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
     { num: "Session 12", title: "Capstone Evaluation & Certification", desc: "Final practical assessment, instructor feedback, and certificate issuance." }
   ];
 
-  function renderTimeline() {
+  var sessionDataHealthcare = [
+    {
+      moduleTitle: "Module 1: Core Principles Of Health Care Practice",
+      weeks: [
+        { num: "Week 01", title: "Introduction to Healthcare System" },
+        { num: "Week 02", title: "Professionalism, Work Ethics, and Communication" },
+        { num: "Week 03", title: "Basic Structure and Function of the Human Body" },
+        { num: "Week 04", title: "Standard Precautions and Infection Control in Healthcare Set-Up" }
+      ]
+    },
+    {
+      moduleTitle: "Module 2 & 3: Fundamentals in Providing Healthcare Assistance And Patient Care",
+      weeks: [
+        { num: "Week 05", title: "Fundamentals of Vital Signs Taking" },
+        { num: "Week 06", title: "Vital Signs Taking and Documentation (RD)" },
+        { num: "Week 07", title: "Fundamentals of Patient Care and Hygiene" },
+        { num: "Week 08", title: "Assisting Patient with Hygiene (RD)" },
+        {
+          num: "Week 09",
+          title: "Fundamentals of",
+          bullets: [
+            "Safety and Fall Prevention",
+            "Patient Positioning, Moving and Transfer (Theory and RD)",
+            "Assisting in Exercise and Activity",
+            "Assisting in Elimination and Specimen Collection"
+          ]
+        },
+        { num: "Week 10", title: "Bed Making Theory" },
+        { num: "Week 11", title: "Bed Making (RD)" },
+        { num: "Week 12", title: "Assisting in Patient Nutrition and Fluids" }
+      ]
+    },
+    {
+      moduleTitle: "Module 4: Special Care Considerations",
+      weeks: [
+        {
+          num: "Week 13",
+          title: "Patients with Special Needs",
+          bullets: [
+            "Person with Common Health Problem",
+            "Person with Mental Health Disorders",
+            "Care of Elderly, Person with Confusion and Dementia",
+            "End of Life",
+            "Infant Care (Theory and RD)"
+          ]
+        },
+        {
+          num: "Week 14",
+          title: "First Aid",
+          bullets: [
+            "Common First Aid Cases and Intervention",
+            "Assisting in Wound Care and Wound Dressing (Theory and RD)",
+            "Bandaging (Theory and RD)"
+          ]
+        },
+        {
+          num: "Week 15",
+          title: "Emergency care",
+          bullets: [
+            "Introduction to Basic Life Support",
+            "Adult CPR (Theory and RD)",
+            "Child and Infant CPR (Theory and RD)"
+          ]
+        },
+        {
+          num: "Week 16",
+          title: "Final Written Exam and Special Arrangement/Re-Validation"
+        }
+      ]
+    }
+  ];
+
+  function renderTimeline(data, isModular) {
     if (!timelineGrid) return;
     timelineGrid.innerHTML = '';
-    sessionData.forEach(function(s, idx) {
-      var card = document.createElement('div');
-      card.className = 'timeline-session-card flex items-start gap-3 relative overflow-hidden';
-      card.innerHTML = 
-        '<div class="flex flex-col items-center flex-shrink-0 pt-0.5">' +
-          '<span class="w-2.5 h-2.5 rounded-full bg-amber-500 ring-4 ring-amber-100 mb-2"></span>' +
-          '<span class="w-px h-full bg-amber-200"></span>' +
-        '</div>' +
-        '<div class="flex-1">' +
-          '<div class="flex items-center justify-between gap-2 mb-1">' +
-            '<span class="session-number-pill">' + s.num + '</span>' +
-            '<span class="text-[11px] font-semibold text-slate-400">3 hrs</span>' +
+
+    if (isModular) {
+      data.forEach(function(mod) {
+        var banner = document.createElement('div');
+        banner.className = 'col-span-full mt-3 first:mt-0 mb-1 py-2.5 px-3.5 bg-gradient-to-r from-[#002147] to-[#0a3871] text-white rounded-xl flex items-center justify-between shadow-sm';
+        banner.innerHTML = 
+          '<div class="flex items-center gap-2">' +
+            '<span class="material-symbols-outlined text-[18px] text-amber-400">clinical_notes</span>' +
+            '<span class="font-bold text-xs uppercase tracking-wide">' + mod.moduleTitle + '</span>' +
           '</div>' +
-          '<h4 class="text-xs font-bold text-slate-800 mb-1">' + s.title + '</h4>' +
-          '<p class="text-[12px] text-slate-500 leading-relaxed">' + s.desc + '</p>' +
-        '</div>';
-      timelineGrid.appendChild(card);
-    });
+          '<span class="text-[10px] font-bold text-amber-300 uppercase tracking-widest bg-white/10 px-2 py-0.5 rounded">' + mod.weeks.length + ' Weeks</span>';
+        timelineGrid.appendChild(banner);
+
+        mod.weeks.forEach(function(s) {
+          var card = document.createElement('div');
+          card.className = 'timeline-session-card flex items-start gap-3 relative overflow-hidden self-start';
+          var bulletsHtml = '';
+          if (s.bullets && s.bullets.length > 0) {
+            bulletsHtml = '<ul class="mt-2 space-y-1 text-[11px] text-slate-600 bg-amber-50/60 p-2 rounded-lg border border-amber-100">' +
+              s.bullets.map(function(b) {
+                return '<li class="flex items-start gap-1.5"><span class="text-amber-500 font-bold">&bull;</span><span>' + b + '</span></li>';
+              }).join('') +
+            '</ul>';
+          }
+          var descHtml = s.desc ? '<p class="text-[12px] text-slate-500 leading-relaxed">' + s.desc + '</p>' : '';
+          card.innerHTML = 
+            '<div class="flex flex-col items-center flex-shrink-0 pt-0.5">' +
+              '<span class="w-2.5 h-2.5 rounded-full bg-amber-500 ring-4 ring-amber-100 mb-2"></span>' +
+              '<span class="w-px h-full bg-amber-200"></span>' +
+            '</div>' +
+            '<div class="flex-1">' +
+              '<div class="flex items-center justify-between gap-2 mb-1">' +
+                '<span class="session-number-pill">' + s.num + '</span>' +
+                '<span class="text-[11px] font-semibold text-slate-400">3 hrs</span>' +
+              '</div>' +
+              '<h4 class="text-xs font-bold text-slate-800 leading-snug">' + s.title + '</h4>' +
+              descHtml +
+              bulletsHtml +
+            '</div>';
+          timelineGrid.appendChild(card);
+        });
+      });
+    } else {
+      data.forEach(function(s) {
+        var card = document.createElement('div');
+        card.className = 'timeline-session-card flex items-start gap-3 relative overflow-hidden';
+        card.innerHTML = 
+          '<div class="flex flex-col items-center flex-shrink-0 pt-0.5">' +
+            '<span class="w-2.5 h-2.5 rounded-full bg-amber-500 ring-4 ring-amber-100 mb-2"></span>' +
+            '<span class="w-px h-full bg-amber-200"></span>' +
+          '</div>' +
+          '<div class="flex-1">' +
+            '<div class="flex items-center justify-between gap-2 mb-1">' +
+              '<span class="session-number-pill">' + s.num + '</span>' +
+              '<span class="text-[11px] font-semibold text-slate-400">3 hrs</span>' +
+            '</div>' +
+            '<h4 class="text-xs font-bold text-slate-800 mb-1">' + s.title + '</h4>' +
+            '<p class="text-[12px] text-slate-500 leading-relaxed">' + s.desc + '</p>' +
+          '</div>';
+        timelineGrid.appendChild(card);
+      });
+    }
   }
 
   function openOutlineModal(cardEl, triggerBtn) {
@@ -879,12 +999,30 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
     var desc = cardEl.querySelector('.course-desc')?.textContent.trim() || '';
     var lvl = cardEl.querySelector('.level-badge span:last-child')?.textContent.trim() || 'All Levels';
 
+    var isHealthcare = title.toLowerCase().indexOf('healthcare services professional') !== -1;
+
     if (modalTitle) modalTitle.textContent = title;
     if (modalBadge) {
-      modalBadge.innerHTML = '<span class="material-symbols-outlined text-[14px]">verified</span><span>' + catTag.toUpperCase() + ' &bull; UAE CERTIFIED</span>';
+      modalBadge.innerHTML = '<span class="material-symbols-outlined text-[14px]">verified</span><span>' + catTag.toUpperCase() + ' &bull; KHDA APPROVED</span>';
     }
     if (modalSubtitle) {
-      modalSubtitle.textContent = 'Structured 12-session training programme (3 hours per session) at Blueprint Training Centre, Dubai.';
+      if (isHealthcare) {
+        modalSubtitle.textContent = 'Structured 16-week healthcare curriculum across 4 modules over 4 months (Weekly 3-hours classes) at Blueprint Training Centre, Dubai.';
+      } else {
+        modalSubtitle.textContent = 'Structured 12-session training programme over 3 months (Weekly 3-hours classes) at Blueprint Training Centre, Dubai.';
+      }
+    }
+    if (modalDurationVal) {
+      modalDurationVal.textContent = isHealthcare ? '16 sessions (4 months)' : '12 sessions (3 months)';
+    }
+    if (modalScheduleVal) {
+      modalScheduleVal.textContent = 'Weekly 3-hr classes';
+    }
+    if (modalTimelineHeading) {
+      modalTimelineHeading.textContent = isHealthcare ? '16-Week clinical curriculum timeline' : '12-Session gold curriculum timeline';
+    }
+    if (modalHoursVal) {
+      modalHoursVal.textContent = isHealthcare ? 'Total 48 contact hours' : 'Total 36 contact hours';
     }
     if (modalDescText) modalDescText.textContent = desc;
     if (modalLevelVal) modalLevelVal.textContent = lvl;
@@ -893,7 +1031,11 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
       modalWaLink.href = 'https://wa.me/971559809491?text=' + encodeURIComponent('Hello, I am interested in enrolling in the ' + title + ' at Blueprint Training Centre. I would appreciate it if you could provide me with further information regarding the course schedule, fees, and enrollment requirements. Thank you, and I look forward to hearing from you.');
     }
 
-    renderTimeline();
+    if (isHealthcare) {
+      renderTimeline(sessionDataHealthcare, true);
+    } else {
+      renderTimeline(sessionData12, false);
+    }
     outlineModal.classList.add('active');
     document.body.style.overflow = 'hidden';
 
