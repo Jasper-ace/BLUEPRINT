@@ -1092,7 +1092,7 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
     if (modalLevelVal) modalLevelVal.textContent = lvl;
 
     if (modalWaLink) {
-      modalWaLink.href = 'https://wa.me/971559809491?text=' + encodeURIComponent('Hello, I am interested in enrolling in the ' + title + ' at Blueprint Training Centre. I would appreciate it if you could provide me with further information regarding the course schedule, fees, and enrollment requirements. Thank you, and I look forward to hearing from you.');
+      modalWaLink.href = 'https://wa.me/971557488405?text=' + encodeURIComponent('Hello, I am interested in enrolling in the ' + title + ' at Blueprint Training Centre. I would appreciate it if you could provide me with further information regarding the course schedule, fees, and enrollment requirements. Thank you, and I look forward to hearing from you.');
     }
 
     if (isHealthcare) {
