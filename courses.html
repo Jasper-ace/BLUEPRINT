@@ -228,8 +228,12 @@ tailwind.config = {
 <!-- Sticky Filter Bar -->
 <div id="courses-filter-bar">
 <div class="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-10 py-3.5 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
-<!-- Category Pills with Live Counts (Horizontally scrollable on mobile) -->
-<div aria-label="Course categories" class="filter-pills-scroll flex-1" role="tablist">
+<!-- Category Pills with Live Counts (Horizontally scrollable with mouse wheel, drag, or arrow buttons) -->
+<div class="pills-scroll-wrapper flex items-center gap-1.5 flex-1 min-w-0 relative">
+<button aria-label="Previous categories" class="pills-nav-arrow hidden sm:flex" id="pills-prev-btn" title="Scroll left" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<div aria-label="Course categories" class="filter-pills-scroll flex-1 min-w-0" id="filter-pills-wrap" role="tablist">
 <button aria-selected="true" class="filter-pill active" data-filter="all" role="tab">
 <span class="material-symbols-outlined text-[16px]">apps</span>
 <span>All</span>
@@ -297,7 +301,7 @@ tailwind.config = {
 </button>
 <button aria-selected="false" class="filter-pill" data-filter="healthcare" role="tab">
 <span class="material-symbols-outlined text-[16px]">health_and_safety</span>
-<span>Healthcare</span>
+<span>Healthcare and Awareness Training</span>
 <span class="pill-count-badge" id="count-healthcare">4</span>
 </button>
 <button aria-selected="false" class="filter-pill" data-filter="child-skills" role="tab">
@@ -314,6 +318,10 @@ tailwind.config = {
 <span class="material-symbols-outlined text-[16px]">hotel</span>
 <span>Hospitality &amp; Tourism</span>
 <span class="pill-count-badge" id="count-hospitality">2</span>
+</button>
+</div>
+<button aria-label="Next categories" class="pills-nav-arrow hidden sm:flex" id="pills-next-btn" title="Scroll right" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
 </button>
 </div>
 <!-- Search Box with Magnifier Icon -->

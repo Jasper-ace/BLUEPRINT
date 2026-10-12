@@ -777,8 +777,72 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
       pill.setAttribute('aria-selected', 'true');
       currentCat = pill.dataset.filter || 'all';
       update();
+      try {
+        pill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      } catch (err) {}
     });
   });
+
+  // Horizontal Scroll Controls for Category Pills (Wheel, Drag & Arrow Buttons)
+  var pillsWrap = document.getElementById('filter-pills-wrap');
+  var prevPillsBtn = document.getElementById('pills-prev-btn');
+  var nextPillsBtn = document.getElementById('pills-next-btn');
+
+  if (pillsWrap) {
+    // 1. Mouse wheel horizontal scrolling
+    pillsWrap.addEventListener('wheel', function(e) {
+      if (e.deltaY !== 0) {
+        e.preventDefault();
+        pillsWrap.scrollLeft += e.deltaY;
+      }
+    }, { passive: false });
+
+    // 2. Drag-to-scroll with mouse
+    var isDraggingPills = false;
+    var startDragX = 0;
+    var startScrollLeft = 0;
+    var hasMovedPills = false;
+
+    pillsWrap.addEventListener('mousedown', function(e) {
+      isDraggingPills = true;
+      hasMovedPills = false;
+      startDragX = e.pageX - pillsWrap.offsetLeft;
+      startScrollLeft = pillsWrap.scrollLeft;
+    });
+
+    window.addEventListener('mouseup', function() {
+      isDraggingPills = false;
+    });
+
+    pillsWrap.addEventListener('mousemove', function(e) {
+      if (!isDraggingPills) return;
+      e.preventDefault();
+      var x = e.pageX - pillsWrap.offsetLeft;
+      var walk = (x - startDragX);
+      if (Math.abs(walk) > 4) hasMovedPills = true;
+      pillsWrap.scrollLeft = startScrollLeft - walk;
+    });
+
+    pillsWrap.addEventListener('click', function(e) {
+      if (hasMovedPills) {
+        e.preventDefault();
+        e.stopPropagation();
+        hasMovedPills = false;
+      }
+    }, true);
+
+    // 3. Arrow buttons navigation
+    if (prevPillsBtn) {
+      prevPillsBtn.addEventListener('click', function() {
+        pillsWrap.scrollBy({ left: -260, behavior: 'smooth' });
+      });
+    }
+    if (nextPillsBtn) {
+      nextPillsBtn.addEventListener('click', function() {
+        pillsWrap.scrollBy({ left: 260, behavior: 'smooth' });
+      });
+    }
+  }
 
   // Search input
   if (searchInput) {
