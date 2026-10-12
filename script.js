@@ -7,23 +7,23 @@
 // Class toggle runs directly in the scroll event (no rAF delay) for
 // zero-lag shadow response.
 (function () {
-    var navbar = document.querySelector('.site-navbar');
-    if (!navbar) return;
+  var navbar = document.querySelector('.site-navbar');
+  if (!navbar) return;
 
-    var TOP_ZONE = 10; // px - shadow appears once scrolled past this
-    var isScrolled = false;
+  var TOP_ZONE = 10; // px - shadow appears once scrolled past this
+  var isScrolled = false;
 
-    window.addEventListener('scroll', function () {
-        var shouldBeScrolled = window.scrollY > TOP_ZONE;
-        if (shouldBeScrolled !== isScrolled) {
-            isScrolled = shouldBeScrolled;
-            navbar.classList.toggle('scrolled', isScrolled);
-        }
-    }, { passive: true });
+  window.addEventListener('scroll', function () {
+    var shouldBeScrolled = window.scrollY > TOP_ZONE;
+    if (shouldBeScrolled !== isScrolled) {
+      isScrolled = shouldBeScrolled;
+      navbar.classList.toggle('scrolled', isScrolled);
+    }
+  }, { passive: true });
 
-    // Run once on load in case the page was refreshed mid-scroll
-    isScrolled = window.scrollY > TOP_ZONE;
-    navbar.classList.toggle('scrolled', isScrolled);
+  // Run once on load in case the page was refreshed mid-scroll
+  isScrolled = window.scrollY > TOP_ZONE;
+  navbar.classList.toggle('scrolled', isScrolled);
 })();
 
 
@@ -37,40 +37,40 @@
  * @param {number} [duration] - Scroll duration in milliseconds.
  */
 function smoothScrollToSection(targetId, duration) {
-    duration = duration || 750;
-    var target = document.getElementById(targetId);
-    if (!target) return;
+  duration = duration || 750;
+  var target = document.getElementById(targetId);
+  if (!target) return;
 
-    // Measure the fixed navbar height dynamically so it stays accurate if the
-    // nav ever changes size (e.g., on resize or at different scroll positions).
-    var navbar =
-        document.querySelector('header[class*="fixed"]') ||
-        document.querySelector('nav[class*="fixed"]');
-    var navHeight = navbar ? navbar.getBoundingClientRect().height : 0;
+  // Measure the fixed navbar height dynamically so it stays accurate if the
+  // nav ever changes size (e.g., on resize or at different scroll positions).
+  var navbar =
+    document.querySelector('header[class*="fixed"]') ||
+    document.querySelector('nav[class*="fixed"]');
+  var navHeight = navbar ? navbar.getBoundingClientRect().height : 0;
 
-    // 32px breathing room so the section heading sits comfortably below the navbar
-    var targetTop = target.getBoundingClientRect().top + window.scrollY - navHeight - 0;
-    var startY = window.scrollY;
-    var distance = targetTop - startY;
-    var startTime = null;
+  // 32px breathing room so the section heading sits comfortably below the navbar
+  var targetTop = target.getBoundingClientRect().top + window.scrollY - navHeight - 0;
+  var startY = window.scrollY;
+  var distance = targetTop - startY;
+  var startTime = null;
 
-    // Ease-in-out cubic — smooth, premium feel
-    function easeInOutCubic(t) {
-        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    }
+  // Ease-in-out cubic — smooth, premium feel
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
 
-    function step(timestamp) {
-        if (!startTime) startTime = timestamp;
-        var elapsed = timestamp - startTime;
-        var progress = Math.min(elapsed / duration, 1);
-        var eased = easeInOutCubic(progress);
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    var elapsed = timestamp - startTime;
+    var progress = Math.min(elapsed / duration, 1);
+    var eased = easeInOutCubic(progress);
 
-        window.scrollTo(0, startY + distance * eased);
+    window.scrollTo(0, startY + distance * eased);
 
-        if (progress < 1) requestAnimationFrame(step);
-    }
+    if (progress < 1) requestAnimationFrame(step);
+  }
 
-    requestAnimationFrame(step);
+  requestAnimationFrame(step);
 }
 
 // ── Intercept same-page anchor clicks ────────────────────────────────────────
@@ -78,37 +78,37 @@ function smoothScrollToSection(targetId, duration) {
 // Handles any <a href="#section"> that resolves to a local section on the
 // current page. Works on all pages (index.html, facilities.html, etc.).
 document.addEventListener('click', function (e) {
-    var link = e.target.closest('a[href]');
-    if (!link) return;
+  var link = e.target.closest('a[href]');
+  if (!link) return;
 
-    var href = link.getAttribute('href');
+  var href = link.getAttribute('href');
 
-    // Only handle pure hash links (same-page navigation, e.g. href="#about")
-    if (!href || !href.startsWith('#')) return;
+  // Only handle pure hash links (same-page navigation, e.g. href="#about")
+  if (!href || !href.startsWith('#')) return;
 
-    var targetId = href.slice(1);
-    var targetEl = document.getElementById(targetId);
-    if (!targetEl) return;
+  var targetId = href.slice(1);
+  var targetEl = document.getElementById(targetId);
+  if (!targetEl) return;
 
-    e.preventDefault();
-    smoothScrollToSection(targetId);
+  e.preventDefault();
+  smoothScrollToSection(targetId);
 
-    // Close mobile menus if open
-    var mobileMenu = document.getElementById('mobile-menu');
-    var mobileBackdropEl = document.getElementById('mobile-backdrop');
-    if (mobileMenu) {
-        mobileMenu.classList.add('-translate-x-full');
-        if (mobileBackdropEl) {
-            mobileBackdropEl.classList.add('opacity-0', 'pointer-events-none');
-            mobileBackdropEl.classList.remove('opacity-100');
-        }
-        document.body.style.overflow = '';
-        var btn = document.getElementById('mobile-menu-btn');
-        if (btn) btn.setAttribute('aria-expanded', 'false');
+  // Close mobile menus if open
+  var mobileMenu = document.getElementById('mobile-menu');
+  var mobileBackdropEl = document.getElementById('mobile-backdrop');
+  if (mobileMenu) {
+    mobileMenu.classList.add('-translate-x-full');
+    if (mobileBackdropEl) {
+      mobileBackdropEl.classList.add('opacity-0', 'pointer-events-none');
+      mobileBackdropEl.classList.remove('opacity-100');
     }
+    document.body.style.overflow = '';
+    var btn = document.getElementById('mobile-menu-btn');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+  }
 
-    var mobileNav = document.getElementById('mobile-nav');
-    if (mobileNav) mobileNav.classList.add('-translate-x-full');
+  var mobileNav = document.getElementById('mobile-nav');
+  if (mobileNav) mobileNav.classList.add('-translate-x-full');
 }, true);
 
 // ── Cross-page hash navigation ────────────────────────────────────────────────
@@ -116,267 +116,267 @@ document.addEventListener('click', function (e) {
 // clicking "index.html#about"), suppress the browser's instant jump and
 // instead animate a smooth scroll after the page fully loads.
 (function handleHashOnLoad() {
-    if (!window.location.hash) return;
+  if (!window.location.hash) return;
 
-    var targetId = window.location.hash.slice(1);
+  var targetId = window.location.hash.slice(1);
 
-    // Cancel the browser's default anchor-jump by resetting to the top
-    // immediately. This must run synchronously before the first paint.
-    window.scrollTo(0, 0);
+  // Cancel the browser's default anchor-jump by resetting to the top
+  // immediately. This must run synchronously before the first paint.
+  window.scrollTo(0, 0);
 
-    // Once everything has loaded and painted, start the smooth animation.
-    window.addEventListener('load', function () {
-        setTimeout(function () {
-            smoothScrollToSection(targetId, 800);
-        }, 120); // small delay so layout/fonts have settled
-    });
+  // Once everything has loaded and painted, start the smooth animation.
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      smoothScrollToSection(targetId, 800);
+    }, 120); // small delay so layout/fonts have settled
+  });
 })();
 
 // ─────────────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function () {
 
-    // ── Hero Carousel ─────────────────────────────────────────────────────────
-    var track = document.getElementById('carousel-track');
-    var dots = document.querySelectorAll('[data-slide]');
-    var currentIndex = 0;
-    var slideCount = 2;
+  // ── Hero Carousel ─────────────────────────────────────────────────────────
+  var track = document.getElementById('carousel-track');
+  var dots = document.querySelectorAll('[data-slide]');
+  var currentIndex = 0;
+  var slideCount = 2;
 
-    function goToSlide(index) {
-        if (!track) return;
-        track.style.transform = 'translateX(-' + (index * 100) + '%)';
+  function goToSlide(index) {
+    if (!track) return;
+    track.style.transform = 'translateX(-' + (index * 100) + '%)';
 
-        dots.forEach(function (dot, i) {
-            if (i === index) {
-                dot.classList.remove('bg-on-primary/30', 'hover:bg-on-primary/60');
-                dot.classList.add('bg-secondary-container', 'shadow-[0_0_10px_rgba(254,179,22,0.4)]');
-            } else {
-                dot.classList.add('bg-on-primary/30', 'hover:bg-on-primary/60');
-                dot.classList.remove('bg-secondary-container', 'shadow-[0_0_10px_rgba(254,179,22,0.4)]');
-            }
-        });
-
-        currentIndex = index;
-    }
-
-    dots.forEach(function (dot) {
-        dot.addEventListener('click', function (e) {
-            var index = parseInt(e.target.getAttribute('data-slide'));
-            goToSlide(index);
-        });
+    dots.forEach(function (dot, i) {
+      if (i === index) {
+        dot.classList.remove('bg-on-primary/30', 'hover:bg-on-primary/60');
+        dot.classList.add('bg-secondary-container', 'shadow-[0_0_10px_rgba(254,179,22,0.4)]');
+      } else {
+        dot.classList.add('bg-on-primary/30', 'hover:bg-on-primary/60');
+        dot.classList.remove('bg-secondary-container', 'shadow-[0_0_10px_rgba(254,179,22,0.4)]');
+      }
     });
 
-    // Auto-advance carousel every 7 seconds
-    if (track) {
-        setInterval(function () {
-            goToSlide((currentIndex + 1) % slideCount);
-        }, 7000);
+    currentIndex = index;
+  }
+
+  dots.forEach(function (dot) {
+    dot.addEventListener('click', function (e) {
+      var index = parseInt(e.target.getAttribute('data-slide'));
+      goToSlide(index);
+    });
+  });
+
+  // Auto-advance carousel every 7 seconds
+  if (track) {
+    setInterval(function () {
+      goToSlide((currentIndex + 1) % slideCount);
+    }, 7000);
+  }
+
+  // ── Mobile Side Drawer (index.html) ───────────────────────────────────────
+  var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  var mobileMenuClose = document.getElementById('mobile-menu-close');
+  var mobileMenuEl = document.getElementById('mobile-menu');
+  var mobileBackdrop = document.getElementById('mobile-backdrop');
+
+  function openMobileMenu() {
+    if (!mobileMenuEl) return;
+    mobileMenuEl.classList.remove('-translate-x-full');
+    if (mobileBackdrop) {
+      mobileBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+      mobileBackdrop.classList.add('opacity-100');
     }
+    document.body.style.overflow = 'hidden'; // lock page scroll
+    if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'true');
+  }
 
-    // ── Mobile Side Drawer (index.html) ───────────────────────────────────────
-    var mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    var mobileMenuClose = document.getElementById('mobile-menu-close');
-    var mobileMenuEl = document.getElementById('mobile-menu');
-    var mobileBackdrop = document.getElementById('mobile-backdrop');
-
-    function openMobileMenu() {
-        if (!mobileMenuEl) return;
-        mobileMenuEl.classList.remove('-translate-x-full');
-        if (mobileBackdrop) {
-            mobileBackdrop.classList.remove('opacity-0', 'pointer-events-none');
-            mobileBackdrop.classList.add('opacity-100');
-        }
-        document.body.style.overflow = 'hidden'; // lock page scroll
-        if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'true');
+  function closeMobileMenu() {
+    if (!mobileMenuEl) return;
+    mobileMenuEl.classList.add('-translate-x-full');
+    if (mobileBackdrop) {
+      mobileBackdrop.classList.add('opacity-0', 'pointer-events-none');
+      mobileBackdrop.classList.remove('opacity-100');
     }
+    document.body.style.overflow = ''; // restore page scroll
+    if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
+  }
 
-    function closeMobileMenu() {
-        if (!mobileMenuEl) return;
-        mobileMenuEl.classList.add('-translate-x-full');
-        if (mobileBackdrop) {
-            mobileBackdrop.classList.add('opacity-0', 'pointer-events-none');
-            mobileBackdrop.classList.remove('opacity-100');
-        }
-        document.body.style.overflow = ''; // restore page scroll
-        if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
-    }
+  // Open on burger click
+  if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
+  // Close on X button inside drawer
+  if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+  // Close on backdrop tap
+  if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobileMenu);
+  // Close when a nav link is tapped
+  if (mobileMenuEl) {
+    mobileMenuEl.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMobileMenu);
+    });
+  }
 
-    // Open on burger click
-    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
-    // Close on X button inside drawer
-    if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
-    // Close on backdrop tap
-    if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobileMenu);
-    // Close when a nav link is tapped
-    if (mobileMenuEl) {
-        mobileMenuEl.querySelectorAll('a').forEach(function (link) {
-            link.addEventListener('click', closeMobileMenu);
+  // ── Active Nav Highlight via IntersectionObserver ─────────────────────────
+  // More accurate than scroll-offset: tracks which section is most visible.
+  var sections = Array.from(document.querySelectorAll('section[id]'));
+  var navLinks = document.querySelectorAll('.nav-link');
+
+  if (sections.length > 0 && navLinks.length > 0) {
+    var visibilityMap = {};
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          visibilityMap[entry.target.id] = entry.intersectionRatio;
         });
-    }
 
-    // ── Active Nav Highlight via IntersectionObserver ─────────────────────────
-    // More accurate than scroll-offset: tracks which section is most visible.
-    var sections = Array.from(document.querySelectorAll('section[id]'));
-    var navLinks = document.querySelectorAll('.nav-link');
-
-    if (sections.length > 0 && navLinks.length > 0) {
-        var visibilityMap = {};
-
-        var observer = new IntersectionObserver(
-            function (entries) {
-                entries.forEach(function (entry) {
-                    visibilityMap[entry.target.id] = entry.intersectionRatio;
-                });
-
-                // Activate the nav link for the most-visible section
-                var activeSectionId = '';
-                var maxRatio = 0;
-                Object.keys(visibilityMap).forEach(function (id) {
-                    if (visibilityMap[id] > maxRatio) {
-                        maxRatio = visibilityMap[id];
-                        activeSectionId = id;
-                    }
-                });
-
-                navLinks.forEach(function (link) {
-                    var linkHref = link.getAttribute('href');
-                    // Match both "#about" and "index.html#about" forms
-                    var isActive =
-                        linkHref === ('#' + activeSectionId) ||
-                        linkHref === ('index.html#' + activeSectionId);
-
-                    link.classList.toggle('text-primary-container', isActive);
-                    link.classList.toggle('active', isActive);
-                    link.classList.toggle('text-on-surface-variant', !isActive);
-                });
-            },
-            {
-                // Top margin accounts for the fixed navbar (~80-96px);
-                // bottom margin keeps the section from activating too late.
-                rootMargin: '-96px 0px -40% 0px',
-                threshold: [0, 0.1, 0.25, 0.5, 0.75, 1.0],
-            }
-        );
-
-        sections.forEach(function (section) {
-            visibilityMap[section.id] = 0;
-            observer.observe(section);
+        // Activate the nav link for the most-visible section
+        var activeSectionId = '';
+        var maxRatio = 0;
+        Object.keys(visibilityMap).forEach(function (id) {
+          if (visibilityMap[id] > maxRatio) {
+            maxRatio = visibilityMap[id];
+            activeSectionId = id;
+          }
         });
-    }
+
+        navLinks.forEach(function (link) {
+          var linkHref = link.getAttribute('href');
+          // Match both "#about" and "index.html#about" forms
+          var isActive =
+            linkHref === ('#' + activeSectionId) ||
+            linkHref === ('index.html#' + activeSectionId);
+
+          link.classList.toggle('text-primary-container', isActive);
+          link.classList.toggle('active', isActive);
+          link.classList.toggle('text-on-surface-variant', !isActive);
+        });
+      },
+      {
+        // Top margin accounts for the fixed navbar (~80-96px);
+        // bottom margin keeps the section from activating too late.
+        rootMargin: '-96px 0px -40% 0px',
+        threshold: [0, 0.1, 0.25, 0.5, 0.75, 1.0],
+      }
+    );
+
+    sections.forEach(function (section) {
+      visibilityMap[section.id] = 0;
+      observer.observe(section);
+    });
+  }
 });
 
 // ── Facilities Page: Mobile Nav Slide-in ──────────────────────────────────────
 (function () {
-    var menuBtn = document.getElementById('facilities-menu-btn');
-    var mobileNav = document.getElementById('mobile-nav');
-    if (menuBtn && mobileNav) {
-        menuBtn.addEventListener('click', function () {
-            mobileNav.classList.toggle('-translate-x-full');
-        });
-    }
+  var menuBtn = document.getElementById('facilities-menu-btn');
+  var mobileNav = document.getElementById('mobile-nav');
+  if (menuBtn && mobileNav) {
+    menuBtn.addEventListener('click', function () {
+      mobileNav.classList.toggle('-translate-x-full');
+    });
+  }
 })();
 
 // ── Universal Nav Click Ripple ────────────────────────────────────────────────
 // Works on all pages: targets any <a> inside a <nav> or <header>,
 // plus links with class .nav-link
 document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) {
-    link.style.position = 'relative';
-    link.style.overflow = 'hidden';
-    link.style.display = link.style.display || 'inline-flex';
+  link.style.position = 'relative';
+  link.style.overflow = 'hidden';
+  link.style.display = link.style.display || 'inline-flex';
 
-    link.addEventListener('click', function (e) {
-        // Press scale animation
-        this.classList.remove('nav-clicked');
-        void this.offsetWidth; // force reflow to restart animation
-        this.classList.add('nav-clicked');
-        this.addEventListener('animationend', function () {
-            this.classList.remove('nav-clicked');
-        }.bind(this), { once: true });
+  link.addEventListener('click', function (e) {
+    // Press scale animation
+    this.classList.remove('nav-clicked');
+    void this.offsetWidth; // force reflow to restart animation
+    this.classList.add('nav-clicked');
+    this.addEventListener('animationend', function () {
+      this.classList.remove('nav-clicked');
+    }.bind(this), { once: true });
 
-        // Ripple bubble
-        var ripple = document.createElement('span');
-        ripple.classList.add('nav-ripple-el');
-        var rect = this.getBoundingClientRect();
-        ripple.style.top = (e.clientY - rect.top) + 'px';
-        ripple.style.left = (e.clientX - rect.left) + 'px';
-        this.appendChild(ripple);
-        ripple.addEventListener('animationend', function () { ripple.remove(); });
-    });
+    // Ripple bubble
+    var ripple = document.createElement('span');
+    ripple.classList.add('nav-ripple-el');
+    var rect = this.getBoundingClientRect();
+    ripple.style.top = (e.clientY - rect.top) + 'px';
+    ripple.style.left = (e.clientX - rect.left) + 'px';
+    this.appendChild(ripple);
+    ripple.addEventListener('animationend', function () { ripple.remove(); });
+  });
 });
 (function () {
-    const link = document.getElementById('tos-link');
-    const modal = document.getElementById('tos-modal');
-    const panel = document.getElementById('tos-panel');
-    const backdrop = document.getElementById('tos-backdrop');
-    const closeBtn = document.getElementById('tos-close-btn');
-    const acceptBtn = document.getElementById('tos-accept-btn');
+  const link = document.getElementById('tos-link');
+  const modal = document.getElementById('tos-modal');
+  const panel = document.getElementById('tos-panel');
+  const backdrop = document.getElementById('tos-backdrop');
+  const closeBtn = document.getElementById('tos-close-btn');
+  const acceptBtn = document.getElementById('tos-accept-btn');
 
-    if (!link || !modal || !panel) return;
+  if (!link || !modal || !panel) return;
 
-    function openModal() {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-        // Allow the display change to apply before animating in
-        requestAnimationFrame(() => {
-            panel.classList.remove('scale-95', 'opacity-0');
-            panel.classList.add('scale-100', 'opacity-100');
-        });
+  function openModal() {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+    // Allow the display change to apply before animating in
+    requestAnimationFrame(() => {
+      panel.classList.remove('scale-95', 'opacity-0');
+      panel.classList.add('scale-100', 'opacity-100');
+    });
+  }
+
+  function closeModal() {
+    panel.classList.remove('scale-100', 'opacity-100');
+    panel.classList.add('scale-95', 'opacity-0');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }, 250);
+  }
+
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    openModal();
+  });
+
+  [backdrop, closeBtn, acceptBtn].forEach((el) => {
+    if (el) el.addEventListener('click', closeModal);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+      closeModal();
     }
-
-    function closeModal() {
-        panel.classList.remove('scale-100', 'opacity-100');
-        panel.classList.add('scale-95', 'opacity-0');
-        document.body.style.overflow = '';
-        setTimeout(() => {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }, 250);
-    }
-
-    link.addEventListener('click', function (e) {
-        e.preventDefault();
-        openModal();
-    });
-
-    [backdrop, closeBtn, acceptBtn].forEach((el) => {
-        if (el) el.addEventListener('click', closeModal);
-    });
-
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-            closeModal();
-        }
-    });
+  });
 })();
 (function () {
-    var overlay = document.getElementById('pl-overlay');
-    if (!overlay) return; // not on a page with a preloader
-    if (sessionStorage.getItem('bp_visited')) {
-        overlay.style.display = 'none';
-        return;
-    }
-    sessionStorage.setItem('bp_visited', '1');
-    document.body.style.overflow = 'hidden';
-    var content = document.querySelector('.pl-content');
-    var stage = document.getElementById('pl-stage');
-    // Aim the dive zoom at the centre of the logo
-    function setOrigin() {
-        content.style.transformOrigin = '50% 50%';
-    }
-    setOrigin();
-    window.addEventListener('resize', setOrigin);
-    // Kick off the exit animation after the logo has been on screen (1400ms hold)
-    setTimeout(function () { setOrigin(); stage.classList.add('diving'); }, 1400);
-    // The fade-up animation is 0.7s — start fading the overlay at 1400 + 700 = 2100ms
-    // Then release body scroll immediately so the page is ready underneath
-    setTimeout(function () {
-        overlay.classList.add('pl-hidden');
-        document.body.style.overflow = '';
-        // Remove DOM node after the 0.6s CSS opacity transition fully completes
-        setTimeout(function () { overlay.parentNode && overlay.parentNode.removeChild(overlay); }, 650);
-    }, 2100);
+  var overlay = document.getElementById('pl-overlay');
+  if (!overlay) return; // not on a page with a preloader
+  if (sessionStorage.getItem('bp_visited')) {
+    overlay.style.display = 'none';
+    return;
+  }
+  sessionStorage.setItem('bp_visited', '1');
+  document.body.style.overflow = 'hidden';
+  var content = document.querySelector('.pl-content');
+  var stage = document.getElementById('pl-stage');
+  // Aim the dive zoom at the centre of the logo
+  function setOrigin() {
+    content.style.transformOrigin = '50% 50%';
+  }
+  setOrigin();
+  window.addEventListener('resize', setOrigin);
+  // Kick off the exit animation after the logo has been on screen (1400ms hold)
+  setTimeout(function () { setOrigin(); stage.classList.add('diving'); }, 1400);
+  // The fade-up animation is 0.7s — start fading the overlay at 1400 + 700 = 2100ms
+  // Then release body scroll immediately so the page is ready underneath
+  setTimeout(function () {
+    overlay.classList.add('pl-hidden');
+    document.body.style.overflow = '';
+    // Remove DOM node after the 0.6s CSS opacity transition fully completes
+    setTimeout(function () { overlay.parentNode && overlay.parentNode.removeChild(overlay); }, 650);
+  }, 2100);
 })();
-(function(){
+(function () {
   var ALL = document.querySelectorAll('.cc');
   if (!ALL || ALL.length === 0) return; // new courses.html uses .course-card — skip this block
   var activeCat = 'all';
@@ -384,58 +384,58 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
 
   /* â”€â”€ Count badges on pills â”€â”€ */
   var counts = {};
-  ALL.forEach(function(c){ counts[c.dataset.cat] = (counts[c.dataset.cat]||0)+1; });
-  document.querySelectorAll('.fp[data-cat]').forEach(function(btn){
+  ALL.forEach(function (c) { counts[c.dataset.cat] = (counts[c.dataset.cat] || 0) + 1; });
+  document.querySelectorAll('.fp[data-cat]').forEach(function (btn) {
     var cat = btn.dataset.cat;
     var badge = btn.querySelector('.fp-badge');
-    if(badge && cat!=='all') badge.textContent = counts[cat]||0;
+    if (badge && cat !== 'all') badge.textContent = counts[cat] || 0;
   });
 
   /* â”€â”€ Master filter â”€â”€ */
-  function applyFilter(){
+  function applyFilter() {
     var visible = 0;
-    ALL.forEach(function(card,i){
-      var catMatch = activeCat==='all' || card.dataset.cat===activeCat;
+    ALL.forEach(function (card, i) {
+      var catMatch = activeCat === 'all' || card.dataset.cat === activeCat;
       var titleEl = card.querySelector('.cc-header-title') || card.querySelector('.cc-title');
       var searchMatch = !searchVal || (titleEl && titleEl.textContent.toLowerCase().includes(searchVal));
-      if(catMatch && searchMatch){
+      if (catMatch && searchMatch) {
         card.classList.remove('hidden-card');
-        card.style.animationDelay = (visible*0.035)+'s';
+        card.style.animationDelay = (visible * 0.035) + 's';
         visible++;
       } else {
         card.classList.add('hidden-card');
       }
     });
-    var catNames = {'all':'All Programmes','language':'Language','management':'Management & Business','technology':'Technology & IT','creative':'Creative & Beauty','engineering':'Engineering'};
-    document.querySelector('.courses-title').textContent = catNames[activeCat]||'All Programmes';
-    var label = searchVal ? 'Found '+visible+' course'+(visible!==1?'s':'') : 'Showing '+visible+' of 27 courses';
+    var catNames = { 'all': 'All Programmes', 'language': 'Language', 'management': 'Management & Business', 'technology': 'Technology & IT', 'creative': 'Creative & Beauty', 'engineering': 'Engineering' };
+    document.querySelector('.courses-title').textContent = catNames[activeCat] || 'All Programmes';
+    var label = searchVal ? 'Found ' + visible + ' course' + (visible !== 1 ? 's' : '') : 'Showing ' + visible + ' of 27 courses';
     document.getElementById('result-label').textContent = label;
     var emptyEl = document.getElementById('empty-state');
-    emptyEl.classList.toggle('visible', visible===0);
+    emptyEl.classList.toggle('visible', visible === 0);
   }
 
   /* â”€â”€ Category filter (pills) â”€â”€ */
-  window.filterCourses = function(btn){
+  window.filterCourses = function (btn) {
     var cat = btn.dataset.cat;
-    if(cat===activeCat && !searchVal) return;
+    if (cat === activeCat && !searchVal) return;
     activeCat = cat;
-    document.querySelectorAll('.fp').forEach(function(p){
-      p.classList.toggle('active', p===btn);
-      p.setAttribute('aria-selected', p===btn);
+    document.querySelectorAll('.fp').forEach(function (p) {
+      p.classList.toggle('active', p === btn);
+      p.setAttribute('aria-selected', p === btn);
     });
-    window.scrollTo({top:document.getElementById('main-content').offsetTop-140,behavior:'smooth'});
+    window.scrollTo({ top: document.getElementById('main-content').offsetTop - 140, behavior: 'smooth' });
     applyFilter();
   };
 
   /* â”€â”€ Category strip chips â”€â”€ */
-  window.filterByChip = function(cat){
-    var btn = document.querySelector('.fp[data-cat="'+cat+'"]');
-    if(btn) filterCourses(btn);
+  window.filterByChip = function (cat) {
+    var btn = document.querySelector('.fp[data-cat="' + cat + '"]');
+    if (btn) filterCourses(btn);
   };
 
   /* â”€â”€ Search â”€â”€ */
   var searchInput = document.getElementById('course-search');
-  searchInput.addEventListener('input', function(){
+  searchInput.addEventListener('input', function () {
     searchVal = this.value.toLowerCase().trim();
     applyFilter();
   });
@@ -447,187 +447,187 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
   var mobileMenuClose = document.getElementById('mobile-menu-close');
   function openMobileMenu() {
     mobileMenu.classList.remove('-translate-x-full');
-    mobileBackdrop.classList.remove('opacity-0','pointer-events-none');
+    mobileBackdrop.classList.remove('opacity-0', 'pointer-events-none');
     mobileBackdrop.classList.add('opacity-100');
-    mobileMenuBtn && mobileMenuBtn.setAttribute('aria-expanded','true');
+    mobileMenuBtn && mobileMenuBtn.setAttribute('aria-expanded', 'true');
   }
   function closeMobileMenu() {
     mobileMenu.classList.add('-translate-x-full');
-    mobileBackdrop.classList.add('opacity-0','pointer-events-none');
+    mobileBackdrop.classList.add('opacity-0', 'pointer-events-none');
     mobileBackdrop.classList.remove('opacity-100');
-    mobileMenuBtn && mobileMenuBtn.setAttribute('aria-expanded','false');
+    mobileMenuBtn && mobileMenuBtn.setAttribute('aria-expanded', 'false');
   }
-  if(mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
-  if(mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
-  if(mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobileMenu);
-  document.addEventListener('keydown',function(e){
-    if(e.key==='Escape') closeMobileMenu();
+  if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
+  if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+  if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobileMenu);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMobileMenu();
   });
 
   /* â”€â”€ Card enter key â”€â”€ */
-  ALL.forEach(function(card){
-    card.addEventListener('keydown',function(e){
-      if(e.key==='Enter'){ var a=card.querySelector('.cc-enroll')||card.querySelector('.cc-arrow'); if(a) a.click(); }
+  ALL.forEach(function (card) {
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { var a = card.querySelector('.cc-enroll') || card.querySelector('.cc-arrow'); if (a) a.click(); }
     });
   });
 
   /* â”€â”€ Stagger animation on load â”€â”€ */
-  ALL.forEach(function(card,i){ card.style.animationDelay = (i*0.04)+'s'; });
+  ALL.forEach(function (card, i) { card.style.animationDelay = (i * 0.04) + 's'; });
 })();
 
 /* ==========================================================================
    Consolidated Scripts from index.html (Interactive Photo Stack / Facilities)
    ========================================================================== */
 (function () {
-                                                                'use strict';
+  'use strict';
 
-                                                                /* ════════════════════════════════════════════════
-                                                                   BROWSING AN OLD PHOTO STACK — click, and the top
-                                                                   print slides off to the side (alternating left/
-                                                                   right, like a hand pushing it aside) revealing the
-                                                                   next photo underneath, which was already resting
-                                                                   at a slight tilt and straightens up as it comes
-                                                                   to the front. The swiped photo is quietly recycled
-                                                                   to the bottom of the pile.
-                                                                ════════════════════════════════════════════════ */
+  /* ════════════════════════════════════════════════
+     BROWSING AN OLD PHOTO STACK — click, and the top
+     print slides off to the side (alternating left/
+     right, like a hand pushing it aside) revealing the
+     next photo underneath, which was already resting
+     at a slight tilt and straightens up as it comes
+     to the front. The swiped photo is quietly recycled
+     to the bottom of the pile.
+  ════════════════════════════════════════════════ */
 
-                                                                var IMGS = [
-                                                                        'facilities/IMG_7878.JPG',
-                                                                        'facilities/IMG_7882.png',
-                                                                        'facilities/IMG_7891.png',
-                                                                        'facilities/IMG_7895.JPG',
-                                                                        'facilities/IMG_7910.png',
-                                                                        'facilities/IMG_7916.JPG',
-                                                                        'facilities/IMG_7917.png',
-                                                                        'facilities/IMG_7925.png'
-                                                                ];
-                                                                var TOTAL = IMGS.length;
-                                                                var T_SWIPE = 480;   /* top photo sliding away, ms */
-                                                                var T_SETTLE = 420;   /* rest of pile shifting up, ms */
+  var IMGS = [
+    'facilities/IMG_7878.JPG',
+    'facilities/IMG_7882.png',
+    'facilities/IMG_7891.png',
+    'facilities/IMG_7895.JPG',
+    'facilities/IMG_7910.png',
+    'facilities/IMG_7916.JPG',
+    'facilities/IMG_7917.png',
+    'facilities/IMG_7925.png'
+  ];
+  var TOTAL = IMGS.length;
+  var T_SWIPE = 480;   /* top photo sliding away, ms */
+  var T_SETTLE = 420;   /* rest of pile shifting up, ms */
 
-                                                                var cur = 0;
-                                                                var busy = false;
-                                                                var hintGone = false;
-                                                                var swipeDir = 1;    /* alternates 1 / -1 for left/right variety */
-                                                                var cards, dots, veil, ripple, hint;
+  var cur = 0;
+  var busy = false;
+  var hintGone = false;
+  var swipeDir = 1;    /* alternates 1 / -1 for left/right variety */
+  var cards, dots, veil, ripple, hint;
 
-                                                                IMGS.forEach(function (src) { (new Image()).src = src; });
+  IMGS.forEach(function (src) { (new Image()).src = src; });
 
-                                                                /* Resting look for a card at "offset" positions back in the pile (0 = top/visible) */
-                                                                function styleFor(offset) {
-                                                                        var capped = Math.min(offset, 4);
-                                                                        /* alternate slight tilt per depth so it looks like a hand-stacked pile of prints */
-                                                                        var tiltSign = (offset % 2 === 0) ? 1 : -1;
-                                                                        var tilt = capped === 0 ? 0 : tiltSign * (2 + capped * 1.3);
-                                                                        return {
-                                                                                transform: 'translate(' + (tiltSign * capped * 3) + 'px,' + (capped * 4) + 'px) ' +
-                                                                                        'rotate(' + tilt + 'deg) ' +
-                                                                                        'scale(' + (1 - capped * 0.035) + ')',
-                                                                                opacity: offset === 0 ? 1 : Math.max(0.4, 1 - capped * 0.15),
-                                                                                zIndex: 50 - offset
-                                                                        };
-                                                                }
+  /* Resting look for a card at "offset" positions back in the pile (0 = top/visible) */
+  function styleFor(offset) {
+    var capped = Math.min(offset, 4);
+    /* alternate slight tilt per depth so it looks like a hand-stacked pile of prints */
+    var tiltSign = (offset % 2 === 0) ? 1 : -1;
+    var tilt = capped === 0 ? 0 : tiltSign * (2 + capped * 1.3);
+    return {
+      transform: 'translate(' + (tiltSign * capped * 3) + 'px,' + (capped * 4) + 'px) ' +
+        'rotate(' + tilt + 'deg) ' +
+        'scale(' + (1 - capped * 0.035) + ')',
+      opacity: offset === 0 ? 1 : Math.max(0.4, 1 - capped * 0.15),
+      zIndex: 50 - offset
+    };
+  }
 
-                                                                function applyStyle(card, s, withTransition) {
-                                                                        card.style.transition = withTransition
-                                                                                ? 'transform ' + T_SETTLE + 'ms cubic-bezier(0.25,0.9,0.35,1), opacity ' + T_SETTLE + 'ms ease'
-                                                                                : 'none';
-                                                                        card.style.transform = s.transform;
-                                                                        card.style.opacity = s.opacity;
-                                                                        card.style.zIndex = s.zIndex;
-                                                                }
+  function applyStyle(card, s, withTransition) {
+    card.style.transition = withTransition
+      ? 'transform ' + T_SETTLE + 'ms cubic-bezier(0.25,0.9,0.35,1), opacity ' + T_SETTLE + 'ms ease'
+      : 'none';
+    card.style.transform = s.transform;
+    card.style.opacity = s.opacity;
+    card.style.zIndex = s.zIndex;
+  }
 
-                                                                function init() {
-                                                                        cards = document.querySelectorAll('.fg-card');
-                                                                        dots = document.querySelectorAll('.fg-dot');
-                                                                        veil = document.getElementById('fg-veil');
-                                                                        ripple = document.getElementById('fg-ripple');
-                                                                        hint = document.getElementById('fg-hint');
+  function init() {
+    cards = document.querySelectorAll('.fg-card');
+    dots = document.querySelectorAll('.fg-dot');
+    veil = document.getElementById('fg-veil');
+    ripple = document.getElementById('fg-ripple');
+    hint = document.getElementById('fg-hint');
 
-                                                                        cards.forEach(function (card, i) {
-                                                                                card.style.backgroundImage = "url('" + IMGS[i] + "')";
-                                                                                var offset = (i - cur + TOTAL) % TOTAL;
-                                                                                applyStyle(card, styleFor(offset), false);
-                                                                        });
-                                                                }
+    cards.forEach(function (card, i) {
+      card.style.backgroundImage = "url('" + IMGS[i] + "')";
+      var offset = (i - cur + TOTAL) % TOTAL;
+      applyStyle(card, styleFor(offset), false);
+    });
+  }
 
-                                                                function flashVeil() {
-                                                                        if (!veil) return;
-                                                                        veil.classList.add('fg-veil-flash');
-                                                                        setTimeout(function () { veil.classList.remove('fg-veil-flash'); }, 90);
-                                                                }
+  function flashVeil() {
+    if (!veil) return;
+    veil.classList.add('fg-veil-flash');
+    setTimeout(function () { veil.classList.remove('fg-veil-flash'); }, 90);
+  }
 
-                                                                function triggerRipple() {
-                                                                        if (!ripple) return;
-                                                                        ripple.classList.remove('fg-ripple-go');
-                                                                        void ripple.offsetWidth;
-                                                                        ripple.classList.add('fg-ripple-go');
-                                                                }
+  function triggerRipple() {
+    if (!ripple) return;
+    ripple.classList.remove('fg-ripple-go');
+    void ripple.offsetWidth;
+    ripple.classList.add('fg-ripple-go');
+  }
 
-                                                                function goTo(next) {
-                                                                        if (busy || next === cur) return;
-                                                                        busy = true;
+  function goTo(next) {
+    if (busy || next === cur) return;
+    busy = true;
 
-                                                                        if (!hintGone && hint) {
-                                                                                hint.classList.add('fg-hint-gone');
-                                                                                hintGone = true;
-                                                                        }
+    if (!hintGone && hint) {
+      hint.classList.add('fg-hint-gone');
+      hintGone = true;
+    }
 
-                                                                        triggerRipple();
+    triggerRipple();
 
-                                                                        var topCard = cards[cur];
-                                                                        var dir = swipeDir;
-                                                                        swipeDir *= -1; /* alternate direction next time, like a real hand shuffling prints */
+    var topCard = cards[cur];
+    var dir = swipeDir;
+    swipeDir *= -1; /* alternate direction next time, like a real hand shuffling prints */
 
-                                                                        /* ── TOP PHOTO SLIDES/SWIPES OFF like pushing it aside by hand ── */
-                                                                        topCard.style.zIndex = '55';
-                                                                        topCard.style.transition =
-                                                                                'transform ' + T_SWIPE + 'ms cubic-bezier(0.36,0.66,0.35,1),' +
-                                                                                'opacity ' + T_SWIPE + 'ms ease-in';
-                                                                        topCard.style.transform =
-                                                                                'translate(' + (dir * 130) + '%, 18%) rotate(' + (dir * 22) + 'deg) scale(0.94)';
-                                                                        topCard.style.opacity = '0';
+    /* ── TOP PHOTO SLIDES/SWIPES OFF like pushing it aside by hand ── */
+    topCard.style.zIndex = '55';
+    topCard.style.transition =
+      'transform ' + T_SWIPE + 'ms cubic-bezier(0.36,0.66,0.35,1),' +
+      'opacity ' + T_SWIPE + 'ms ease-in';
+    topCard.style.transform =
+      'translate(' + (dir * 130) + '%, 18%) rotate(' + (dir * 22) + 'deg) scale(0.94)';
+    topCard.style.opacity = '0';
 
-                                                                        setTimeout(flashVeil, T_SWIPE * 0.3);
+    setTimeout(flashVeil, T_SWIPE * 0.3);
 
-                                                                        /* ── REST OF THE PILE SHIFTS UP ONE POSITION, STRAIGHTENING AS IT NEARS THE TOP ── */
-                                                                        for (var i = 0; i < TOTAL; i++) {
-                                                                                if (i === cur) continue;
-                                                                                var offset = (i - next + TOTAL) % TOTAL;
-                                                                                applyStyle(cards[i], styleFor(offset), true);
-                                                                        }
+    /* ── REST OF THE PILE SHIFTS UP ONE POSITION, STRAIGHTENING AS IT NEARS THE TOP ── */
+    for (var i = 0; i < TOTAL; i++) {
+      if (i === cur) continue;
+      var offset = (i - next + TOTAL) % TOTAL;
+      applyStyle(cards[i], styleFor(offset), true);
+    }
 
-                                                                        dots[cur].classList.remove('fg-dot-active');
-                                                                        dots[next].classList.add('fg-dot-active');
+    dots[cur].classList.remove('fg-dot-active');
+    dots[next].classList.add('fg-dot-active');
 
-                                                                        /* ── Recycle the swiped photo to the bottom of the pile, no visible snap ── */
-                                                                        setTimeout(function () {
-                                                                                var backOffset = (cur - next + TOTAL) % TOTAL;
-                                                                                applyStyle(topCard, styleFor(backOffset), false);
-                                                                                cur = next;
-                                                                                busy = false;
-                                                                        }, T_SWIPE + 20);
-                                                                }
+    /* ── Recycle the swiped photo to the bottom of the pile, no visible snap ── */
+    setTimeout(function () {
+      var backOffset = (cur - next + TOTAL) % TOTAL;
+      applyStyle(topCard, styleFor(backOffset), false);
+      cur = next;
+      busy = false;
+    }, T_SWIPE + 20);
+  }
 
-                                                                window.fgAdvance = function () { goTo((cur + 1) % TOTAL); };
-                                                                window.fgGoTo = function (n) { goTo(n); };
+  window.fgAdvance = function () { goTo((cur + 1) % TOTAL); };
+  window.fgGoTo = function (n) { goTo(n); };
 
-                                                                if (document.readyState === 'loading') {
-                                                                        document.addEventListener('DOMContentLoaded', init);
-                                                                } else {
-                                                                        init();
-                                                                }
-                                                        })();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
 
 /* ==========================================================================
    Consolidated Scripts from courses.html (Filter, Search, Modal, Drawer)
    ========================================================================== */
-(function() {
+(function () {
   "use strict";
 
   /* ── 1. Navbar elevation on scroll ── */
   var navbar = document.querySelector('.site-navbar');
-  window.addEventListener('scroll', function() {
+  window.addEventListener('scroll', function () {
     if (!navbar) return;
     if (window.scrollY > 20) {
       navbar.classList.add('shadow-md');
@@ -668,7 +668,7 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
   if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileNav);
   if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobileNav);
   if (mobileMenu) {
-    mobileMenu.querySelectorAll('a').forEach(function(link) {
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', closeMobileNav);
     });
   }
@@ -698,7 +698,7 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
   function update() {
     var visible = 0;
 
-    cards.forEach(function(card) {
+    cards.forEach(function (card) {
       var cat = card.dataset.cat || '';
       var lvl = card.dataset.level || '';
       var title = (card.querySelector('.course-title')?.textContent || '').toLowerCase();
@@ -737,12 +737,12 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
 
   function updatePillCounts() {
     var catCounts = { all: 0 };
-    pills.forEach(function(p) {
+    pills.forEach(function (p) {
       var f = p.dataset.filter;
       if (f) catCounts[f] = 0;
     });
 
-    cards.forEach(function(card) {
+    cards.forEach(function (card) {
       var cat = card.dataset.cat || '';
       var lvl = card.dataset.level || '';
       var title = (card.querySelector('.course-title')?.textContent || '').toLowerCase();
@@ -758,7 +758,7 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
       }
     });
 
-    Object.keys(catCounts).forEach(function(k) {
+    Object.keys(catCounts).forEach(function (k) {
       var badge = document.getElementById('count-' + k);
       if (badge) {
         badge.textContent = catCounts[k];
@@ -767,9 +767,9 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
   }
 
   // Category Pill Clicks
-  pills.forEach(function(pill) {
-    pill.addEventListener('click', function() {
-      pills.forEach(function(p) {
+  pills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      pills.forEach(function (p) {
         p.classList.remove('active');
         p.setAttribute('aria-selected', 'false');
       });
@@ -779,7 +779,7 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
       update();
       try {
         pill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      } catch (err) {}
+      } catch (err) { }
     });
   });
 
@@ -790,7 +790,7 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
 
   if (pillsWrap) {
     // 1. Mouse wheel horizontal scrolling
-    pillsWrap.addEventListener('wheel', function(e) {
+    pillsWrap.addEventListener('wheel', function (e) {
       if (e.deltaY !== 0) {
         e.preventDefault();
         pillsWrap.scrollLeft += e.deltaY;
@@ -803,18 +803,18 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
     var startScrollLeft = 0;
     var hasMovedPills = false;
 
-    pillsWrap.addEventListener('mousedown', function(e) {
+    pillsWrap.addEventListener('mousedown', function (e) {
       isDraggingPills = true;
       hasMovedPills = false;
       startDragX = e.pageX - pillsWrap.offsetLeft;
       startScrollLeft = pillsWrap.scrollLeft;
     });
 
-    window.addEventListener('mouseup', function() {
+    window.addEventListener('mouseup', function () {
       isDraggingPills = false;
     });
 
-    pillsWrap.addEventListener('mousemove', function(e) {
+    pillsWrap.addEventListener('mousemove', function (e) {
       if (!isDraggingPills) return;
       e.preventDefault();
       var x = e.pageX - pillsWrap.offsetLeft;
@@ -823,7 +823,7 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
       pillsWrap.scrollLeft = startScrollLeft - walk;
     });
 
-    pillsWrap.addEventListener('click', function(e) {
+    pillsWrap.addEventListener('click', function (e) {
       if (hasMovedPills) {
         e.preventDefault();
         e.stopPropagation();
@@ -833,12 +833,12 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
 
     // 3. Arrow buttons navigation
     if (prevPillsBtn) {
-      prevPillsBtn.addEventListener('click', function() {
+      prevPillsBtn.addEventListener('click', function () {
         pillsWrap.scrollBy({ left: -260, behavior: 'smooth' });
       });
     }
     if (nextPillsBtn) {
-      nextPillsBtn.addEventListener('click', function() {
+      nextPillsBtn.addEventListener('click', function () {
         pillsWrap.scrollBy({ left: 260, behavior: 'smooth' });
       });
     }
@@ -846,7 +846,7 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
 
   // Search input
   if (searchInput) {
-    searchInput.addEventListener('input', function() {
+    searchInput.addEventListener('input', function () {
       searchQuery = searchInput.value.trim().toLowerCase();
       update();
     });
@@ -854,7 +854,7 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
 
   // Level filter select
   if (levelSelect) {
-    levelSelect.addEventListener('change', function() {
+    levelSelect.addEventListener('change', function () {
       currentLevel = levelSelect.value;
       update();
     });
@@ -862,13 +862,13 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
 
   // Clear filters button
   if (clearFiltersBtn) {
-    clearFiltersBtn.addEventListener('click', function() {
+    clearFiltersBtn.addEventListener('click', function () {
       currentCat = 'all';
       currentLevel = 'any';
       searchQuery = '';
       if (searchInput) searchInput.value = '';
       if (levelSelect) levelSelect.value = 'any';
-      pills.forEach(function(p) {
+      pills.forEach(function (p) {
         if (p.dataset.filter === 'all') {
           p.classList.add('active');
           p.setAttribute('aria-selected', 'true');
@@ -991,62 +991,62 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
     timelineGrid.innerHTML = '';
 
     if (isModular) {
-      data.forEach(function(mod) {
+      data.forEach(function (mod) {
         var banner = document.createElement('div');
         banner.className = 'col-span-full mt-3 first:mt-0 mb-1 py-2.5 px-3.5 bg-gradient-to-r from-[#002147] to-[#0a3871] text-white rounded-xl flex items-center justify-between shadow-sm';
-        banner.innerHTML = 
+        banner.innerHTML =
           '<div class="flex items-center gap-2">' +
-            '<span class="material-symbols-outlined text-[18px] text-amber-400">clinical_notes</span>' +
-            '<span class="font-bold text-xs uppercase tracking-wide">' + mod.moduleTitle + '</span>' +
+          '<span class="material-symbols-outlined text-[18px] text-amber-400">clinical_notes</span>' +
+          '<span class="font-bold text-xs uppercase tracking-wide">' + mod.moduleTitle + '</span>' +
           '</div>' +
           '<span class="text-[10px] font-bold text-amber-300 uppercase tracking-widest bg-white/10 px-2 py-0.5 rounded">' + mod.weeks.length + ' Weeks</span>';
         timelineGrid.appendChild(banner);
 
-        mod.weeks.forEach(function(s) {
+        mod.weeks.forEach(function (s) {
           var card = document.createElement('div');
           card.className = 'timeline-session-card flex items-start gap-3 relative overflow-hidden self-start';
           var bulletsHtml = '';
           if (s.bullets && s.bullets.length > 0) {
             bulletsHtml = '<ul class="mt-2 space-y-1 text-[11px] text-slate-600 bg-amber-50/60 p-2 rounded-lg border border-amber-100">' +
-              s.bullets.map(function(b) {
+              s.bullets.map(function (b) {
                 return '<li class="flex items-start gap-1.5"><span class="text-amber-500 font-bold">&bull;</span><span>' + b + '</span></li>';
               }).join('') +
-            '</ul>';
+              '</ul>';
           }
           var descHtml = s.desc ? '<p class="text-[12px] text-slate-500 leading-relaxed">' + s.desc + '</p>' : '';
-          card.innerHTML = 
+          card.innerHTML =
             '<div class="flex flex-col items-center flex-shrink-0 pt-0.5">' +
-              '<span class="w-2.5 h-2.5 rounded-full bg-amber-500 ring-4 ring-amber-100 mb-2"></span>' +
-              '<span class="w-px h-full bg-amber-200"></span>' +
+            '<span class="w-2.5 h-2.5 rounded-full bg-amber-500 ring-4 ring-amber-100 mb-2"></span>' +
+            '<span class="w-px h-full bg-amber-200"></span>' +
             '</div>' +
             '<div class="flex-1">' +
-              '<div class="flex items-center justify-between gap-2 mb-1">' +
-                '<span class="session-number-pill">' + s.num + '</span>' +
-                '<span class="text-[11px] font-semibold text-slate-400">3 hrs</span>' +
-              '</div>' +
-              '<h4 class="text-xs font-bold text-slate-800 leading-snug">' + s.title + '</h4>' +
-              descHtml +
-              bulletsHtml +
+            '<div class="flex items-center justify-between gap-2 mb-1">' +
+            '<span class="session-number-pill">' + s.num + '</span>' +
+            '<span class="text-[11px] font-semibold text-slate-400">3 hrs</span>' +
+            '</div>' +
+            '<h4 class="text-xs font-bold text-slate-800 leading-snug">' + s.title + '</h4>' +
+            descHtml +
+            bulletsHtml +
             '</div>';
           timelineGrid.appendChild(card);
         });
       });
     } else {
-      data.forEach(function(s) {
+      data.forEach(function (s) {
         var card = document.createElement('div');
         card.className = 'timeline-session-card flex items-start gap-3 relative overflow-hidden';
-        card.innerHTML = 
+        card.innerHTML =
           '<div class="flex flex-col items-center flex-shrink-0 pt-0.5">' +
-            '<span class="w-2.5 h-2.5 rounded-full bg-amber-500 ring-4 ring-amber-100 mb-2"></span>' +
-            '<span class="w-px h-full bg-amber-200"></span>' +
+          '<span class="w-2.5 h-2.5 rounded-full bg-amber-500 ring-4 ring-amber-100 mb-2"></span>' +
+          '<span class="w-px h-full bg-amber-200"></span>' +
           '</div>' +
           '<div class="flex-1">' +
-            '<div class="flex items-center justify-between gap-2 mb-1">' +
-              '<span class="session-number-pill">' + s.num + '</span>' +
-              '<span class="text-[11px] font-semibold text-slate-400">3 hrs</span>' +
-            '</div>' +
-            '<h4 class="text-xs font-bold text-slate-800 mb-1">' + s.title + '</h4>' +
-            '<p class="text-[12px] text-slate-500 leading-relaxed">' + s.desc + '</p>' +
+          '<div class="flex items-center justify-between gap-2 mb-1">' +
+          '<span class="session-number-pill">' + s.num + '</span>' +
+          '<span class="text-[11px] font-semibold text-slate-400">3 hrs</span>' +
+          '</div>' +
+          '<h4 class="text-xs font-bold text-slate-800 mb-1">' + s.title + '</h4>' +
+          '<p class="text-[12px] text-slate-500 leading-relaxed">' + s.desc + '</p>' +
           '</div>';
         timelineGrid.appendChild(card);
       });
@@ -1104,7 +1104,7 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
     document.body.style.overflow = 'hidden';
 
     // Move focus into modal
-    setTimeout(function() {
+    setTimeout(function () {
       if (modalCloseBtn) modalCloseBtn.focus();
       else outlineModal.focus();
     }, 50);
@@ -1122,8 +1122,8 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
   }
 
   // Attach click to all outline buttons
-  document.querySelectorAll('.view-outline-btn').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
+  document.querySelectorAll('.view-outline-btn').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
       e.preventDefault();
       var card = btn.closest('.course-card');
       openOutlineModal(card, btn);
@@ -1134,13 +1134,13 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
   if (modalFooterClose) modalFooterClose.addEventListener('click', closeOutlineModal);
 
   if (outlineModal) {
-    outlineModal.addEventListener('click', function(e) {
+    outlineModal.addEventListener('click', function (e) {
       if (e.target === outlineModal) closeOutlineModal();
     });
   }
 
   // Keyboard navigation: Escape to close & Tab trap
-  document.addEventListener('keydown', function(e) {
+  document.addEventListener('keydown', function (e) {
     if (!outlineModal || !outlineModal.classList.contains('active')) return;
 
     if (e.key === 'Escape') {
@@ -1151,7 +1151,7 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
 
     if (e.key === 'Tab') {
       var focusableElements = outlineModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-      var focusable = Array.prototype.filter.call(focusableElements, function(el) {
+      var focusable = Array.prototype.filter.call(focusableElements, function (el) {
         return el.offsetWidth > 0 || el.offsetHeight > 0 || el === document.activeElement;
       });
       if (focusable.length === 0) return;
