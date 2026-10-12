@@ -474,3 +474,501 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
   /* â”€â”€ Stagger animation on load â”€â”€ */
   ALL.forEach(function(card,i){ card.style.animationDelay = (i*0.04)+'s'; });
 })();
+
+/* ==========================================================================
+   Consolidated Scripts from index.html (Interactive Photo Stack / Facilities)
+   ========================================================================== */
+(function () {
+                                                                'use strict';
+
+                                                                /* ════════════════════════════════════════════════
+                                                                   BROWSING AN OLD PHOTO STACK — click, and the top
+                                                                   print slides off to the side (alternating left/
+                                                                   right, like a hand pushing it aside) revealing the
+                                                                   next photo underneath, which was already resting
+                                                                   at a slight tilt and straightens up as it comes
+                                                                   to the front. The swiped photo is quietly recycled
+                                                                   to the bottom of the pile.
+                                                                ════════════════════════════════════════════════ */
+
+                                                                var IMGS = [
+                                                                        'facilities/IMG_7878.JPG',
+                                                                        'facilities/IMG_7882.png',
+                                                                        'facilities/IMG_7891.png',
+                                                                        'facilities/IMG_7895.JPG',
+                                                                        'facilities/IMG_7910.png',
+                                                                        'facilities/IMG_7916.JPG',
+                                                                        'facilities/IMG_7917.png',
+                                                                        'facilities/IMG_7925.png'
+                                                                ];
+                                                                var TOTAL = IMGS.length;
+                                                                var T_SWIPE = 480;   /* top photo sliding away, ms */
+                                                                var T_SETTLE = 420;   /* rest of pile shifting up, ms */
+
+                                                                var cur = 0;
+                                                                var busy = false;
+                                                                var hintGone = false;
+                                                                var swipeDir = 1;    /* alternates 1 / -1 for left/right variety */
+                                                                var cards, dots, veil, ripple, hint;
+
+                                                                IMGS.forEach(function (src) { (new Image()).src = src; });
+
+                                                                /* Resting look for a card at "offset" positions back in the pile (0 = top/visible) */
+                                                                function styleFor(offset) {
+                                                                        var capped = Math.min(offset, 4);
+                                                                        /* alternate slight tilt per depth so it looks like a hand-stacked pile of prints */
+                                                                        var tiltSign = (offset % 2 === 0) ? 1 : -1;
+                                                                        var tilt = capped === 0 ? 0 : tiltSign * (2 + capped * 1.3);
+                                                                        return {
+                                                                                transform: 'translate(' + (tiltSign * capped * 3) + 'px,' + (capped * 4) + 'px) ' +
+                                                                                        'rotate(' + tilt + 'deg) ' +
+                                                                                        'scale(' + (1 - capped * 0.035) + ')',
+                                                                                opacity: offset === 0 ? 1 : Math.max(0.4, 1 - capped * 0.15),
+                                                                                zIndex: 50 - offset
+                                                                        };
+                                                                }
+
+                                                                function applyStyle(card, s, withTransition) {
+                                                                        card.style.transition = withTransition
+                                                                                ? 'transform ' + T_SETTLE + 'ms cubic-bezier(0.25,0.9,0.35,1), opacity ' + T_SETTLE + 'ms ease'
+                                                                                : 'none';
+                                                                        card.style.transform = s.transform;
+                                                                        card.style.opacity = s.opacity;
+                                                                        card.style.zIndex = s.zIndex;
+                                                                }
+
+                                                                function init() {
+                                                                        cards = document.querySelectorAll('.fg-card');
+                                                                        dots = document.querySelectorAll('.fg-dot');
+                                                                        veil = document.getElementById('fg-veil');
+                                                                        ripple = document.getElementById('fg-ripple');
+                                                                        hint = document.getElementById('fg-hint');
+
+                                                                        cards.forEach(function (card, i) {
+                                                                                card.style.backgroundImage = "url('" + IMGS[i] + "')";
+                                                                                var offset = (i - cur + TOTAL) % TOTAL;
+                                                                                applyStyle(card, styleFor(offset), false);
+                                                                        });
+                                                                }
+
+                                                                function flashVeil() {
+                                                                        if (!veil) return;
+                                                                        veil.classList.add('fg-veil-flash');
+                                                                        setTimeout(function () { veil.classList.remove('fg-veil-flash'); }, 90);
+                                                                }
+
+                                                                function triggerRipple() {
+                                                                        if (!ripple) return;
+                                                                        ripple.classList.remove('fg-ripple-go');
+                                                                        void ripple.offsetWidth;
+                                                                        ripple.classList.add('fg-ripple-go');
+                                                                }
+
+                                                                function goTo(next) {
+                                                                        if (busy || next === cur) return;
+                                                                        busy = true;
+
+                                                                        if (!hintGone && hint) {
+                                                                                hint.classList.add('fg-hint-gone');
+                                                                                hintGone = true;
+                                                                        }
+
+                                                                        triggerRipple();
+
+                                                                        var topCard = cards[cur];
+                                                                        var dir = swipeDir;
+                                                                        swipeDir *= -1; /* alternate direction next time, like a real hand shuffling prints */
+
+                                                                        /* ── TOP PHOTO SLIDES/SWIPES OFF like pushing it aside by hand ── */
+                                                                        topCard.style.zIndex = '55';
+                                                                        topCard.style.transition =
+                                                                                'transform ' + T_SWIPE + 'ms cubic-bezier(0.36,0.66,0.35,1),' +
+                                                                                'opacity ' + T_SWIPE + 'ms ease-in';
+                                                                        topCard.style.transform =
+                                                                                'translate(' + (dir * 130) + '%, 18%) rotate(' + (dir * 22) + 'deg) scale(0.94)';
+                                                                        topCard.style.opacity = '0';
+
+                                                                        setTimeout(flashVeil, T_SWIPE * 0.3);
+
+                                                                        /* ── REST OF THE PILE SHIFTS UP ONE POSITION, STRAIGHTENING AS IT NEARS THE TOP ── */
+                                                                        for (var i = 0; i < TOTAL; i++) {
+                                                                                if (i === cur) continue;
+                                                                                var offset = (i - next + TOTAL) % TOTAL;
+                                                                                applyStyle(cards[i], styleFor(offset), true);
+                                                                        }
+
+                                                                        dots[cur].classList.remove('fg-dot-active');
+                                                                        dots[next].classList.add('fg-dot-active');
+
+                                                                        /* ── Recycle the swiped photo to the bottom of the pile, no visible snap ── */
+                                                                        setTimeout(function () {
+                                                                                var backOffset = (cur - next + TOTAL) % TOTAL;
+                                                                                applyStyle(topCard, styleFor(backOffset), false);
+                                                                                cur = next;
+                                                                                busy = false;
+                                                                        }, T_SWIPE + 20);
+                                                                }
+
+                                                                window.fgAdvance = function () { goTo((cur + 1) % TOTAL); };
+                                                                window.fgGoTo = function (n) { goTo(n); };
+
+                                                                if (document.readyState === 'loading') {
+                                                                        document.addEventListener('DOMContentLoaded', init);
+                                                                } else {
+                                                                        init();
+                                                                }
+                                                        })();
+
+/* ==========================================================================
+   Consolidated Scripts from courses.html (Filter, Search, Modal, Drawer)
+   ========================================================================== */
+(function() {
+  "use strict";
+
+  /* ── 1. Navbar elevation on scroll ── */
+  var navbar = document.querySelector('.site-navbar');
+  window.addEventListener('scroll', function() {
+    if (!navbar) return;
+    if (window.scrollY > 20) {
+      navbar.classList.add('shadow-md');
+    } else {
+      navbar.classList.remove('shadow-md');
+    }
+  });
+
+  /* ── 2. Mobile Drawer ── */
+  var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  var mobileMenuClose = document.getElementById('mobile-menu-close');
+  var mobileMenu = document.getElementById('mobile-menu');
+  var mobileBackdrop = document.getElementById('mobile-backdrop');
+
+  function openMobileNav() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.remove('-translate-x-full');
+    if (mobileBackdrop) {
+      mobileBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+      mobileBackdrop.classList.add('opacity-100');
+    }
+    document.body.style.overflow = 'hidden';
+    if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMobileNav() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.add('-translate-x-full');
+    if (mobileBackdrop) {
+      mobileBackdrop.classList.add('opacity-0', 'pointer-events-none');
+      mobileBackdrop.classList.remove('opacity-100');
+    }
+    document.body.style.overflow = '';
+    if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileNav);
+  if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileNav);
+  if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobileNav);
+  if (mobileMenu) {
+    mobileMenu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', closeMobileNav);
+    });
+  }
+
+  /* ── 3. Filter, Search, and Level Filter State ── */
+  var pills = document.querySelectorAll('.filter-pill');
+  var cards = document.querySelectorAll('.course-card');
+  var searchInput = document.getElementById('course-search');
+  var levelSelect = document.getElementById('level-filter');
+  var countLabel = document.getElementById('courses-count-label');
+  var emptyState = document.getElementById('empty-state');
+  var clearFiltersBtn = document.getElementById('clear-filters-btn');
+  var totalCards = cards.length;
+
+  var currentCat = 'all';
+  var currentLevel = 'any';
+  var searchQuery = '';
+
+  function matchesLevel(cardLevel, selectedLevel) {
+    if (selectedLevel === 'any') return true;
+    var normCard = (cardLevel || '').toLowerCase();
+    // Rule: "All Levels" courses must appear under every level filter
+    if (normCard === 'all-levels' || normCard === 'all levels') return true;
+    return normCard === selectedLevel;
+  }
+
+  function update() {
+    var visible = 0;
+
+    cards.forEach(function(card) {
+      var cat = card.dataset.cat || '';
+      var lvl = card.dataset.level || '';
+      var title = (card.querySelector('.course-title')?.textContent || '').toLowerCase();
+
+      var catOk = (currentCat === 'all') || (cat === currentCat);
+      var lvlOk = matchesLevel(lvl, currentLevel);
+      var queryOk = (searchQuery === '') || (title.indexOf(searchQuery) !== -1);
+
+      if (catOk && lvlOk && queryOk) {
+        card.style.display = '';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // Update Showing X of Y courses count
+    if (countLabel) {
+      countLabel.textContent = 'Showing ' + visible + ' of ' + totalCards + ' courses';
+    }
+
+    // Update empty state
+    if (emptyState) {
+      if (visible === 0) {
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+      } else {
+        emptyState.classList.add('hidden');
+        emptyState.classList.remove('flex');
+      }
+    }
+
+    // Update dynamic counts on pills based on level & search
+    updatePillCounts();
+  }
+
+  function updatePillCounts() {
+    var catCounts = {
+      all: 0,
+      language: 0,
+      management: 0,
+      technology: 0,
+      creative: 0,
+      engineering: 0
+    };
+
+    cards.forEach(function(card) {
+      var cat = card.dataset.cat || '';
+      var lvl = card.dataset.level || '';
+      var title = (card.querySelector('.course-title')?.textContent || '').toLowerCase();
+
+      var lvlOk = matchesLevel(lvl, currentLevel);
+      var queryOk = (searchQuery === '') || (title.indexOf(searchQuery) !== -1);
+
+      if (lvlOk && queryOk) {
+        catCounts.all++;
+        if (catCounts.hasOwnProperty(cat)) {
+          catCounts[cat]++;
+        }
+      }
+    });
+
+    Object.keys(catCounts).forEach(function(k) {
+      var badge = document.getElementById('count-' + k);
+      if (badge) {
+        badge.textContent = catCounts[k];
+      }
+    });
+  }
+
+  // Category Pill Clicks
+  pills.forEach(function(pill) {
+    pill.addEventListener('click', function() {
+      pills.forEach(function(p) {
+        p.classList.remove('active');
+        p.setAttribute('aria-selected', 'false');
+      });
+      pill.classList.add('active');
+      pill.setAttribute('aria-selected', 'true');
+      currentCat = pill.dataset.filter || 'all';
+      update();
+    });
+  });
+
+  // Search input
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      searchQuery = searchInput.value.trim().toLowerCase();
+      update();
+    });
+  }
+
+  // Level filter select
+  if (levelSelect) {
+    levelSelect.addEventListener('change', function() {
+      currentLevel = levelSelect.value;
+      update();
+    });
+  }
+
+  // Clear filters button
+  if (clearFiltersBtn) {
+    clearFiltersBtn.addEventListener('click', function() {
+      currentCat = 'all';
+      currentLevel = 'any';
+      searchQuery = '';
+      if (searchInput) searchInput.value = '';
+      if (levelSelect) levelSelect.value = 'any';
+      pills.forEach(function(p) {
+        if (p.dataset.filter === 'all') {
+          p.classList.add('active');
+          p.setAttribute('aria-selected', 'true');
+        } else {
+          p.classList.remove('active');
+        }
+      });
+      update();
+    });
+  }
+
+
+  /* ── 4. Outline Modal (Gold Timeline & Keyboard Focus Trap) ── */
+  var outlineModal = document.getElementById('course-outline-modal');
+  var modalCloseBtn = document.getElementById('modal-close-btn');
+  var modalFooterClose = document.getElementById('modal-footer-close');
+  var modalTitle = document.getElementById('modal-course-title');
+  var modalBadge = document.getElementById('modal-course-badge');
+  var modalSubtitle = document.getElementById('modal-course-subtitle');
+  var modalDescText = document.getElementById('modal-desc-text');
+  var modalLevelVal = document.getElementById('modal-level-val');
+  var modalWaLink = document.getElementById('modal-wa-link');
+  var timelineGrid = document.getElementById('modal-timeline-grid');
+
+  var lastFocusedElement = null;
+
+  var sessionData = [
+    { num: "Session 01", title: "Introduction & Core Fundamentals", desc: "Foundational principles, terminology, and baseline evaluation." },
+    { num: "Session 02", title: "Essential Principles & Methods", desc: "Core concepts, frameworks, and practical conventions." },
+    { num: "Session 03", title: "Standard Protocols & Tools", desc: "Industry workflows, standard operating tools, and safety/quality basics." },
+    { num: "Session 04", title: "Applied Exercises & Demonstrations", desc: "Hands-on guided walkthroughs and real-time case practice." },
+    { num: "Session 05", title: "Practical Case Studies & Analysis", desc: "Reviewing workplace scenarios and diagnosing key problem spaces." },
+    { num: "Session 06", title: "Interactive Workshop & Lab", desc: "Collaborative studio exercise and intermediate tool execution." },
+    { num: "Session 07", title: "Intermediate Techniques & Workflow", desc: "Refining precision, speed, and standard operational execution." },
+    { num: "Session 08", title: "Tactical Execution & Scenarios", desc: "Unscripted scenario solving and advanced troubleshooting." },
+    { num: "Session 09", title: "Industry Standards & Compliance", desc: "Regulatory alignment, best practices, and regional UAE benchmarks." },
+    { num: "Session 10", title: "Collaborative Project Simulations", desc: "Team simulation, peer review, and complex scenario handling." },
+    { num: "Session 11", title: "Skill Synthesis & Integration", desc: "Holistic review of all topics and pre-evaluation readiness." },
+    { num: "Session 12", title: "Capstone Evaluation & Certification", desc: "Final practical assessment, instructor feedback, and certificate issuance." }
+  ];
+
+  function renderTimeline() {
+    if (!timelineGrid) return;
+    timelineGrid.innerHTML = '';
+    sessionData.forEach(function(s, idx) {
+      var card = document.createElement('div');
+      card.className = 'timeline-session-card flex items-start gap-3 relative overflow-hidden';
+      card.innerHTML = 
+        '<div class="flex flex-col items-center flex-shrink-0 pt-0.5">' +
+          '<span class="w-2.5 h-2.5 rounded-full bg-amber-500 ring-4 ring-amber-100 mb-2"></span>' +
+          '<span class="w-px h-full bg-amber-200"></span>' +
+        '</div>' +
+        '<div class="flex-1">' +
+          '<div class="flex items-center justify-between gap-2 mb-1">' +
+            '<span class="session-number-pill">' + s.num + '</span>' +
+            '<span class="text-[11px] font-semibold text-slate-400">3 hrs</span>' +
+          '</div>' +
+          '<h4 class="text-xs font-bold text-slate-800 mb-1">' + s.title + '</h4>' +
+          '<p class="text-[12px] text-slate-500 leading-relaxed">' + s.desc + '</p>' +
+        '</div>';
+      timelineGrid.appendChild(card);
+    });
+  }
+
+  function openOutlineModal(cardEl, triggerBtn) {
+    if (!outlineModal || !cardEl) return;
+    lastFocusedElement = triggerBtn || document.activeElement;
+
+    var title = cardEl.querySelector('.course-title')?.textContent.trim() || 'Course outline';
+    var cat = cardEl.dataset.cat || '';
+    var desc = cardEl.querySelector('.course-desc')?.textContent.trim() || '';
+    var lvl = cardEl.querySelector('.level-badge span:last-child')?.textContent.trim() || 'All Levels';
+
+    if (modalTitle) modalTitle.textContent = title;
+    if (modalBadge) {
+      modalBadge.innerHTML = '<span class="material-symbols-outlined text-[14px]">verified</span><span>' + cat.toUpperCase() + ' &bull; UAE CERTIFIED</span>';
+    }
+    if (modalSubtitle) {
+      modalSubtitle.textContent = 'Structured 12-session training programme (3 hours per session) at Blueprint Training Centre, Dubai.';
+    }
+    if (modalDescText) modalDescText.textContent = desc;
+    if (modalLevelVal) modalLevelVal.textContent = lvl;
+
+    if (modalWaLink) {
+      modalWaLink.href = 'https://wa.me/971559809491?text=' + encodeURIComponent('Hello, I am interested in enrolling in the ' + title + ' at Blueprint Training Centre. I would appreciate it if you could provide me with further information regarding the course schedule, fees, and enrollment requirements. Thank you, and I look forward to hearing from you.');
+    }
+
+    renderTimeline();
+    outlineModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Move focus into modal
+    setTimeout(function() {
+      if (modalCloseBtn) modalCloseBtn.focus();
+      else outlineModal.focus();
+    }, 50);
+  }
+
+  function closeOutlineModal() {
+    if (!outlineModal) return;
+    outlineModal.classList.remove('active');
+    document.body.style.overflow = '';
+
+    // Return focus to trigger button
+    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+      lastFocusedElement.focus();
+    }
+  }
+
+  // Attach click to all outline buttons
+  document.querySelectorAll('.view-outline-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var card = btn.closest('.course-card');
+      openOutlineModal(card, btn);
+    });
+  });
+
+  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeOutlineModal);
+  if (modalFooterClose) modalFooterClose.addEventListener('click', closeOutlineModal);
+
+  if (outlineModal) {
+    outlineModal.addEventListener('click', function(e) {
+      if (e.target === outlineModal) closeOutlineModal();
+    });
+  }
+
+  // Keyboard navigation: Escape to close & Tab trap
+  document.addEventListener('keydown', function(e) {
+    if (!outlineModal || !outlineModal.classList.contains('active')) return;
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeOutlineModal();
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      var focusableElements = outlineModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      var focusable = Array.prototype.filter.call(focusableElements, function(el) {
+        return el.offsetWidth > 0 || el.offsetHeight > 0 || el === document.activeElement;
+      });
+      if (focusable.length === 0) return;
+
+      var firstElement = focusable[0];
+      var lastElement = focusable[focusable.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    }
+  });
+
+  // Initial pill counts setup
+  update();
+})();

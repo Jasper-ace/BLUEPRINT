@@ -130,74 +130,6 @@ tailwind.config = {
 }
 </script>
 <link rel="stylesheet" href="style.css">
-<style>
-.wa-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  padding: 18px 40px;
-  background: #25d366;
-  color: #fff;
-  border-radius: 999px;
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: .02em;
-  text-decoration: none;
-  box-shadow: 0 8px 32px rgba(37,211,102,.35);
-  transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease, background .2s ease;
-  position: relative;
-  overflow: hidden;
-}
-.wa-btn:hover {
-  background: #20c05c;
-  transform: translateY(-3px);
-  box-shadow: 0 16px 48px rgba(37,211,102,.45);
-}
-.wa-btn:active { transform: translateY(0); }
-.wa-btn svg { width: 26px; height: 26px; flex-shrink: 0; }
-
-.step-card {
-  background: #fff;
-  border: 1.5px solid #e1e3e4;
-  border-radius: 16px;
-  padding: 28px 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-  transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
-}
-.step-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 36px rgba(0,33,71,.09);
-}
-.step-num {
-  width: 40px; height: 40px;
-  border-radius: 12px;
-  background: #002147;
-  color: #feb316;
-  font-size: 16px;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-/* Pulse ring on WA button */
-.wa-pulse {
-  position: absolute;
-  inset: 0;
-  border-radius: 999px;
-  animation: waPulse 2.4s ease-out infinite;
-  background: rgba(37,211,102,.25);
-  pointer-events: none;
-}
-@keyframes waPulse {
-  0%   { transform: scale(1);   opacity:.7; }
-  100% { transform: scale(1.18); opacity:0; }
-}
-</style>
 </head>
 <body class="bg-surface-container-lowest text-on-surface font-body-md antialiased overflow-x-hidden">
 
@@ -335,7 +267,7 @@ tailwind.config = {
 <!-- Footer -->
 <footer class="bg-primary-container text-on-primary pt-[100px] pb-12">
   <div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-16">
       <div class="col-span-1 md:col-span-1">
         <img alt="Blueprint Training Centre Logo" class="h-14 w-auto mb-6" src="image/zoomed-logo.jpg" onerror="this.onerror=null;this.src='image/logo.jpg'">
         <p class="font-body-md text-[14px] mb-8 leading-relaxed" style="color:rgba(214,227,255,.7);">Professional Excellence in Training &amp; Development. Building careers in Dubai and across the UAE.</p>
@@ -351,15 +283,6 @@ tailwind.config = {
           <li><a class="text-[15px] hover:text-secondary-container transition-colors" style="color:rgba(214,227,255,.7);" href="index.html#about">About</a></li>
           <li><a class="text-[15px] hover:text-secondary-container transition-colors" style="color:rgba(214,227,255,.7);" href="index.html#vision">Vision &amp; Mission</a></li>
           <li><a class="text-[15px] hover:text-secondary-container transition-colors" style="color:rgba(214,227,255,.7);" href="index.html#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-[18px] font-semibold text-on-primary mb-6">Programs</h4>
-        <ul class="space-y-4">
-          <li><a class="text-[15px] hover:text-secondary-container transition-colors" style="color:rgba(214,227,255,.7);" href="#">Management Excellence</a></li>
-          <li><a class="text-[15px] hover:text-secondary-container transition-colors" style="color:rgba(214,227,255,.7);" href="#">Technical Skills</a></li>
-          <li><a class="text-[15px] hover:text-secondary-container transition-colors" style="color:rgba(214,227,255,.7);" href="#">Leadership Development</a></li>
-          <li><a class="text-[15px] font-semibold text-secondary-container hover:text-secondary-fixed transition-colors" href="courses.html">All Courses</a></li>
         </ul>
       </div>
       <div>

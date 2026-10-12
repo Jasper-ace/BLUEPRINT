@@ -107,48 +107,6 @@
                 }
         </script>
         <link rel="stylesheet" href="style.css">
-
-        <style>
-                @keyframes float {
-                        0%, 100% { transform: translateY(0px) rotate(0deg); }
-                        33%       { transform: translateY(-12px) rotate(1deg); }
-                        66%       { transform: translateY(-6px) rotate(-1deg); }
-                }
-                @keyframes pulse-ring {
-                        0%, 100% { opacity: 0.3; transform: scale(1); }
-                        50%       { opacity: 0.6; transform: scale(1.04); }
-                }
-                @keyframes slide-up {
-                        from { opacity: 0; transform: translateY(32px); }
-                        to   { opacity: 1; transform: translateY(0); }
-                }
-                @keyframes shimmer {
-                        0%   { background-position: -200% center; }
-                        100% { background-position: 200% center; }
-                }
-
-                .animate-float   { animation: float 6s ease-in-out infinite; }
-                .animate-pulse-ring { animation: pulse-ring 4s ease-in-out infinite; }
-
-                .slide-up-1 { animation: slide-up 0.6s cubic-bezier(0.25,1,0.5,1) 0.10s both; }
-                .slide-up-2 { animation: slide-up 0.6s cubic-bezier(0.25,1,0.5,1) 0.25s both; }
-                .slide-up-3 { animation: slide-up 0.6s cubic-bezier(0.25,1,0.5,1) 0.40s both; }
-                .slide-up-4 { animation: slide-up 0.6s cubic-bezier(0.25,1,0.5,1) 0.55s both; }
-
-                .shimmer-text {
-                        background: linear-gradient(90deg, #002147 0%, #feb316 40%, #ffba3b 50%, #002147 70%, #002147 100%);
-                        background-size: 200% auto;
-                        -webkit-background-clip: text;
-                        -webkit-text-fill-color: transparent;
-                        background-clip: text;
-                        animation: shimmer 4s linear infinite;
-                }
-
-                .dot-grid {
-                        background-image: radial-gradient(circle, rgba(0,33,71,0.07) 1px, transparent 1px);
-                        background-size: 28px 28px;
-                }
-        </style>
 </head>
 
 <body class="bg-surface-container-lowest text-on-surface font-body-md antialiased overflow-x-hidden">
@@ -301,7 +259,7 @@
         <!-- Footer -->
         <footer class="bg-primary-container py-16">
                 <div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                                 <!-- Brand -->
                                 <div class="lg:col-span-1">
                                         <img alt="Blueprint Training Centre Logo" class="h-14 w-auto mb-4" src="image/zoomed-logo.jpg">
@@ -327,15 +285,6 @@
                                                 <li><a class="text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors" href="/#contact">Contact</a></li>
                                         </ul>
                                 </div>
-                                <!-- Programs -->
-                                <div>
-                                        <h4 class="text-[18px] font-semibold text-on-primary mb-6">Programs</h4>
-                                        <ul class="space-y-4">
-                                                <li><a class="text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors" href="courses.html">Management Excellence</a></li>
-                                                <li><a class="text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors" href="courses.html">Technical Skills</a></li>
-                                                <li><a class="text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors" href="courses.html">Leadership Development</a></li>
-                                        </ul>
-                                </div>
                                 <!-- Contact -->
                                 <div>
                                         <h4 class="text-[18px] font-semibold text-on-primary mb-6">Contact Us</h4>
@@ -350,12 +299,7 @@
                         </div>
                 </div>
         </footer>
-
-        <script>
-
-
-
-        </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
