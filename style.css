@@ -1811,30 +1811,93 @@ body {
 
 
 /* ── Category Colors & Icon Tiles ── */
-/* Language */
-.cat-accent-language { background-color: #1a56db; }
-.cat-tile-language { background: #eff4ff; color: #1a56db; }
-.cat-tag-language { background: #eff4ff; color: #1a56db; border: 1px solid #dbeafe; }
-
 /* Management */
 .cat-accent-management { background-color: #d97706; }
 .cat-tile-management { background: #fffbeb; color: #b45309; }
 .cat-tag-management { background: #fffbeb; color: #b45309; border: 1px solid #fef3c7; }
 
-/* Technology */
-.cat-accent-technology { background-color: #059669; }
-.cat-tile-technology { background: #ecfdf5; color: #047857; }
-.cat-tag-technology { background: #ecfdf5; color: #047857; border: 1px solid #d1fae5; }
+/* Accounting */
+.cat-accent-accounting { background-color: #059669; }
+.cat-tile-accounting { background: #ecfdf5; color: #047857; }
+.cat-tag-accounting { background: #ecfdf5; color: #047857; border: 1px solid #d1fae5; }
 
-/* Creative */
+/* Language */
+.cat-accent-language { background-color: #1a56db; }
+.cat-tile-language { background: #eff4ff; color: #1a56db; }
+.cat-tag-language { background: #eff4ff; color: #1a56db; border: 1px solid #dbeafe; }
+
+/* Computer Skills */
+.cat-accent-computer { background-color: #0891b2; }
+.cat-tile-computer { background: #ecfeff; color: #0e7490; }
+.cat-tag-computer { background: #ecfeff; color: #0e7490; border: 1px solid #cffafe; }
+
+/* Architecture & Design */
+.cat-accent-architecture { background-color: #4f46e5; }
+.cat-tile-architecture { background: #eef2ff; color: #4338ca; }
+.cat-tag-architecture { background: #eef2ff; color: #4338ca; border: 1px solid #e0e7ff; }
+
+/* Media Production */
+.cat-accent-media { background-color: #7c3aed; }
+.cat-tile-media { background: #f5f3ff; color: #6d28d9; }
+.cat-tag-media { background: #f5f3ff; color: #6d28d9; border: 1px solid #ede9fe; }
+
+/* Exam Preparation */
+.cat-accent-exam { background-color: #0284c7; }
+.cat-tile-exam { background: #f0f9ff; color: #0369a1; }
+.cat-tag-exam { background: #f0f9ff; color: #0369a1; border: 1px solid #e0f2fe; }
+
+/* Sales & Marketing */
+.cat-accent-marketing { background-color: #e11d48; }
+.cat-tile-marketing { background: #fff1f2; color: #be123c; }
+.cat-tag-marketing { background: #fff1f2; color: #be123c; border: 1px solid #ffe4e6; }
+
+/* Educators */
+.cat-accent-educators { background-color: #9333ea; }
+.cat-tile-educators { background: #faf5ff; color: #7e22ce; }
+.cat-tag-educators { background: #faf5ff; color: #7e22ce; border: 1px solid #f3e8ff; }
+
+/* Beauty Care */
+.cat-accent-beauty { background-color: #db2777; }
+.cat-tile-beauty { background: #fdf2f8; color: #be185d; }
+.cat-tag-beauty { background: #fdf2f8; color: #be185d; border: 1px solid #fce7f3; }
+
+/* Engineering */
+.cat-accent-engineering { background-color: #ea580c; }
+.cat-tile-engineering { background: #fff7ed; color: #c2410c; }
+.cat-tag-engineering { background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
+
+/* Domestic Services */
+.cat-accent-domestic { background-color: #ca8a04; }
+.cat-tile-domestic { background: #fefce8; color: #a16207; }
+.cat-tag-domestic { background: #fefce8; color: #a16207; border: 1px solid #fef9c3; }
+
+/* Healthcare & Awareness */
+.cat-accent-healthcare { background-color: #dc2626; }
+.cat-tile-healthcare { background: #fef2f2; color: #b91c1c; }
+.cat-tag-healthcare { background: #fef2f2; color: #b91c1c; border: 1px solid #fee2e2; }
+
+/* Child Skills */
+.cat-accent-child-skills { background-color: #65a30d; }
+.cat-tile-child-skills { background: #f7fee7; color: #4d7c0f; }
+.cat-tag-child-skills { background: #f7fee7; color: #4d7c0f; border: 1px solid #ecfccb; }
+
+/* Occupational Safety */
+.cat-accent-safety { background-color: #b91c1c; }
+.cat-tile-safety { background: #fff1f2; color: #991b1b; }
+.cat-tag-safety { background: #fff1f2; color: #991b1b; border: 1px solid #ffe4e6; }
+
+/* Hospitality & Tourism */
+.cat-accent-hospitality { background-color: #0d9488; }
+.cat-tile-hospitality { background: #f0fdfa; color: #0f766e; }
+.cat-tag-hospitality { background: #f0fdfa; color: #0f766e; border: 1px solid #ccfbf1; }
+
+/* Legacy aliases */
+.cat-accent-technology { background-color: #0891b2; }
+.cat-tile-technology { background: #ecfeff; color: #0e7490; }
+.cat-tag-technology { background: #ecfeff; color: #0e7490; border: 1px solid #cffafe; }
 .cat-accent-creative { background-color: #7c3aed; }
 .cat-tile-creative { background: #f5f3ff; color: #6d28d9; }
 .cat-tag-creative { background: #f5f3ff; color: #6d28d9; border: 1px solid #ede9fe; }
-
-/* Engineering */
-.cat-accent-engineering { background-color: #dc2626; }
-.cat-tile-engineering { background: #fef2f2; color: #b91c1c; }
-.cat-tag-engineering { background: #fef2f2; color: #b91c1c; border: 1px solid #fee2e2; }
 
 /* Dark mode category tile overrides */
 
@@ -1918,11 +1981,11 @@ body {
 
 /* Beginner: Green */
 .level-beginner {
-  background-color: #f0fdf4;
-  color: #166534;
-  border: 1px solid #bbf7d0;
+  background-color: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
 }
-.level-beginner .badge-dot { background-color: #16a34a; }
+.level-beginner .badge-dot { background-color: #10b981; }
 
 /* Intermediate: Amber */
 .level-intermediate {
@@ -1930,7 +1993,7 @@ body {
   color: #92400e;
   border: 1px solid #fde68a;
 }
-.level-intermediate .badge-dot { background-color: #d97706; }
+.level-intermediate .badge-dot { background-color: #f59e0b; }
 
 /* Advanced: Red */
 .level-advanced {
@@ -1938,17 +2001,40 @@ body {
   color: #991b1b;
   border: 1px solid #fecaca;
 }
-.level-advanced .badge-dot { background-color: #dc2626; }
+.level-advanced .badge-dot { background-color: #ef4444; }
 
 /* All Levels: Blue */
-.level-all {
+.level-all,
+.level-all-levels {
   background-color: #eff6ff;
   color: #1e40af;
   border: 1px solid #bfdbfe;
 }
-.level-all .badge-dot { background-color: #2563eb; }
+.level-all .badge-dot,
+.level-all-levels .badge-dot { background-color: #3b82f6; }
 
 /* Dark mode level badges */
+html.dark .level-beginner {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+html.dark .level-intermediate {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #fcd34d;
+  border-color: rgba(245, 158, 11, 0.3);
+}
+html.dark .level-advanced {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+html.dark .level-all,
+html.dark .level-all-levels {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #93c5fd;
+  border-color: rgba(59, 130, 246, 0.3);
+}
 
 
 /* ── Card Buttons ── */

@@ -736,14 +736,11 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
   }
 
   function updatePillCounts() {
-    var catCounts = {
-      all: 0,
-      language: 0,
-      management: 0,
-      technology: 0,
-      creative: 0,
-      engineering: 0
-    };
+    var catCounts = { all: 0 };
+    pills.forEach(function(p) {
+      var f = p.dataset.filter;
+      if (f) catCounts[f] = 0;
+    });
 
     cards.forEach(function(card) {
       var cat = card.dataset.cat || '';
@@ -754,9 +751,9 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
       var queryOk = (searchQuery === '') || (title.indexOf(searchQuery) !== -1);
 
       if (lvlOk && queryOk) {
-        catCounts.all++;
-        if (catCounts.hasOwnProperty(cat)) {
-          catCounts[cat]++;
+        catCounts.all = (catCounts.all || 0) + 1;
+        if (cat) {
+          catCounts[cat] = (catCounts[cat] || 0) + 1;
         }
       }
     });
@@ -878,12 +875,13 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
 
     var title = cardEl.querySelector('.course-title')?.textContent.trim() || 'Course outline';
     var cat = cardEl.dataset.cat || '';
+    var catTag = cardEl.querySelector('.cat-tag')?.textContent.trim() || cat.toUpperCase();
     var desc = cardEl.querySelector('.course-desc')?.textContent.trim() || '';
     var lvl = cardEl.querySelector('.level-badge span:last-child')?.textContent.trim() || 'All Levels';
 
     if (modalTitle) modalTitle.textContent = title;
     if (modalBadge) {
-      modalBadge.innerHTML = '<span class="material-symbols-outlined text-[14px]">verified</span><span>' + cat.toUpperCase() + ' &bull; UAE CERTIFIED</span>';
+      modalBadge.innerHTML = '<span class="material-symbols-outlined text-[14px]">verified</span><span>' + catTag.toUpperCase() + ' &bull; UAE CERTIFIED</span>';
     }
     if (modalSubtitle) {
       modalSubtitle.textContent = 'Structured 12-session training programme (3 hours per session) at Blueprint Training Centre, Dubai.';
