@@ -986,6 +986,33 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
     }
   ];
 
+  var sessionDataMakeup = [
+    { num: "Week 01", title: "Skin Preparation, Color Theory & Complexion Matching", desc: "Skin analysis, sanitization protocols, undertone theory, foundation shade matching, and priming techniques." },
+    { num: "Week 02", title: "Facial Architecture, Contouring & Highlighting", desc: "Cream and powder contouring, strobe techniques, blush placement, and facial sculpting for diverse face shapes." },
+    { num: "Week 03", title: "Eye Artistry, Blending & Brow Architecture", desc: "Eye shape corrections, transition blending, cut crease, winged liner precision, and symmetry brow shaping." },
+    { num: "Week 04", title: "Bridal & Glamour Makeup Mastery", desc: "Long-wear bridal application, tear-proof setting, false lash placement, lip styling, and camera-ready finishing." },
+    { num: "Week 05", title: "Editorial, High Fashion & Creative Looks", desc: "Editorial textures, glossy lids, creative color application, bold lip styling, and photoshoot set etiquette." },
+    { num: "Week 06", title: "Capstone Practical Portfolio & Client Evaluation", desc: "Full live bridal/glam transformation, speed test, instructor critique, portfolio review, and certification." }
+  ];
+
+  var sessionDataFlower = [
+    { num: "Week 01", title: "Floral Fundamentals, Conditioning & Stem Care", desc: "Botanical variety identification, stem cutting, hydration mechanics, cold-chain preservation, and florist tools." },
+    { num: "Week 02", title: "Color Harmonies & Classic Hand-Tied Spirals", desc: "Color wheel principles, Dutch spiral hand-tied bouquet techniques, greenery foliage textures, and luxury wrapping." },
+    { num: "Week 03", title: "Floral Foam Mechanics & Centerpiece Design", desc: "Oasis mechanics, water reservoir balance, low dining table centerpieces, focal bloom placement, and event styling." },
+    { num: "Week 04", title: "Luxury Event Pedestals & Tall Installations", desc: "Urn and vase mechanics, proportion and balance in tall banqueting displays, structural wirework, and transport safety." },
+    { num: "Week 05", title: "Bridal Bouquets & Wearable Floral Art", desc: "Teardrop and posy bridal bouquets, boutonnières, corsages, delicate wirework, floral taping, and ribbon finishing." },
+    { num: "Week 06", title: "Signature Event Showcase & Capstone Assessment", desc: "End-to-end event centerpiece creation, aesthetic evaluation, commercial costing overview, and certification." }
+  ];
+
+  var sessionDataBalloon = [
+    { num: "Week 01", title: "Balloon Fundamentals, Sizing & Tool Mastery", desc: "Latex and foil balloon anatomy, electric pump operation, precision sizing templates, tying ergonomics, and safety standards." },
+    { num: "Week 02", title: "Classic Spiral Arches & Architectural Columns", desc: "Framed base construction, cluster quads and duplets, spiral color patterns, outdoor weighting, and stability rigging." },
+    { num: "Week 03", title: "Modern Organic Garlands & Color Blocking", desc: "Freeform organic styling, multi-size cluster integration, chromatic layering, backdrop attachment, and floral accents." },
+    { num: "Week 04", title: "Helium Mastery, Bobo Balloons & Custom Vinyl", desc: "Helium conservation and safety, Hi-Float float extension, transparent Bobo balloons, stuffing, and personalized vinyl decals." },
+    { num: "Week 05", title: "Themed Sculptures & Mosaic Number / Letter Frames", desc: "Foam board frame assembly, micro-balloon packing, color-gradient infills, freestanding celebration numbers, and prop pairing." },
+    { num: "Week 06", title: "Capstone Photo Backdrop Installation & Assessment", desc: "Full freestanding event photo-zone installation, rigging inspection, durability testing, and certification." }
+  ];
+
   function renderTimeline(data, isModular) {
     if (!timelineGrid) return;
     timelineGrid.innerHTML = '';
@@ -1063,7 +1090,12 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
     var desc = cardEl.querySelector('.course-desc')?.textContent.trim() || '';
     var lvl = cardEl.querySelector('.level-badge span:last-child')?.textContent.trim() || 'All Levels';
 
-    var isHealthcare = title.toLowerCase().indexOf('healthcare services professional') !== -1;
+    var titleLower = title.toLowerCase();
+    var isHealthcare = titleLower.indexOf('healthcare services professional') !== -1;
+    var isMakeup = titleLower.indexOf('make up') !== -1 || titleLower.indexOf('makeup') !== -1;
+    var isFlower = titleLower.indexOf('flower arrangement') !== -1;
+    var isBalloon = titleLower.indexOf('balloon making') !== -1;
+    var isSixWeeks = isMakeup || isFlower || isBalloon;
 
     if (modalTitle) modalTitle.textContent = title;
     if (modalBadge) {
@@ -1072,21 +1104,23 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
     if (modalSubtitle) {
       if (isHealthcare) {
         modalSubtitle.textContent = 'Structured 16-week healthcare curriculum across 4 modules over 4 months (Weekly 3-hours classes) at Blueprint Training Centre, Dubai.';
+      } else if (isSixWeeks) {
+        modalSubtitle.textContent = 'Structured 6-week intensive training programme over 6 weeks (Weekly 3-hours classes) at Blueprint Training Centre, Dubai.';
       } else {
         modalSubtitle.textContent = 'Structured 12-session training programme over 3 months (Weekly 3-hours classes) at Blueprint Training Centre, Dubai.';
       }
     }
     if (modalDurationVal) {
-      modalDurationVal.textContent = isHealthcare ? '16 sessions (4 months)' : '12 sessions (3 months)';
+      modalDurationVal.textContent = isHealthcare ? '16 sessions (4 months)' : (isSixWeeks ? '6 sessions (6 weeks)' : '12 sessions (3 months)');
     }
     if (modalScheduleVal) {
       modalScheduleVal.textContent = 'Weekly 3-hr classes';
     }
     if (modalTimelineHeading) {
-      modalTimelineHeading.textContent = isHealthcare ? '16-Week clinical curriculum timeline' : '12-Session gold curriculum timeline';
+      modalTimelineHeading.textContent = isHealthcare ? '16-Week clinical curriculum timeline' : (isSixWeeks ? '6-Week intensive curriculum timeline' : '12-Session gold curriculum timeline');
     }
     if (modalHoursVal) {
-      modalHoursVal.textContent = isHealthcare ? 'Total 48 contact hours' : 'Total 36 contact hours';
+      modalHoursVal.textContent = isHealthcare ? 'Total 48 contact hours' : (isSixWeeks ? 'Total 18 contact hours' : 'Total 36 contact hours');
     }
     if (modalDescText) modalDescText.textContent = desc;
     if (modalLevelVal) modalLevelVal.textContent = lvl;
@@ -1097,6 +1131,12 @@ document.querySelectorAll('nav a, header a, .nav-link').forEach(function (link) 
 
     if (isHealthcare) {
       renderTimeline(sessionDataHealthcare, true);
+    } else if (isMakeup) {
+      renderTimeline(sessionDataMakeup, false);
+    } else if (isFlower) {
+      renderTimeline(sessionDataFlower, false);
+    } else if (isBalloon) {
+      renderTimeline(sessionDataBalloon, false);
     } else {
       renderTimeline(sessionData12, false);
     }
