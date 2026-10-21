@@ -173,8 +173,7 @@
                     href="index.html#about">About</a>
                 <a class="nav-link relative font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors duration-300"
                     href="courses.html">Courses</a>
-                <a class="nav-link relative font-label-md text-label-md text-primary-container active font-semibold"
-                    href="facilities.html">Facilities</a>
+
                 <a class="nav-link relative font-label-md text-label-md text-on-surface-variant hover:text-primary-container transition-colors duration-300"
                     href="index.html#contact">Contact</a>
             </div>
@@ -387,71 +386,129 @@
         </section>
     </main>
     <!-- Footer -->
-    <footer class="bg-primary-container text-on-primary pt-[100px] pb-12">
-        <div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-16">
-                <!-- Brand Col -->
-                <div class="col-span-1 md:col-span-1">
-                    <img alt="Blueprint Training Centre Logo" class="h-14 w-auto " src="image/zoomed-logo.jpg"
-                        alt="blueprint training center logo">
-                    <p class="font-body-md text-[14px] text-primary-fixed-dim/70 mb-8 leading-relaxed">
+    <footer class="relative overflow-hidden bg-primary-container text-on-primary pt-[100px] pb-8">
+
+        <!-- Blueprint grid: faint drafting-paper lines that fade out toward the bottom -->
+        <div aria-hidden="true" class="pointer-events-none absolute inset-0"
+            style="background-image:
+                    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+                background-size: 48px 48px;
+                -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+                mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);"></div>
+
+        <!-- Accent line along the top edge -->
+        <div aria-hidden="true" class="absolute top-0 left-0 right-0 h-1 bg-secondary-container"></div>
+
+        <div class="relative max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
+
+            <!-- Call-to-action band -->
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-12 mb-12 border-b border-white/10">
+                <div class="max-w-xl">
+                    <h3 class="font-headline-sm text-[24px] md:text-[28px] font-semibold text-on-primary leading-snug">
+                        Ready to build your team's skills?
+                    </h3>
+                    <p class="font-body-md text-[15px] text-primary-fixed-dim/70 mt-2 leading-relaxed">
+                        Message us to ask about courses, schedules and group bookings.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <a href="https://wa.me/971559809491" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-secondary-container text-on-primary font-semibold text-[15px] hover:brightness-110 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.5 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 0 0 5.6 1.4c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.200-3.400-8.300zM12 21.700c-1.800 0-3.500-.5-5-1.400l-.4-.2-3.800 1 1-3.700-.2-.4a9.800 9.800 0 0 1-1.500-5.200C2.100 6.500 6.600 2.100 12 2.100c2.600 0 5.100 1 6.900 2.900a9.700 9.700 0 0 1 2.900 6.900c0 5.400-4.400 9.800-9.800 9.800zm5.400-7.300c-.3-.1-1.700-.8-2-.9-.3-.1-.5-.1-.7.100l-.9 1.100c-.2.200-.3.200-.6.100-1.700-.8-2.800-1.500-3.900-3.400-.3-.5.300-.5.800-1.500.1-.2 0-.4 0-.5l-.9-2.200c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.100-.8.400-.3.300-1 1-1 2.500s1.100 2.900 1.200 3.100c.1.200 2.100 3.200 5.100 4.500 1.900.8 2.600.9 3.600.7.600-.1 1.700-.7 2-1.400.2-.7.200-1.300.2-1.400-.1-.1-.3-.2-.6-.3z"/></svg>
+                        Chat on WhatsApp
+                    </a>
+                    <a href="tel:+971559809491"
+                        class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/25 text-on-primary font-semibold text-[15px] hover:bg-white/10 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.200 2 19.800 19.800 0 0 1-8.600-3.100 19.500 19.500 0 0 1-6-6A19.800 19.800 0 0 1 2.100 4.200 2 2 0 0 1 4.100 2h3a2 2 0 0 1 2 1.700c.1 1 .4 1.900.7 2.800a2 2 0 0 1-.5 2.100L8.100 9.900a16 16 0 0 0 6 6l1.300-1.300a2 2 0 0 1 2.100-.4c.9.300 1.800.6 2.800.7a2 2 0 0 1 1.700 2z"/></svg>
+                        Call us
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-16">
+
+                <!-- Brand -->
+                <div class="md:col-span-5">
+                    <a href="index.html" aria-label="Blueprint Training Centre, back to top" class="inline-block">
+                        <img alt="Blueprint Training Centre Logo" class="h-14 w-auto mb-4" src="image/zoomed-logo.jpg">
+                    </a>
+                    <p class="font-body-md text-[14px] text-primary-fixed-dim/70 mb-8 leading-relaxed max-w-sm">
                         Professional Excellence in Training &amp; Development.
                     </p>
-                    <div class="flex gap-4">
-                        <a aria-label="WhatsApp"
-                            class="w-10 h-10 rounded-full bg-white/10 text-on-primary flex items-center justify-center hover:bg-secondary-container hover:text-secondary-fixed-dim transition-all duration-300"
+                    <div class="flex gap-3">
+                        <a aria-label="Chat with us on WhatsApp"
+                            class="w-10 h-10 rounded-full bg-white/10 text-on-primary flex items-center justify-center hover:bg-secondary-container hover:-translate-y-0.5 transition duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                             href="https://wa.me/971559809491" rel="noopener noreferrer" target="_blank">
-                            <img src="https://img.icons8.com/?size=100&id=16712&format=png&color=ffffff" alt="WhatsApp"
-                                class="w-5 h-5">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.5 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 0 0 5.6 1.4c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.200-3.400-8.300zM12 21.700c-1.800 0-3.500-.5-5-1.400l-.4-.2-3.800 1 1-3.700-.2-.4a9.800 9.800 0 0 1-1.500-5.200C2.100 6.500 6.600 2.100 12 2.100c2.600 0 5.100 1 6.900 2.900a9.700 9.700 0 0 1 2.900 6.900c0 5.400-4.400 9.800-9.800 9.800zm5.400-7.300c-.3-.1-1.700-.8-2-.9-.3-.1-.5-.1-.7.100l-.9 1.100c-.2.200-.3.200-.6.100-1.700-.8-2.800-1.500-3.900-3.400-.3-.5.300-.5.800-1.500.1-.2 0-.4 0-.5l-.9-2.200c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.100-.8.400-.3.300-1 1-1 2.500s1.100 2.900 1.200 3.100c.1.200 2.100 3.200 5.100 4.500 1.900.8 2.600.9 3.600.7.600-.1 1.700-.7 2-1.400.2-.7.200-1.300.2-1.400-.1-.1-.3-.2-.6-.3z"/></svg>
                         </a>
-                        <a aria-label="Facebook"
-                            class="w-10 h-10 rounded-full bg-white/10 text-on-primary flex items-center justify-center hover:bg-secondary-container hover:text-secondary-fixed-dim transition-all duration-300"
-                            href="https://www.facebook.com/profile.php?id=61593331912284&amp;mibextid=wwXIfr&amp;rdid=EHSktwfvUSdOjq5c&amp;share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18HiqNhavC%2F%3Fmibextid%3DwwXIfr"
+                        <a aria-label="Follow us on Facebook"
+                            class="w-10 h-10 rounded-full bg-white/10 text-on-primary flex items-center justify-center hover:bg-secondary-container hover:-translate-y-0.5 transition duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                            href="https://www.facebook.com/profile.php?id=61593331912284"
                             rel="noopener noreferrer" target="_blank">
-                            <img src="https://img.icons8.com/?size=100&id=118490&format=png&color=ffffff" alt="Facebook"
-                                class="w-5 h-5">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12a12 12 0 1 0-13.900 11.900v-8.400H7.100V12h3V9.400c0-3 1.800-4.700 4.500-4.700 1.300 0 2.700.2 2.700.2v3h-1.500c-1.500 0-2 .9-2 1.900V12h3.400l-.5 3.500h-2.900v8.400A12 12 0 0 0 24 12z"/></svg>
                         </a>
                     </div>
                 </div>
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="font-headline-sm text-[18px] font-semibold text-on-primary mb-6">
-                        Quick Links</h4>
-                    <ul class="space-y-4">
-                        <li class=""><a
-                                class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors"
-                                href="index.html">Home</a></li>
-                        <li class=""><a
-                                class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors"
-                                href="index.html#about">About</a></li>
-                        <li class=""><a
-                                class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors"
-                                href="courses.html">Courses</a></li>
 
-                        <li class=""><a
-                                class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-secondary-container transition-colors"
-                                href="index.html#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <!-- Contact -->
-                <div>
-                    <h4 class="font-headline-sm text-[18px] font-semibold text-on-primary mb-6">
-                        Contact Us</h4>
+                <!-- Quick Links -->
+                <nav aria-label="Footer" class="md:col-span-3">
+                    <h4 class="font-headline-sm text-[18px] font-semibold text-on-primary mb-6">Quick Links</h4>
                     <ul class="space-y-4">
-                        <li class="font-body-md text-[15px] text-primary-fixed-dim/70">WhatsApp:
-                            +971 55 980 9491</li>
-                        <li class="font-body-md text-[15px] text-primary-fixed-dim/70">
-                            info@blueprint-tc.com</li>
+                        <li><a class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-on-primary hover:underline underline-offset-4 decoration-secondary-container transition-colors" href="index.html">Home</a></li>
+                        <li><a class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-on-primary hover:underline underline-offset-4 decoration-secondary-container transition-colors" href="index.html#about">About</a></li>
+                        <li><a class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-on-primary hover:underline underline-offset-4 decoration-secondary-container transition-colors" href="courses.html">Courses</a></li>
+                        <li><a class="font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-on-primary hover:underline underline-offset-4 decoration-secondary-container transition-colors" href="index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Contact -->
+                <div class="md:col-span-4">
+                    <h4 class="font-headline-sm text-[18px] font-semibold text-on-primary mb-6">Contact Us</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="tel:+971559809491"
+                                class="group flex items-center gap-3 font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-on-primary transition-colors">
+                                <span class="w-9 h-9 shrink-0 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-secondary-container transition-colors">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.200 2 19.800 19.800 0 0 1-8.600-3.100 19.500 19.500 0 0 1-6-6A19.800 19.800 0 0 1 2.100 4.200 2 2 0 0 1 4.100 2h3a2 2 0 0 1 2 1.700c.1 1 .4 1.900.7 2.800a2 2 0 0 1-.5 2.100L8.100 9.900a16 16 0 0 0 6 6l1.300-1.300a2 2 0 0 1 2.100-.4c.9.300 1.800.6 2.800.7a2 2 0 0 1 1.700 2z"/></svg>
+                                </span>
+                                +971 55 980 9491
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/971559809491" target="_blank" rel="noopener noreferrer"
+                                class="group flex items-center gap-3 font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-on-primary transition-colors">
+                                <span class="w-9 h-9 shrink-0 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-secondary-container transition-colors">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.5 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 0 0 5.6 1.4c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.200-3.400-8.300zM12 21.700c-1.800 0-3.500-.5-5-1.400l-.4-.2-3.800 1 1-3.700-.2-.4a9.800 9.800 0 0 1-1.500-5.200C2.100 6.500 6.600 2.100 12 2.100c2.600 0 5.100 1 6.900 2.900a9.700 9.700 0 0 1 2.900 6.900c0 5.400-4.400 9.800-9.800 9.800zm5.400-7.300c-.3-.1-1.700-.8-2-.9-.3-.1-.5-.1-.7.100l-.9 1.100c-.2.200-.3.200-.6.100-1.700-.8-2.800-1.500-3.900-3.400-.3-.5.300-.5.800-1.500.1-.2 0-.4 0-.5l-.9-2.200c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.100-.8.400-.3.300-1 1-1 2.500s1.100 2.900 1.200 3.100c.1.200 2.100 3.200 5.100 4.500 1.900.8 2.600.9 3.600.7.600-.1 1.700-.7 2-1.400.2-.7.200-1.300.2-1.400-.1-.1-.3-.2-.6-.3z"/></svg>
+                                </span>
+                                WhatsApp: +971 55 980 9491
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@blueprint-tc.com" target="_blank" rel="noopener noreferrer"
+                                class="group flex items-center gap-3 font-body-md text-[15px] text-primary-fixed-dim/70 hover:text-on-primary transition-colors break-all">
+                                <span class="w-9 h-9 shrink-0 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-secondary-container transition-colors">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+                                </span>
+                                info@blueprint-tc.com
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
+
             <!-- Copyright -->
-            <div
-                class="border-t border-white/10 pt-8 text-center flex flex-col md:flex-row justify-center items-center gap-4">
+            <div class="border-t border-white/10 pt-8 flex flex-col-reverse md:flex-row justify-between items-center gap-4">
                 <p class="font-body-md text-[13px] text-primary-fixed-dim/50">
-                    © 2026 Blueprint Training Centre. All rights reserved.
+                    &copy; 2026 Blueprint Training Centre. All rights reserved.
                 </p>
+                <a href="#"
+                    class="inline-flex items-center gap-2 font-body-md text-[13px] text-primary-fixed-dim/70 hover:text-on-primary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded">
+                    Back to top
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+                </a>
             </div>
+        </div>
     </footer>
     <script src="script.js"></script>
 </body>
